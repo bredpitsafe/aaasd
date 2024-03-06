@@ -1,0 +1,5 @@
+﻿"Time UTC","Level","Component","Message"
+"2024-02-29T00:05:17.571917993Z","Info","test_md_indicator.TestMdIndicator","test_md_indicator.TestMdIndicator changed status: Initializing→Disabled, details: component autostart is disabled"
+"2024-02-29T00:05:17.571915729Z","Info","test_md_indicator.TestMdIndicator","test_md_indicator.TestMdIndicator changed status: Disabled→Initializing, details: initializing"
+"2024-02-29T00:05:02.124113686Z","Info","test_md_indicator.TestMdIndicator","test_md_indicator.TestMdIndicator changed status: Terminating→Disabled, details: "
+"2024-02-29T00:05:01.093554751Z","Info","test_md_indicator.TestMdIndicator","test_md_indicator.TestMdIndicator changed status: Enabled→Terminating, details: "

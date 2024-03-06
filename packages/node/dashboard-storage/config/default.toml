@@ -1,0 +1,53 @@
+[service]
+name = 'dashboard_storage'
+port = 8100
+stage = "production"
+nodeNo = 0
+url = '/ws'
+healthcheckURL = '/healthcheck'
+
+[oauth]
+# TODO: Change urls when separate realms are actually available
+devUrl = 'https://ms.advsys.work/keycloak/realms/bhft'
+prodUrl = 'https://ms.advsys.work/keycloak/realms/bhft'
+tokenCacheCheckInterval = 10000
+
+[postgres]
+host = 'localhost'
+port = '5432'
+databaseName = 'dashboards'
+username = 'dashboards'
+password = 'test'
+minPoolSize = 1
+maxPoolSize = 100
+idleTimeout = 60_000
+connectionTimeout = 2_000
+allowExitOnIdle = true
+maxConcurrentQueries = 1000
+maxQueueSize = 10000
+scheme = 'test'
+
+[logging]
+level = 'debug'
+
+[metrics]
+url = '/metrics'
+prefix = 'dashboard_storage_'
+labels = [["stage", "production"], ["nodeNo", "0"]]
+
+[subscriptions]
+checkDraftsInterval = 1000
+checkDashboardsInterval = 1000
+checkPermissionsInterval = 1000
+timeout = 3000
+retryBeforeFail = 10
+retryDelay = 1000
+bufferDelay = 100
+
+[authentication]
+checkExpirationInterval = 10000
+socketDeauthCloseTimeout = 1000
+
+[heartbeat]
+interval = 1000
+enable = false

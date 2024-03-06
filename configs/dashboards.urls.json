@@ -1,0 +1,4 @@
+{
+  "dashboards-prod": "/dashboards/",
+  "dashboards-dev": "/dashboards_dev/"
+}

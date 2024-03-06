@@ -1,0 +1,6 @@
+<robot kind="test_indicator_robot">
+  <container>
+    <auto_start>false</auto_start>
+  </container>
+  <subscribe_instruments>adausdt|HuobiSpot</subscribe_instruments>
+</robot>

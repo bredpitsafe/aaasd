@@ -1,0 +1,7 @@
+{
+  "tspegjs": {
+    "customHeader": "// @ts-nocheck"
+  },
+  "plugins": [ "ts-pegjs" ],
+  "optimize": "speed"
+}

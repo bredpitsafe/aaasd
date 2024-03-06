@@ -1,0 +1,50 @@
+<panel>
+  <type>CustomViewGrid</type>
+  <settings>
+    <url>wss://ms.advsys.work/autocmn/</url>
+    <server_time_unit>nanosecond</server_time_unit>
+    <label>Test Indicators Grid</label>
+  </settings>
+  <grid>
+    <style>
+      <gap>20px</gap>
+      <background_color>yellow</background_color>
+    </style>
+    <cell>
+      <column>1</column>
+      <text>Base text1</text>
+      <style>
+        <background_color>blue</background_color>
+      </style>
+      <mark>
+        <style>
+          <color>white</color>
+        </style>
+      </mark>
+    </cell>
+    <cell>
+      <column>3</column>
+      <text>Base text2</text>
+      <style>
+        <background_color>blue</background_color>
+      </style>
+      <mark>
+        <style>
+          <color>white</color>
+        </style>
+      </mark>
+    </cell>
+    <cell>
+      <column>5</column>
+      <text>Base text3</text>
+      <style>
+        <background_color>blue</background_color>
+      </style>
+      <mark>
+        <style>
+          <color>white</color>
+        </style>
+      </mark>
+    </cell>
+  </grid>
+</panel>

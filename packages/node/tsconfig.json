@@ -1,0 +1,28 @@
+{
+    "extends": "../../tsconfig-base.json",
+    "ts-node": {
+        "files": true,
+        "esm": true,
+        "experimentalResolver": true
+    },
+    "compilerOptions": {
+        "moduleDetection": "force",
+        "target": "ES2022",
+        "module": "NodeNext",
+        "lib": ["es2023"],
+        "types": ["reflect-metadata"],
+        "inlineSourceMap": true,
+        "moduleResolution": "NodeNext",
+        "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
+        "importHelpers": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    }
+}

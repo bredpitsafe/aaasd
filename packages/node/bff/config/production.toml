@@ -1,0 +1,10 @@
+[service]
+stage = 'production'
+url = '/'
+
+[logging]
+level = 'info'
+
+[heartbeat]
+interval = 2000
+enable = true

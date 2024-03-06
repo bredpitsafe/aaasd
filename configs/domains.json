@@ -1,0 +1,10 @@
+{
+  "ms": {
+    "origin": "https://ms.advsys.work",
+    "keycloakRealm": "bhft"
+  },
+  "prod": {
+    "origin": "https://prod.advsys.work",
+    "keycloakRealm": "prod"
+  }
+}

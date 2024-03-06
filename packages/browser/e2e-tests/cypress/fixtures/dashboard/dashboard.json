@@ -1,0 +1,98 @@
+{
+  "version": "1.0.0",
+  "dashboard": {
+    "name": "Dashboard json",
+    "grid": {
+      "colsCount": 80,
+      "margin": 8,
+      "name": "80x45",
+      "panel": {
+        "relHeight": 0.2,
+        "relMinHeight": 0.2,
+        "relMinWidth": 0.2,
+        "relWidth": 0.2
+      },
+      "rowsCount": 45
+    },
+    "cells": [
+      {
+        "panelId": "977918110",
+        "id": "3094044977",
+        "relX": 0.675,
+        "relY": 0,
+        "relHeight": 0.35555555555555557,
+        "relWidth": 0.325
+      },
+      {
+        "panelId": "1480724404",
+        "id": "322330598",
+        "relX": 0,
+        "relY": 0.6444444444444445,
+        "relHeight": 0.3333333333333333,
+        "relMinHeight": 0.2,
+        "relMinWidth": 0.2,
+        "relWidth": 0.3375
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": "977918110",
+      "config": {
+        "charts": [
+          {
+            "id": "indicators{name='SQX.cycle'}",
+            "query": "indicators{name='SQX.cycle'}",
+            "label": "cycle",
+            "labelFormat": "%s: %.4g",
+            "type": "points",
+            "color": 1381653,
+            "opacity": 0.15,
+            "pointSize": 12,
+            "striving": true
+          }
+        ],
+        "settings": {
+          "url": "ws://localhost",
+          "followMode": "permament",
+          "minY": 0,
+          "maxY": 3,
+          "minZoom": 2.78e-13,
+          "serverTimeUnit": "nanosecond",
+          "serverTimeIncrement": 1609459200000000000,
+          "closestPoints": true,
+          "timeZone": 0,
+          "doNotInitializeCharts": true
+        }
+      }
+    },
+    {
+      "id": "1480724404",
+      "config": {
+        "charts": [
+          {
+            "id": "indicators{name='SQX.BN.CR.BTC.excess'}",
+            "query": "indicators{name='SQX.BN.CR.BTC.excess'}",
+            "label": "BTC excess",
+            "labelFormat": "%s: %.6g",
+            "type": "stairs",
+            "color": 10066329,
+            "opacity": 1,
+            "pointSize": 10,
+            "striving": true
+          }
+        ],
+        "settings": {
+          "url": "ws://localhost",
+          "followMode": "permament",
+          "minZoom": 2.78e-13,
+          "serverTimeUnit": "nanosecond",
+          "serverTimeIncrement": 1609459200000000000,
+          "closestPoints": true,
+          "timeZone": 0,
+          "doNotInitializeCharts": true
+        }
+      }
+    }
+  ]
+}

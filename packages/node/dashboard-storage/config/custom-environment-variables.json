@@ -1,0 +1,32 @@
+{
+  "service": {
+    "name": "SERVICE_NAME",
+    "port": "SERVICE_PORT",
+    "stage": "SERVICE_STAGE",
+    "nodeNo": "SERVICE_NODE_NO",
+    "url": "SERVICE_URL",
+    "healthcheckURL": "SERVICE_HEALTHCHECK_URL"
+  },
+  "oauth": {
+    "devUrl": "OAUTH_DEV_URL",
+    "prodUrl": "OAUTH_URL"
+  },
+  "postgres": {
+    "host": "POSTGRES_HOST",
+    "port": "POSTGRES_PORT",
+    "databaseName": "POSTGRES_DATABASE_NAME",
+    "username": "POSTGRES_USERNAME",
+    "password": "POSTGRES_PASSWORD",
+    "minPoolSize": "POSTGRES_MIN_POOL_SIZE",
+    "maxPoolSize": "POSTGRES_MAX_POOL_SIZE",
+    "idleTimeout": "POSTGRES_IDLE_TIMEOUT",
+    "connectionTimeout": "POSTGRES_CONNECTION_TIMEOUT",
+    "allowExitOnIdle": "POSTGRES_ALLOW_EXIT_ON_IDLE",
+    "scheme": "POSTGRES_SCHEME"
+  },
+  "metrics": {
+    "url": "METRICS_URL",
+    "prefix": "METRICS_PREFIX",
+    "labels": "METRICS_LABELS"
+  }
+}

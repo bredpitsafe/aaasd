@@ -1,0 +1,18 @@
+{
+    "service": {
+        "name": "SERVICE_NAME",
+        "port": "SERVICE_PORT",
+        "stage": "SERVICE_STAGE",
+        "nodeNo": "SERVICE_NODE_NO",
+        "url": "SERVICE_URL",
+        "healthcheckURL": "SERVICE_HEALTHCHECK_URL"
+    },
+    "oauth": {
+        "url": "OAUTH_URL"
+    },
+    "metrics": {
+        "url": "METRICS_URL",
+        "prefix": "METRICS_PREFIX",
+        "labels": "METRICS_LABELS"
+    }
+}

@@ -1,0 +1,18 @@
+export enum EConfigTabSelectors {
+    ApplyButton = 'applyButton',
+    DiscardButton = 'discardButton',
+    DiffButton = 'diffButton',
+    RevisionsList = '[class*=ant-select-dropdown]',
+    RevisionsSelector = 'revisionsSelector',
+    RevisionsInput = '[data-test=revisionsSelector] [class="ant-select-selection-search-input"]',
+    ConfigList = 'configList',
+    ConfigInput = '[class*="inputarea"]',
+    ConfigOriginalText = '[class="editor original"]',
+    ConfigDiffText = '[class="editor modified"]',
+    ColorLine = '[class="cldr highlight-line-decoration"]',
+    SaveIcon = '[class*="anticon anticon-save"]',
+    RevisionsListItem = '[class="ant-select-item-option-content"]',
+    ActiveRevisions = '[aria-selected="true"] [class="ant-select-item-option-content"]',
+    LoadingRevisions = '[data-test="revisionsSelector"] [class="anticon anticon-loading anticon-spin"]',
+    ConfigForm = 'configForm',
+}

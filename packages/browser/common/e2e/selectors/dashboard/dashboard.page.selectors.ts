@@ -1,0 +1,16 @@
+export enum EDashboardPageSelectors {
+    App = 'appDashboard',
+    ImportConfigButton = 'importConfigButton',
+    ImportFileInput = 'importFileInput',
+    SetBacktestingMenuButton = 'setBacktestingMenuButton',
+    DashboardImportButton = 'dashboardImportButton',
+    DashboardsMenuButton = 'dashboardsMenuButton',
+    Card = 'card',
+    ChartLegends = 'chartLegends',
+    TableCell = '[class*="ant-table-cell"]',
+    TableHeader = '[class="ant-table-thead"]',
+    TableBody = '[class="ant-table-tbody"]',
+    TableButton = '[class*="ant-table-row-expand-icon"]',
+    TableRow = '[class*="ant-table-row-level"]',
+    Grid = '[style*="transform-origin"]',
+}

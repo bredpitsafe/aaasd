@@ -1,0 +1,591 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Response",
+  "type": "object",
+  "properties": {
+    "error": {
+      "$ref": "#/$defs/ErrorResponse"
+    },
+    "payload": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/UnsubscribeResponse"
+        },
+        {
+          "$ref": "#/$defs/PingResponse"
+        },
+        {
+          "$ref": "#/$defs/HeartbeatResponse"
+        },
+        {
+          "$ref": "#/$defs/AuthenticateResponse"
+        },
+        {
+          "$ref": "#/$defs/LogoutResponse"
+        },
+        {
+          "$ref": "#/$defs/SubscribeToDashboardResponse"
+        },
+        {
+          "$ref": "#/$defs/SubscribeToDashboardsListResponse"
+        },
+        {
+          "$ref": "#/$defs/FetchDashboardConfigResponse"
+        },
+        {
+          "$ref": "#/$defs/FetchDashboardDraftResponse"
+        },
+        {
+          "$ref": "#/$defs/CreateDashboardResponse"
+        },
+        {
+          "$ref": "#/$defs/ImportDashboardResponse"
+        },
+        {
+          "$ref": "#/$defs/UpdateDashboardResponse"
+        },
+        {
+          "$ref": "#/$defs/UpdateDashboardDraftResponse"
+        },
+        {
+          "$ref": "#/$defs/ResetDashboardDraftResponse"
+        },
+        {
+          "$ref": "#/$defs/UpdateDashboardPermissionsResponse"
+        },
+        {
+          "$ref": "#/$defs/UpdateDashboardShareSettingsResponse"
+        },
+        {
+          "$ref": "#/$defs/DeleteDashboardResponse"
+        },
+        {
+          "$ref": "#/$defs/SubscribeToUsersResponse"
+        },
+        {
+          "$ref": "#/$defs/SubscribeToDashboardPermissionsResponse"
+        },
+        {
+          "$ref": "#/$defs/FetchDashboardIdByLegacyIdResponse"
+        },
+        {
+          "$ref": "#/$defs/RenameDashboardResponse"
+        }
+      ]
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "traceId": {
+      "type": "string"
+    },
+    "correlationId": {
+      "type": "number"
+    },
+    "state": {
+      "$ref": "#/$defs/ResponseState"
+    }
+  },
+  "required": [
+    "timestamp",
+    "traceId",
+    "correlationId",
+    "state"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "ResponseState": {
+      "type": "string",
+      "enum": [
+        "Done",
+        "InProgress"
+      ],
+      "tsEnumNames": [
+        "Done",
+        "InProgress"
+      ]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "type",
+        "message",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "UnsubscribeResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Unsubscribed"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "PingResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Pong"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "HeartbeatResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Heartbeat"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "AuthenticateResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Authenticated"
+          ]
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "username"
+      ],
+      "additionalProperties": false
+    },
+    "LogoutResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "LoggedOut"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DashboardsListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.json#/$defs/UUID"
+        },
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "common.json#/$defs/DashboardKind"
+        },
+        "status": {
+          "$ref": "common.json#/$defs/DashboardStatus"
+        },
+        "digest": {
+          "type": "string"
+        },
+        "insertionTime": {
+          "type": "string"
+        },
+        "hasDraft": {
+          "type": "boolean"
+        },
+        "sharePermission": {
+          "$ref": "common.json#/$defs/SharePermission"
+        },
+        "permission": {
+          "$ref": "common.json#/$defs/Permission"
+        },
+        "owners": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/$defs/User"
+          }
+        },
+        "permissionsCount": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "status",
+        "insertionTime",
+        "hasDraft",
+        "sharePermission",
+        "permission",
+        "owners"
+      ],
+      "additionalProperties": false
+    },
+    "DashboardItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DashboardsListItem"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "draftDigest": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "digest",
+            "draftDigest"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SubscribeToDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Dashboard"
+          ]
+        },
+        "dashboard": {
+          "$ref": "#/$defs/DashboardItem"
+        }
+      },
+      "required": [
+        "type",
+        "dashboard"
+      ],
+      "additionalProperties": false
+    },
+    "SubscribeToDashboardsListResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardsList"
+          ]
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DashboardsListItem"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "list"
+      ],
+      "additionalProperties": false
+    },
+    "FetchDashboardConfigResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardConfig"
+          ]
+        },
+        "config": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "config",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "FetchDashboardDraftResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardDraft"
+          ]
+        },
+        "draft": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "draft",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "CreateDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardCreated"
+          ]
+        },
+        "id": {
+          "$ref": "common.json#/$defs/UUID"
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ImportDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardImported"
+          ]
+        },
+        "id": {
+          "$ref": "common.json#/$defs/UUID"
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardUpdated"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateDashboardDraftResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardDraftUpdated"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "ResetDashboardDraftResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardDraftReset"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateDashboardPermissionsResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "PermissionsUpdated"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateDashboardShareSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardShareSettingsUpdated"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DeleteDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardDeleted"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "SubscribeToUsersResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "UsersList"
+          ]
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/$defs/User"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "list"
+      ],
+      "additionalProperties": false
+    },
+
+    "SubscribeToDashboardPermissionsResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardPermissionsList"
+          ]
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "string"
+              },
+              "permission": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "user",
+              "permission"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "type",
+        "list"
+      ],
+      "additionalProperties": false
+    },
+
+    "FetchDashboardIdByLegacyIdResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardId"
+          ]
+        },
+        "id": {
+          "$ref": "common.json#/$defs/UUID"
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+
+    "RenameDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DashboardRenamed"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

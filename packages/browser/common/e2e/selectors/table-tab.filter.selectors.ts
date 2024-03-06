@@ -1,0 +1,15 @@
+export enum ETableTabFilterSelectors {
+    TableMenu = 'tableMenu',
+    TableFilterButton = 'tableFilterButton',
+    NameInput = 'taskTypeInput',
+    DataInput = 'dataInput',
+    RealAccountInput = '[data-test="taskTypeInput"][placeholder=" Exch. Acc. ID"]',
+    VirtualAccountInput = '[data-test="taskTypeInput"][placeholder="Name"]',
+    ActiveTasksInput = '[data-test="activeTasksTable"] [data-test="taskTypeInput"]',
+    ArchivedTasksInput = '[data-test="archivedTasksTable"] [data-test="taskTypeInput"]',
+    SwitchButton = 'switchButton',
+    CVSButton = 'cvsButton',
+    TSVButton = 'tsvButton',
+    JSONButton = 'jsonButton',
+    DashboardButton = 'dashboardButton',
+}

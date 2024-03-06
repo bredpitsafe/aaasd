@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`convertStmBalancesToPositionsArray > converts data correctly 1`] = `
+[
+  {
+    "instrumentId": 456,
+    "instrumentName": "INSTRUMENT_ID",
+    "platformTime": "2024-02-26 01:59:47.376",
+    "position": 123,
+    "robotId": 789,
+    "robotName": "ROBOT_NAME",
+    "virtualAccountId": 123,
+    "virtualAccountName": "VIRTUAL_ACCOUNT",
+  },
+]
+`;

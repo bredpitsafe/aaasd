@@ -1,0 +1,15 @@
+{
+  "name": "@frontend/balance-monitor",
+  "version": "1.0.0",
+  "description": "Balance Monitor UI",
+  "scripts": {
+    "build": "NODE_ENV=production npx webpack",
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+    "server": "npx webpack serve --hot",
+    "test_unit": "jest --passWithNoTests",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@frontend/common": "^1.0.1"
+  }
+}

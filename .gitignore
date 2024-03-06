@@ -1,0 +1,27 @@
+.idea/
+node_modules/
+dist/
+public/
+builds/
+coverage/
+target/
+src/**/Cargo.lock
+*.generated.pegjs
+.env
+
+packages/**/package-lock.json
+packages/browser/**/.DS_Store
+.DS_Store
+/webpack/cert/
+/cert/
+
+/packages/browser/e2e-tests/cypress/screenshots/
+/packages/browser/e2e-tests/results/
+/packages/browser/e2e-tests/cypress/downloads/
+/packages/browser/e2e-tests/.env
+
+
+.nx/cache
+
+# Next.js
+.next

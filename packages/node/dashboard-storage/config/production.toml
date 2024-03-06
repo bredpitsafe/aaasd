@@ -1,0 +1,13 @@
+[service]
+stage = "production"
+url = '/'
+
+[logging]
+level = 'info'
+
+[postgres]
+scheme = 'main'
+
+[heartbeat]
+interval = 2000
+enable = true

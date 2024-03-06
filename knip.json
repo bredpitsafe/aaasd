@@ -1,0 +1,68 @@
+{
+  "workspaces": {
+    ".": {
+      "entry": ["bin/*.{ts,js}", "webpack/*.{ts,js}"],
+      "project": "**/*.{js,ts}"
+    },
+    "packages/browser/*": {
+      "entry": ["src/index.ts", "**/*.test.browser.ts"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/browser/e2e-tests": {
+      "entry": ["scripts/*.js"],
+      "project": "**/*.{js,ts}"
+    },
+    "packages/node/oauth-mock-server": {
+      "entry": ["src/index.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/node/bff": {
+      "entry": ["src/main.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/node/ws-ping-pong": {
+      "entry": ["src/index.ts"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/node/nse-risk-manager": {
+      "entry": ["src/app/*.tsx"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/node/dashboard-storage": {
+      "entry": ["src/index.ts", "test/*.test.ts"],
+      "project": "**/*.ts",
+      "ignore": [
+        "src/def/request.ts",
+        "src/def/response.ts"
+      ]
+    }
+  },
+  "rules": {
+    "dependencies": "off"
+  },
+  "ignore": [
+    "**/__mocks__",
+    "test/**",
+    "**/jest.config.js",
+    "**/src/schemas/**"
+  ],
+  "ignoreDependencies": [
+    "lodash",
+    "rc-select",
+    "@vanilla-extract/css",
+    "tslib"
+  ],
+  "ignoreBinaries": [
+    "docker-compose"
+  ],
+  "exclude": [
+    "enumMembers",
+    "classMembers",
+    "duplicates"
+  ],
+  "ignoreWorkspaces": [
+    "packages/browser/common",
+    "packages/browser/e2e-tests/cypress"
+  ]
+
+}

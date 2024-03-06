@@ -1,0 +1,85 @@
+<execution_gate exchange="BinanceSpot"  auto_start="true" >
+    <common dry_run="false">
+        <ws>
+            <arbitrage stream="Exec"   max_connections="5" check_interval="120s" min_events="0" deduplication="128" />
+        </ws>
+        <account name="bn.sub8" >
+            <key name="bn.sub8.test">
+                <bind ip="10.8.5.129" />
+                <bind ip="10.8.10.129" />
+            </key>
+            <place_rps interval="900ms"  limit="5"   ioc_reserve="1"     cancel_reserve="1" />
+            <place_day_limit>180000</place_day_limit>
+            <daily_orders_place_fallback enabled="true" count="0"/>
+        </account>
+
+        <fee_rules >
+            <fees>
+                <maker asset_rule="FromQuote"/>
+                <taker asset_rule="FromQuote"/>
+            </fees>
+        </fee_rules>
+
+        <allow_post_only>true</allow_post_only>
+        <timers>
+            <balance_poll interval="30s" />
+            <orders_poll interval="2m" />
+            <ping_ws_listen_key interval="30m" />
+            <poll_current_avg_price interval="60s" />
+        </timers>
+        <timeouts>
+            <connection_check check_interval="1s" timeout="40s" />
+            <placing_order_reject check_interval="5s" timeout="1m" />
+            <canceling_order_reject check_interval="5s" timeout="1m" />
+            <hanging_order_reject check_interval="5s" timeout="1m" />
+            <stop check_interval="200ms" timeout="1m" />
+            <ws_reconnect_no_data interval="150s" />
+            <order_forgot interval="30s" />
+            <ws_ping check_interval="1s" timeout="5ms" />
+        </timeouts>
+        <currencies forbid_trading_if_no_config="false" >
+            <currency name="BTC" trade_on="bn.sub8"/>
+            <currency name="ETH" trade_on="bn.sub8"/>
+            <currency name="USDT" trade_on="bn.sub8"/>
+            <currency name="AUD" trade_on="bn.sub8"/>
+            <currency name="BNB" trade_on="bn.sub8"/>
+            <currency name="BUSD" trade_on="bn.sub8"/>
+
+            <asset_remap exchange="BTTC" platform="BTT"/>
+            <asset_remap exchange="BTT" platform=""/>
+            <asset_remap exchange="REI" platform="GXC"/>
+            <asset_remap exchange="GXC" platform=""/>
+
+        </currencies>
+        <error>
+            <kind_filter  type="ExchangeError">
+                <kind http_code="400" />
+            </kind_filter >
+            <method_filter method="Place"/>
+            <action action="RejectOrder" />
+        </error>
+        <change_order_size_heuristic>
+            <reduce_ioc_size_on_insufficient_balance enabled="false" factor="0.5">
+                <instrument name="BTCUSDT" factor="0.2"/>
+            </reduce_ioc_size_on_insufficient_balance>
+            <reduce_gtc_size_on_insufficient_balance enabled="false" factor="0.6">
+                <instrument name="ETHUSDT" factor="0.3"/>
+            </reduce_gtc_size_on_insufficient_balance>
+        </change_order_size_heuristic>
+        <ignore_unknown_assets>true</ignore_unknown_assets>
+        <own_trade_price_epsilon>0.00000001</own_trade_price_epsilon>
+    </common>
+    <poll_current_avg_price>
+        <instrument name="BNBUSDT" />
+        <instrument name="BNBBTC" />
+    </poll_current_avg_price>
+    <ip_weight_rps reserve_multiplier="1.0" cancel_reserve="8">
+        <rule ip="10.8.5.129" limit="800"   interval="3s"   />
+        <rule ip="10.8.10.129" limit="800"   interval="3s"   />
+        <rule ip="10.8.10.107" limit="800"   interval="3s"   />
+        <rule ip="10.8.13.107" limit="800"   interval="3s"   />
+    </ip_weight_rps>
+    <recv_window place="8s" cancel="8s" other="12s" validate="5s" />
+    <trades_deduct enabled="true" bnb_fee_rate_maker="0.0015" bnb_fee_rate_taker="0.0025"/>
+    <client_id_prefix>pre_</client_id_prefix>
+</execution_gate>

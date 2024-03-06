@@ -1,0 +1,19 @@
+### SubscribeToConvertRates
+# @keepStreaming
+WEBSOCKET {{ socketURL }}
+Content-Type: application/json
+
+{
+  "payload": {
+    "type": "SubscribeToConvertRates",
+    "requestStage": "{{requestStage}}",
+    "filters": {
+        "include": {
+            "quoteAssetId": 232
+        }
+    }
+  },
+  "traceId": "{{$random.integer(1000000, 9999999)}}",
+  "correlationId": {{$random.integer(1000000, 9999999)}},
+  "timestamp": "2023-05-05T14:12:12.824Z"
+}

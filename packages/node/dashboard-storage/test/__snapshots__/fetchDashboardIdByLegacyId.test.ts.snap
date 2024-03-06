@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FetchDashboardIdByLegacyId > fails with non-existent legacyId 1`] = `
+{
+  "description": "Dashboard not found: Dashboard does not exist in storage. Ask initial owner to manually upload it.",
+  "kind": "Authorization",
+}
+`;
