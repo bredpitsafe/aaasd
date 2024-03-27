@@ -1,0 +1,30 @@
+### Update Dashboard
+WEBSOCKET {{ socketURL }}
+Content-Type: application/json
+
+
+{
+  "payload": {
+    "type": "Authenticate",
+    "bearerToken": "{{accessToken}}"
+  },
+  "traceId": "{{$random.integer(1000000, 9999999)}}",
+  "correlationId": {{$random.integer(1000000, 9999999)}},
+  "timestamp": "2023-05-05T14:12:12.824Z"
+}
+
+=== wait-for-server
+
+{
+  "payload": {
+    "type": "UpdateDashboard",
+    "id": "{{dashboardId}}",
+    "name": "{{$random.alphanumeric(10)}}",
+    "config": "{{$random.alphanumeric(20)}}",
+    "digest": "61873eb5e12b7a92bede355be6f7e0f9",
+    "status": "Active"
+  },
+  "traceId": "{{$random.integer(1000000, 9999999)}}",
+  "correlationId": {{$random.integer(1000000, 9999999)}},
+  "timestamp": "2023-05-05T14:12:12.824Z"
+}

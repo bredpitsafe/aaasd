@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`convertStmBalancesToBalancesArray > converts data correctly 1`] = `
+[
+  {
+    "balances": [
+      {
+        "amount": 12.345,
+        "assetId": 123,
+        "assetName": "ASSET_NAME_1",
+      },
+      {
+        "amount": 456.789,
+        "assetId": 456,
+        "assetName": "ASSET_NAME_2",
+      },
+      {
+        "amount": 789.012,
+        "assetId": 789,
+        "assetName": "ASSET_NAME_3",
+      },
+    ],
+    "instrumentId": 456,
+    "instrumentName": "INSTRUMENT_ID",
+    "platformTime": "2024-02-26 01:59:47.376",
+    "robotId": 789,
+    "robotName": "ROBOT_NAME",
+    "virtualAccountId": 123,
+    "virtualAccountName": "VIRTUAL_ACCOUNT",
+  },
+]
+`;

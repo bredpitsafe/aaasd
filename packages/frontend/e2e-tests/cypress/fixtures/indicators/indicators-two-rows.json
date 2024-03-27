@@ -1,0 +1,14 @@
+[
+  {
+    "Publisher": "robot.trading_tasks.Herodotus",
+    "Name": "Hero.t_541.BTCUSDT|BinanceSwap.hero.bns.order_price",
+    "Value": null,
+    "Timestamp": "2023-03-24 12:14:54.067"
+  },
+  {
+    "Publisher": "robot.trading_tasks.Herodotus",
+    "Name": "Hero.t_541.target_amount",
+    "Value": null,
+    "Timestamp": "2023-03-24 12:14:54.067"
+  }
+]

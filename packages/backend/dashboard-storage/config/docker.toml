@@ -1,0 +1,21 @@
+[service]
+stage = "test"
+
+[oauth]
+devUrl = 'http://oauth:8101'
+
+[postgres]
+url = 'postgres'
+databaseName = 'dashboards'
+username = 'user'
+password = 'password'
+
+[metrics]
+prefix = 'dashboard_storage_'
+labels = [["stage", "test"], ["nodeNo", "0"]]
+
+[subscriptions]
+timeout = 1000
+
+[authentication]
+checkExpirationInterval = 1000

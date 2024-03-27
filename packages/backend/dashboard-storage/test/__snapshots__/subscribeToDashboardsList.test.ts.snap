@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SubscribeToDashboardsList > gets empty list when no dashboards in DB 1`] = `
+{
+  "list": [],
+  "type": "DashboardsList",
+}
+`;

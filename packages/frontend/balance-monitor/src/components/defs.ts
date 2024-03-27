@@ -1,0 +1,3 @@
+export const PERCENTAGE_DIGITS = 1;
+export const CONVERSION_DIGITS = 0;
+export const OPPOSITE_CONVERSION_DIGITS = 2;

@@ -1,0 +1,295 @@
+[service]
+name = 'bff'
+port = 8100
+stage = 'production'
+nodeNo = 0
+url = '/ws'
+healthcheckURL = '/healthcheck'
+
+[oauth]
+# TODO: Change urls when separate realms are actually available
+devUrl = 'https://ms.advsys.work/keycloak/realms/bhft'
+prodUrl = 'https://ms.advsys.work/keycloak/realms/bhft'
+tokenCacheCheckInterval = 10000
+
+[logging]
+level = 'debug'
+
+[metrics]
+url = '/metrics'
+prefix = 'bff_'
+labels = [['stage', 'production'], ['nodeNo', '0']]
+
+[rpc]
+timeout = 10000
+
+[authentication]
+checkExpirationInterval = 10000
+socketDeauthCloseTimeout = 1000
+
+[heartbeat]
+interval = 1000
+enable = false
+
+[resources.grpc]
+defaultPort = 9090
+
+# Supports {stage} and {stage_hostname} variables
+[resources.grpc.services]
+ConvertRatesV1 = '{stage_hostname}'
+StmV1 = '{stage_hostname}'
+
+[stages.algo]
+hostname = 'plt-platform-algo.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.astroid]
+hostname = 'plt-platform-astroid.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.autocmn]
+hostname = 'plt-platform-autocmn.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.autotest]
+hostname = 'plt-platform-autotest.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.backtest]
+hostname = 'plt-platform-backtest.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.bootcamp]
+hostname = 'plt-platform-bootcamp.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.circle]
+hostname = 'plt-platform-circle.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.cone]
+hostname = 'plt-platform-cone.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.crawler]
+hostname = 'plt-platform-crawler.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.cube]
+hostname = 'plt-platform-cube.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.dtc]
+hostname = 'plt-platform-dtc.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.ellipse]
+hostname = 'plt-platform-ellipse.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.fxstats-main]
+hostname = 'plt-fxstats-main.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.helix]
+hostname = 'plt-platform-helix.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.heptagon]
+hostname = 'plt-platform-heptagon.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.hexagon]
+hostname = 'plt-platform-hexagon.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.hypercube]
+hostname = 'plt-platform-hypercube.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.ldn]
+hostname = 'plt-core-1-ldn.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.klein]
+hostname = 'plt-platform-klein.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.line]
+hostname = 'plt-platform-line.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.main3]
+hostname = 'plt-core-3-main.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.main5]
+hostname = 'plt-core-5-main.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.md]
+hostname = 'plt-core-1-md.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.mdi]
+hostname = 'plt-core-1-mdi.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.mobius]
+hostname = 'plt-platform-mobius.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.moex]
+hostname = 'plt-core-1-moex.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.moex2]
+hostname = 'plt-core-2-moex.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.mono]
+hostname = 'plt-core-1-mono.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.octagon]
+hostname = 'plt-platform-octagon.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.oval]
+hostname = 'plt-platform-oval.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.pentagon]
+hostname = 'plt-platform-pentagon.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.perf]
+hostname = 'plt-core-1-perf.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.preprod]
+hostname = 'plt-platform-preprod.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.prism]
+hostname = 'plt-platform-prism.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.pyramid]
+hostname = 'plt-platform-pyramid.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.qa]
+hostname = 'plt-platform-qa.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.quantum]
+hostname = 'plt-core-1-quantum-prod.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.ray]
+hostname = 'plt-platform-ray.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.rhomb]
+hostname = 'plt-platform-rhomb.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.ring]
+hostname = 'plt-platform-ring.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.sgh]
+hostname = 'plt-core-1-sgh.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.shiva]
+hostname = 'plt-core-1-shiva.mgt'
+env = 'production'
+category = 'platform'
+
+[stages.sphere]
+hostname = 'plt-platform-sphere.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.spiral]
+hostname = 'plt-platform-spiral.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.square]
+hostname = 'plt-platform-square.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.star]
+hostname = 'plt-platform-star.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.tesseract]
+hostname = 'plt-platform-tesseract.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.test]
+hostname = 'plt-platform-test.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.tetrahedron]
+hostname = 'plt-platform-tetrahedron.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.triangle]
+hostname = 'plt-platform-triangle.mgt'
+env = 'development'
+category = 'platform'
+
+[stages.vertex]
+hostname = 'plt-platform-vertex.mgt'
+env = 'development'
+category = 'platform'

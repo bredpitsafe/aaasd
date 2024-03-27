@@ -1,0 +1,26 @@
+[
+  {
+    "Platform time": "2023-06-05 01:59:47.376",
+    "Exchange time": "2023-06-05 01:59:47.276",
+    "Strategy": "sB",
+    "Robot name": "test_quoter_robot.BnQuoteB",
+    "Exchange name": "BinanceSwap",
+    "Gate name": "Backtest.Backtest",
+    "Virtual account name": "bh.SQX",
+    "Account name": "BH.backtestAccount",
+    "Instrument name": "BTCUSDT",
+    "Role": "Maker",
+    "Side": "Ask",
+    "Price": "27037.0",
+    "Base amount": "2.0",
+    "Base asset name": "BTC",
+    "Quote amount": "54074.0",
+    "Quote asset name": "USDT",
+    "Fee amount": "0.0",
+    "Fee asset name": "",
+    "Order tag": "tag_a_2",
+    "Trade id": 1117120022961419,
+    "Is late trade": false,
+    "Is fee evaluated": false
+  }
+]

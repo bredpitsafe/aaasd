@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SubscribeToDashboardPermissions > can\`t list permissions if the user is not the owner 1`] = `
+{
+  "description": "Getting dashboard permissions failed: You do not have permission to list permissions for this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`SubscribeToDashboardPermissions > does not list own permissions 1`] = `undefined`;

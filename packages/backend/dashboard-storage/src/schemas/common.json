@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$defs": {
+    "UUID": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "Permission": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Viewer",
+        "Editor",
+        "Owner"
+      ],
+      "tsEnumNames": [
+        "None",
+        "Viewer",
+        "Editor",
+        "Owner"
+      ]
+    },
+    "SharePermission": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Viewer",
+        "Editor"
+      ],
+      "tsEnumNames": [
+        "None",
+        "Viewer",
+        "Editor"
+      ]
+    },
+    "DashboardKind": {
+      "type": "string",
+      "enum": [
+        "User",
+        "Robot"
+      ],
+      "tsEnumNames": [
+        "User",
+        "Robot"
+      ]
+    },
+    "DashboardStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Suspended",
+        "Archived"
+      ],
+      "tsEnumNames": [
+        "Active",
+        "Suspended",
+        "Archived"
+      ]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

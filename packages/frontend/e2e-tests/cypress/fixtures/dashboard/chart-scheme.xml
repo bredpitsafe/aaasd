@@ -1,0 +1,142 @@
+<dashboard>
+  <version>1.0.0</version>
+  <name>Chart scheme xml</name>
+  <grid>
+    <name>80x45</name>
+    <cols_count>80</cols_count>
+    <rows_count>45</rows_count>
+    <margin>8</margin>
+    <panel>
+      <rel_width>0.2</rel_width>
+      <rel_height>0.2</rel_height>
+      <rel_min_width>0.2</rel_min_width>
+      <rel_min_height>0.2</rel_min_height>
+    </panel>
+  </grid>
+  <panels>
+    <panel>
+      <type>Charts</type>
+      <settings>
+        <url>ws://localhost</url>
+        <min_zoom>1e-13</min_zoom>
+        <follow_mode>permament</follow_mode>
+        <closest_points>true</closest_points>
+        <time_zone>0</time_zone>
+        <server_time_unit>nanosecond</server_time_unit>
+        <server_time_increment>1609459200000000000</server_time_increment>
+        <label>Test chart</label>
+        <do-not-initialize-charts>true</do-not-initialize-charts>
+      </settings>
+      <layout>
+        <rel_width>0.3333333333333333</rel_width>
+        <rel_height>1</rel_height>
+        <rel_min_width>0.16666666666666666</rel_min_width>
+        <rel_min_height>0.16666666666666666</rel_min_height>
+        <rel_x>0</rel_x>
+        <rel_y>0</rel_y>
+      </layout>
+      <charts>
+        <chart>
+          <id>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</id>
+          <query>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</query>
+          <label>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>points</type>
+          <point_size>4</point_size>
+          <color>blue</color>
+          <opacity>1</opacity>
+          <y_axis>left</y_axis>
+          <width>4</width>
+          <style_converter>KRW-ADA|UpbitSpot.l1.ask</style_converter>
+        </chart>
+      </charts>
+      <schemes>
+        <scheme>
+          <name>KRW-ADA|UpbitSpot.l1.ask</name>
+          <element>
+            <from>620</from>
+            <background>#ff8800</background>
+          </element>
+          <element>
+            <from>600</from>
+            <to>620</to>
+            <background>yellow</background>
+            <style_border_radius>0</style_border_radius>
+            <style_border>2px solid grey</style_border>
+          </element>
+          <element>
+            <background>#88ff00</background>
+            <style>
+              <border_radius>0</border_radius>
+              <border>2px solid grey</border>
+            </style>
+          </element>
+          <extends>RangeConverter</extends>
+        </scheme>
+
+        <scheme>
+          <name>BTCUSDT|BinanceSwap.l1.ask</name>
+          <element>
+            <from>21700</from>
+            <background>red</background>
+          </element>
+          <element>
+            <from>21680</from>
+            <to>21700</to>
+            <background>yellow</background>
+            <style_border_radius>0</style_border_radius>
+            <style_border>2px solid grey</style_border>
+          </element>
+          <element>
+            <style_display>none</style_display>
+          </element>
+          <extends>ValueConverter</extends>
+        </scheme>
+
+        <scheme>
+          <name>ETHUSDT|BinanceSpot.l1.ask</name>
+          <timeout>5000</timeout>
+          <timeout_style>
+            <border_radius>10px</border_radius>
+            <border>2px solid black</border>
+          </timeout_style>
+          <element>
+            <from>2000</from>
+            <background>#ff8888</background>
+          </element>
+          <element>
+            <from>1000</from>
+            <to>2000</to>
+            <background>#8888ff</background>
+            <style_border_radius>0</style_border_radius>
+            <style_border>2px dashed magenta</style_border>
+          </element>
+          <element>
+            <value>1000</value>
+            <background>#8888ff</background>
+            <style_border_radius>0</style_border_radius>
+            <style_border>2px dashed magenta</style_border>
+          </element>
+        </scheme>
+
+        <scheme>
+          <name>ETHUSDC|BinanceSpot.l1.ask</name>
+          <element>
+            <from>2000</from>
+            <style_color>green</style_color>
+          </element>
+          <element>
+            <from>1000</from>
+            <to>2000</to>
+            <style_color>red</style_color>
+          </element>
+          <element>
+            <style_color>blue</style_color>
+            <tooltip>Tooltip</tooltip>
+          </element>
+          <extends>RangeConverter</extends>
+        </scheme>
+      </schemes>
+    </panel>
+  </panels>
+</dashboard>

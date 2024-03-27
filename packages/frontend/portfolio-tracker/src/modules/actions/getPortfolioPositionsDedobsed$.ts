@@ -1,0 +1,32 @@
+import { DEDUPE_REMOVE_DELAY, SHARE_RESET_DELAY } from '@frontend/common/src/defs/observables';
+import { TContextRef } from '@frontend/common/src/di';
+import { getPortfolioPositionsUnbound } from '@frontend/common/src/modules/actions/portfolioTracker/getPortfolioPositions';
+import { ModuleActor } from '@frontend/common/src/modules/actor';
+import { ModuleNotifications } from '@frontend/common/src/modules/notifications/module';
+import { TPortfolioBookId } from '@frontend/common/src/types/domain/portfolioTraсker';
+import { TSocketURL } from '@frontend/common/src/types/domain/sockets';
+import { dedobs } from '@frontend/common/src/utils/observable/memo';
+import { shallowHash } from '@frontend/common/src/utils/shallowHash';
+import { TraceId } from '@frontend/common/src/utils/traceId';
+
+export const getPortfolioPositionsDedobsed$ = dedobs(
+    (ctx: TContextRef, url: TSocketURL, bookIds: TPortfolioBookId[], traceId: TraceId) => {
+        const actor = ModuleActor(ctx);
+        const notifications = ModuleNotifications(ctx);
+
+        return getPortfolioPositionsUnbound(
+            {
+                actor,
+                notifications,
+            },
+            url,
+            bookIds,
+            traceId,
+        );
+    },
+    {
+        normalize: ([, url, bookIds]) => shallowHash(url, ...bookIds),
+        resetDelay: SHARE_RESET_DELAY,
+        removeDelay: DEDUPE_REMOVE_DELAY,
+    },
+);

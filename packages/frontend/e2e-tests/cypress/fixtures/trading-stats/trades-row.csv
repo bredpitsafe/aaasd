@@ -1,0 +1,2 @@
+"Platform time","Exchange time","Strategy","Robot name","Exchange name","Gate name","Virtual account name","Account name","Instrument name","Role","Side","Price","Base amount","Base asset name","Quote amount","Quote asset name","Fee amount","Fee asset name","Order tag","Trade id","Is late trade","Is fee evaluated"
+"2023-06-05 01:59:47.376","2023-06-05 01:59:47.276","sB","test_quoter_robot.BnQuoteB","BinanceSwap","Backtest.Backtest","bh.SQX","BH.backtestAccount","BTCUSDT","Maker","Ask","27037.0","2.0","BTC","54074.0","USDT","0.0","","tag_a_2",1117120022961419,false,false

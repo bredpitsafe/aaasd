@@ -1,0 +1,43 @@
+{
+    "name": "@frontend/e2e-tests",
+    "version": "1.0.1",
+    "description": "e2e tests",
+    "scripts": {
+        "cy:open": "cypress open",
+        "cy:open:charter": "CYPRESS_BASE_URL=http://localhost:8087 cypress open",
+        "cy:run": "cypress run",
+        "cy:run:authorization": "cypress run -s\"cypress/e2e/authorization/**\" --reporter-options \"mochaFile=results/authorization-tests[hash].xml\"",
+        "cy:run:backtesting": "CYPRESS_BASE_URL=https://localhost:8089 cypress run -s\"cypress/e2e/backtesting/**\" --reporter-options \"mochaFile=results/backtesting-tests[hash].xml\"",
+        "cy:run:balance-monitor": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor/**\" --reporter-options \"mochaFile=results/balance-monitor-tests[hash].xml\"",
+        "cy:run:balance-monitor-common": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor-common/**\" --reporter-options \"mochaFile=results/balance-monitor-common-tests[hash].xml\"",
+        "cy:run:balance-monitor-pages": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor-pages/**\" --reporter-options \"mochaFile=results/balance-monitor-pages-tests[hash].xml\"",
+        "cy:run:charter": "CYPRESS_BASE_URL=http://localhost:8087 cypress run -s\"cypress/e2e/charter/**\" --reporter-options \"mochaFile=results/charter-tests[hash].xml\"",
+        "cy:run:dashboard": "CYPRESS_BASE_URL=https://localhost:8082 cypress run -s\"cypress/e2e/dashboard/**\" --reporter-options \"mochaFile=results/dashboard-tests[hash].xml\"",
+        "cy:run:herodotus-robot": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/herodotus-robot/**\" --reporter-options \"mochaFile=results/herodotus-robot-tests[hash].xml\"",
+        "cy:run:herodotus-terminal": "CYPRESS_BASE_URL=https://localhost:8084 cypress run -s\"cypress/e2e/herodotus-terminal/**\" --reporter-options \"mochaFile=results/herodotus-terminal-tests[hash].xml\"",
+        "cy:run:herodotus-trades": "CYPRESS_BASE_URL=https://localhost:8085 cypress run -s\"cypress/e2e/herodotus-trades/**\" --reporter-options \"mochaFile=results/herodotus-trades-tests[hash].xml\"",
+        "cy:run:index": "cypress run -s\"cypress/e2e/index/**\" --reporter-options \"mochaFile=results/index-tests[hash].xml\"",
+        "cy:run:trading-servers-manager:accounts": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/accounts/**\" --reporter-options \"mochaFile=results/trading-servers-manager-accounts-tests[hash].xml\"",
+        "cy:run:trading-servers-manager:common": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/common/**\" --reporter-options \"mochaFile=results/trading-servers-manager-common-tests[hash].xml\"",
+        "cy:run:trading-servers-manager:robots": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/robots/**\" --reporter-options \"mochaFile=results/trading-servers-manager-robots-tests[hash].xml\"",
+        "cy:run:trading-servers-manager:server": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/server/**\" --reporter-options \"mochaFile=results/trading-servers-manager-robots-server[hash].xml\"",
+        "cy:run:trading-stats": "CYPRESS_BASE_URL=https://localhost:8086 cypress run -s\"cypress/e2e/trading-stats/**\" --reporter-options \"mochaFile=results/trading-stats-tests[hash].xml\"",
+        "cy:run:trading-stats-filters": "CYPRESS_BASE_URL=https://localhost:8086 cypress run -s\"cypress/e2e/trading-stats-filters/**\" --reporter-options \"mochaFile=results/trading-stats-filters-tests[hash].xml\"",
+        "slack-request-backtesting": "node scripts/sendRequestToBacktestingSlackChannel.js",
+        "slack-request-herodotus": "node scripts/sendRequestToHerodotusSlackChannel.js",
+        "slack-request": "node scripts/sendRequestToFrontendSlackChannel.js",
+        "parallellization-tests": "node scripts/parallellizationTests.js"
+    },
+    "cypress-cucumber-preprocessor": {
+        "step_definitions": "cypress/support/step_definitions"
+    },
+    "devDependencies": {
+        "@lensesio/cypress-websocket-testing": "^1.0.1",
+        "dotenv": "^16.0.3"
+    },
+    "dependencies": {
+        "@frontend/common": "^1.0.1",
+        "request": "^2.88.2",
+        "xlsx": "^0.18.5"
+    }
+}

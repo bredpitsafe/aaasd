@@ -1,0 +1,6 @@
+{
+  "atf-prod": "wss://ms.advsys.work/atf/prod/ws",
+  "atf-prod-dev": "wss://ms.advsys.work/atf/prod-dev/ws",
+  "atf-dev": "wss://ms.advsys.work/atf/dev/ws",
+  "localhost": "wss://localhost:17010/ws"
+}

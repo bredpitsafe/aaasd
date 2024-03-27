@@ -1,0 +1,20 @@
+export type TDataTask = {
+    taskId: string;
+    totalRuns: string;
+    runIds: string[];
+    runStatus: string;
+    runSpeeds: string[];
+    progress: string;
+    startTimes: string[];
+    simStartTimes: string[];
+    simEndTimes: string[];
+    component?: string;
+    startMessage?: string;
+    endMessage: string;
+    timeUTCs: string[];
+    level: string;
+    nameRobot: string;
+    kindRobot: string;
+    groups?: string[];
+    instruments?: string[];
+};

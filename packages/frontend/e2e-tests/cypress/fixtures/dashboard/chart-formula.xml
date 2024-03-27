@@ -1,0 +1,72 @@
+<dashboard>
+  <version>1.0.0</version>
+  <name>Chart formula xml</name>
+  <grid>
+    <name>80x45</name>
+    <cols_count>80</cols_count>
+    <rows_count>45</rows_count>
+    <margin>8</margin>
+    <panel>
+      <rel_width>0.2</rel_width>
+      <rel_height>0.2</rel_height>
+      <rel_min_width>0.2</rel_min_width>
+      <rel_min_height>0.2</rel_min_height>
+    </panel>
+  </grid>
+  <panels>
+    <panel>
+      <type>Charts</type>
+      <settings>
+        <url>ws://localhost</url>
+        <min_zoom>1e-13</min_zoom>
+        <follow_mode>permament</follow_mode>
+        <closest_points>true</closest_points>
+        <time_zone>0</time_zone>
+        <server_time_unit>nanosecond</server_time_unit>
+        <server_time_increment>1609459200000000000</server_time_increment>
+        <label>Test chart</label>
+        <do-not-initialize-charts>true</do-not-initialize-charts>
+      </settings>
+      <layout>
+        <rel_width>0.3333333333333333</rel_width>
+        <rel_height>1</rel_height>
+        <rel_min_width>0.16666666666666666</rel_min_width>
+        <rel_min_height>0.16666666666666666</rel_min_height>
+        <rel_x>0</rel_x>
+        <rel_y>0</rel_y>
+      </layout>
+      <charts>
+        <chart>
+          <id>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</id>
+          <query>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</query>
+          <label>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>points</type>
+          <point_size>4</point_size>
+          <color>blue</color>
+          <opacity>1</opacity>
+          <y_axis>left</y_axis>
+          <width>4</width>
+          <fomula>value * 10 + 1e10</fomula>
+        </chart>
+        <chart>
+          <id>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</id>
+          <query>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</query>
+          <label>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>lines</type>
+          <width>1</width>
+          <color>35071</color>
+          <opacity>1</opacity>
+          <y_axis>left</y_axis>
+          <formula>
+            function plus (a, b) { return a + b; }
+            function minus (a, b) { return a - b; }
+
+            return  minus(plus(value, 10), 5);
+          </formula>
+        </chart>
+      </charts>
+    </panel>
+  </panels>
+</dashboard>

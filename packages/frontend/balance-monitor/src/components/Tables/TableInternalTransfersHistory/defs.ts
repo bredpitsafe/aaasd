@@ -1,0 +1,1 @@
+export const INTERNAL_TRANSFER_HISTORY_AMOUNT_DIGITS = undefined;

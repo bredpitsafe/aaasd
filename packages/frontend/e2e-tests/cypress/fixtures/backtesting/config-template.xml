@@ -1,0 +1,20 @@
+<backtest_config>
+  <simulate kind="TimePreserved"/>
+  <cycle_duration>25ms</cycle_duration>
+
+  <exchange_latencies>
+    <BinanceSpot  send_latency="2.5ms" receive_latency="2.5ms" match_latency_min="0.5ms" match_latency_max="8ms">
+      <match_latency_place_gtc  min="0.5ms" max="8ms" />
+      <match_latency_place_ioc  min="0.5ms" max="7ms" />
+      <match_latency_cancel     min="0.5ms" max="7ms" />
+    </BinanceSpot>
+  </exchange_latencies>
+
+  <default_latencies send_latency="100ms" receive_latency="100ms" match_latency_min="100ms" match_latency_max="200ms">
+    <match_latency_place_gtc  min="10ms"   max="50ms" />
+    <match_latency_place_ioc  min="10ms"   max="50ms" />
+    <match_latency_cancel     min="10ms"   max="50ms" />
+  </default_latencies>
+  <initial_balances default_balance="1e10"/>
+  <skip_stale_md min_lag="2s" delay="10s"/>
+</backtest_config>

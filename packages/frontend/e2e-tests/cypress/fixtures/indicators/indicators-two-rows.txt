@@ -1,0 +1,2 @@
+robot.trading_tasks.Herodotus	Hero.t_541.BTCUSDT|BinanceSwap.hero.bns.order_price		2023-03-24 11:16:57.051
+robot.trading_tasks.Herodotus	Hero.t_541.target_amount		2023-03-24 12:14:54.067

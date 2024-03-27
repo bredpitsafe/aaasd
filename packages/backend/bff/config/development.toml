@@ -1,0 +1,12 @@
+[service]
+stage = 'dev'
+
+[oauth]
+devUrl = 'http://127.0.0.1:8101'
+
+[metrics]
+prefix = 'bff_'
+labels = [['stage', 'dev'], ['nodeNo', '0']]
+
+[authentication]
+checkExpirationInterval = 1000

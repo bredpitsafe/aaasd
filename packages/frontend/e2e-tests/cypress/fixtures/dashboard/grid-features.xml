@@ -1,0 +1,139 @@
+<dashboard>
+    <version>1.0.0</version>
+    <name>Grid features xml</name>
+    <grid>
+        <name>60x60</name>
+        <cols_count>60</cols_count>
+        <rows_count>60</rows_count>
+        <margin>4</margin>
+        <panel>
+            <rel_width>0.16666666666666666</rel_width>
+            <rel_height>0.16666666666666666</rel_height>
+            <rel_min_width>0.16666666666666666</rel_min_width>
+            <rel_min_height>0.16666666666666666</rel_min_height>
+        </panel>
+    </grid>
+    <panels>
+        <panel>
+            <type>CustomViewGrid</type>
+            <settings>
+                <url>ws://localhost</url>
+                <label>Test indicators table</label>
+                <server_time_unit>nanosecond</server_time_unit>
+            </settings>
+            <grid>
+                <style>
+                    <gap>20px</gap>
+                </style>
+                <columns>10</columns>
+                <if>
+                    <condition>{ALGO|TEST_RND|00} > 500</condition>
+                    <style>
+                        <background_color>green</background_color>
+                    </style>
+                </if>
+                <cell>
+                    <column>1</column>
+                    <text>
+                        <format>Base text: %g</format>
+                        <formula>{ALGO|TEST_RND|01}</formula>
+                    </text>
+                    <style>
+                        <background_color>blue</background_color>
+                    </style>
+                    <mark>
+                        <style>
+                            <color>white</color>
+                        </style>
+                    </mark>
+                    <if>
+                        <condition>{ALGO|TEST_RND|02} > 500</condition>
+                        <style>
+                            <background_color>red</background_color>
+                            <border>3px solid black</border>
+                            <border_radius>10px</border_radius>
+                        </style>
+                        <tooltip>Foo</tooltip>
+                        <text>
+                            <format>Changed label: %g</format>
+                            <formula>{ALGO|TEST_RND|01}</formula>
+                        </text>
+                        <mark>
+                            <style>
+                                <color>black</color>
+                                <width>30px</width>
+                                <height>30px</height>
+                            </style>
+                        </mark>
+                    </if>
+                </cell>
+                <cell>
+                    <column>3</column>
+                    <text>
+                        <format>Base text: %g</format>
+                        <formula>{ALGO|TEST_RND|01}</formula>
+                    </text>
+                    <style>
+                        <background_color>blue</background_color>
+                    </style>
+                    <mark>
+                        <style>
+                            <color>white</color>
+                        </style>
+                    </mark>
+                    <if>
+                        <condition>{ALGO|TEST_RND|02} > 500</condition>
+                        <style>
+                            <display>none</display>
+                        </style>
+                    </if>
+                </cell>
+                <cell>
+                    <column>5</column>
+                    <text>
+                        <format>Base text: %g seconds</format>
+                        <formula>age({ALGO|TEST_RND|01})</formula>
+                    </text>
+                    <style>
+                        <background_color>blue</background_color>
+                    </style>
+                    <mark>
+                        <style>
+                            <color>white</color>
+                        </style>
+                    </mark>
+                    <if>
+                        <condition>{ALGO|TEST_RND|02} > 500</condition>
+                        <style>
+                            <background_color>red</background_color>
+                            <border>3px solid black</border>
+                            <border_radius>10px</border_radius>
+                        </style>
+                        <tooltip>Foo</tooltip>
+                        <text>
+                            <format>Changed label: %g seconds</format>
+                            <formula>age({ALGO|TEST_RND|01})</formula>
+                        </text>
+                        <mark>
+                            <style>
+                                <color>black</color>
+                                <width>30px</width>
+                                <height>30px</height>
+                            </style>
+                        </mark>
+                    </if>
+                </cell>
+            </grid>
+            <layouts>
+                <layout>
+                    <rel_width>1</rel_width>
+                    <rel_height>1.0166666666666666</rel_height>
+                    <rel_min_width>0.16666666666666666</rel_min_width>
+                    <rel_min_height>0.16666666666666666</rel_min_height>
+                    <rel_x>0</rel_x>
+                    <rel_y>0</rel_y>
+                </layout>
+            </layouts>
+        </panel>
+    </panels>
+</dashboard>

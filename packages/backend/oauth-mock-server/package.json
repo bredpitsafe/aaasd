@@ -1,0 +1,20 @@
+{
+    "name": "@backend/oauth-mock-server",
+    "version": "1.0.0",
+    "description": "OAuth Mock Server",
+    "main": "./src/index.ts",
+    "author": "@frontend",
+    "type": "module",
+    "scripts": {
+        "start": "node --loader ts-node/esm ./src/index.ts"
+    },
+    "dependencies": {
+        "config": "^3.3.9",
+        "oauth2-mock-server": "^6.0.0",
+        "toml": "^3.0.0",
+        "ts-node": "^10.9.2"
+    },
+    "devDependencies": {
+        "@types/config": "^3.3.3"
+    }
+}

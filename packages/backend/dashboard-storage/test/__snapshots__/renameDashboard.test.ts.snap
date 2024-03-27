@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CreateDashboard > fails to rename dashboard with Viewer permissions 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`CreateDashboard > fails to rename other user\`s dashboard 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;

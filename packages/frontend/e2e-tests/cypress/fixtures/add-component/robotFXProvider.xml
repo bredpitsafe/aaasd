@@ -1,0 +1,26 @@
+<robot kind="FXProvider">
+
+    <indicators_prefix>backoffice_rates</indicators_prefix>
+    <rates_dump_interval>60s</rates_dump_interval>
+    <rescan_interval>180s</rescan_interval> <!--Dont forget to return 180s-->
+    <use_last_known_duration>60s</use_last_known_duration>
+
+    <exchanges_priority name="BinanceSpot" basic="USDT" books_depth="50">
+        <intermediaries_priority>USDT</intermediaries_priority>
+        <intermediaries_priority>BTC</intermediaries_priority>
+        <intermediaries_priority>BNB</intermediaries_priority>
+    </exchanges_priority>
+
+    <container>
+        <auto_start>true</auto_start>
+        <save_state_interval>2m</save_state_interval>
+        <auto_convert_rates>
+            <group>BinanceSpot</group>
+            <rate from="USD" to="USDT" value="1"    />
+            <rate from="USD" to="KRW"  value="1126" />
+            <rate from="USDC" to="USD"  value="1" />
+            <switch_timeout>2s</switch_timeout>
+        </auto_convert_rates>
+    </container>
+
+</robot>

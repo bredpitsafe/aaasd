@@ -1,0 +1,27 @@
+export type THerodotusTerminalTaskData = {
+    idTask: string;
+    statusTask: string;
+    typeTask: string;
+    amntTask: string;
+    assetTask: string;
+    progressTask: string;
+    realizedPremiumTask: string;
+    aggrTask: string;
+    orderSizeTask: string;
+    priceLimitTask: string;
+    maxPremiumTask: string;
+    updatedTask: string;
+    avgPriceTask: string;
+    volumeTask: string;
+    side: string;
+    role: string;
+    name: string;
+    amount: string;
+    target: string;
+    order: string;
+    average: string;
+    avgPrice: string;
+    volume: string;
+    aggr: string;
+    status: string;
+};

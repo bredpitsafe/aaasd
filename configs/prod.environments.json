@@ -1,0 +1,17 @@
+{
+  "list": [
+    "md",
+    "main",
+    "main3",
+    "main5",
+    "main6",
+    "fxstats",
+    "fxstats-main",
+    "sgh",
+    "ldn",
+    "atf-prod",
+    "atf-prod-dev",
+    "dashboards-prod",
+    "bff-prod"
+  ]
+}

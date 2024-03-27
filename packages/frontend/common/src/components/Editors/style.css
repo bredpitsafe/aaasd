@@ -1,0 +1,8 @@
+.highlight-line-decoration::after {
+    content: '';
+    background: #10239e;
+    margin-left: 3px;
+    height: 100%;
+    display: inline-block;
+    width: 4px;
+}
