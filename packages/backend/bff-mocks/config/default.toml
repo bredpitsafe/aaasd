@@ -1,0 +1,14 @@
+[service]
+grpcPort = 9090
+httpPort = 8102
+name = 'bff-mocks'
+nodeNo = 0
+healthcheckURL = '/healthcheck'
+
+[metrics]
+url = '/metrics'
+
+[logging]
+level = 'debug'
+
+

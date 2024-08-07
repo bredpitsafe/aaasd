@@ -1,0 +1,25 @@
+### FetchConvertRatesLog
+# @keepStreaming
+WEBSOCKET {{ socketURL }}
+Content-Type: application/json
+
+{
+  "payload": {
+    "type": "FetchConvertRatesLog",
+    "requestStage": "{{requestStage}}",
+    "filters": {
+        "include": {
+            "quoteAssetId": 232
+        }
+    },
+    "params": {
+        "$case": "byToken",
+        "byToken": {
+            "token": "MjAyMy0xMi0yOFQyMToxNzo0My43MTI5MDE1Nzla"
+        }
+    }
+  },
+  "traceId": "{{$random.integer(1000000, 9999999)}}",
+  "correlationId": {{$random.integer(1000000, 9999999)}},
+  "timestamp": "2023-05-05T14:12:12.824Z"
+}

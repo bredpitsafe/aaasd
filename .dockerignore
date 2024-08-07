@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.nx
+.next
+Dockerfile
+
+# Local configuration files that are not meant for production use
+packages/backend/*/config/local*
+packages/backend/*/config/development*
+packages/backend/*/config/test*
+packages/backend/*/config/docker*

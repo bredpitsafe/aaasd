@@ -1,0 +1,1412 @@
+{
+  "$ref": "#/definitions/Panel",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "EChartType": {
+      "enum": [
+        "lines",
+        "stairs",
+        "points",
+        "area",
+        "dots"
+      ],
+      "type": "string"
+    },
+    "EFollowMode": {
+      "enum": [
+        "none",
+        "rare",
+        "permament",
+        "lastPoint"
+      ],
+      "type": "string"
+    },
+    "EServerTimeUnit": {
+      "enum": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second"
+      ],
+      "type": "string"
+    },
+    "EVirtualViewport": {
+      "enum": [
+        "left",
+        "right"
+      ],
+      "type": "string"
+    },
+    "Panel": {
+      "$ref": "#/definitions/TExportablePanel"
+    },
+    "TChartPanelLevelProps": {
+      "anyOf": [
+        {
+          "properties": {
+            "color": {
+              "type": "string"
+            },
+            "opacity": {
+              "type": "number"
+            },
+            "value": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "yAxis": {
+              "$ref": "#/definitions/EVirtualViewport"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "bottom": {
+              "type": "number"
+            },
+            "color": {
+              "type": "string"
+            },
+            "opacity": {
+              "type": "number"
+            },
+            "top": {
+              "type": "number"
+            },
+            "yAxis": {
+              "$ref": "#/definitions/EVirtualViewport"
+            }
+          },
+          "required": [
+            "bottom",
+            "top"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "TExportablePanel": {
+      "anyOf": [
+        {
+          "properties": {
+            "charts": {
+              "properties": {
+                "chart": {
+                  "items": {
+                    "$ref": "#/definitions/TExportablePanelChart"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "chart"
+              ],
+              "type": "object"
+            },
+            "layouts": {
+              "properties": {
+                "layout": {
+                  "items": {
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "relHeight": {
+                        "type": "number"
+                      },
+                      "relMinHeight": {
+                        "type": "number"
+                      },
+                      "relMinWidth": {
+                        "type": "number"
+                      },
+                      "relWidth": {
+                        "type": "number"
+                      },
+                      "relX": {
+                        "type": "number"
+                      },
+                      "relY": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "relHeight",
+                      "relWidth",
+                      "relX",
+                      "relY"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "layout"
+              ],
+              "type": "object"
+            },
+            "levels": {
+              "properties": {
+                "level": {
+                  "items": {
+                    "$ref": "#/definitions/TChartPanelLevelProps"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "panelId": {
+              "type": "string"
+            },
+            "schemes": {
+              "$ref": "#/definitions/TXmlSchemes"
+            },
+            "settings": {
+              "properties": {
+                "closestPoints": {
+                  "type": "boolean"
+                },
+                "displayZeroLeft": {
+                  "type": "boolean"
+                },
+                "displayZeroRight": {
+                  "type": "boolean"
+                },
+                "fixedMaxY": {
+                  "type": "number"
+                },
+                "fixedMaxYRight": {
+                  "type": "number"
+                },
+                "fixedMinY": {
+                  "type": "number"
+                },
+                "fixedMinYRight": {
+                  "type": "number"
+                },
+                "focusTo": {
+                  "type": "number"
+                },
+                "followMode": {
+                  "$ref": "#/definitions/EFollowMode"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "legends": {
+                  "type": "boolean"
+                },
+                "maxWidth": {
+                  "type": "number"
+                },
+                "maxY": {
+                  "type": "number"
+                },
+                "maxYRight": {
+                  "type": "number"
+                },
+                "maxZoom": {
+                  "type": "number"
+                },
+                "minWidth": {
+                  "type": "number"
+                },
+                "minY": {
+                  "type": "number"
+                },
+                "minYRight": {
+                  "type": "number"
+                },
+                "minZoom": {
+                  "type": "number"
+                },
+                "serverTimeIncrement": {
+                  "type": "number"
+                },
+                "serverTimeUnit": {
+                  "$ref": "#/definitions/EServerTimeUnit"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "zoomStepMultiplier": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "const": "Charts",
+              "type": "string"
+            }
+          },
+          "required": [
+            "panelId",
+            "type",
+            "settings",
+            "layouts",
+            "charts"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "grid": {
+              "$ref": "#/definitions/TXmlImportableGrid"
+            },
+            "layouts": {
+              "properties": {
+                "layout": {
+                  "items": {
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "relHeight": {
+                        "type": "number"
+                      },
+                      "relMinHeight": {
+                        "type": "number"
+                      },
+                      "relMinWidth": {
+                        "type": "number"
+                      },
+                      "relWidth": {
+                        "type": "number"
+                      },
+                      "relX": {
+                        "type": "number"
+                      },
+                      "relY": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "relHeight",
+                      "relWidth",
+                      "relX",
+                      "relY"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "layout"
+              ],
+              "type": "object"
+            },
+            "panelId": {
+              "type": "string"
+            },
+            "settings": {
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "const": "CustomViewGrid",
+              "type": "string"
+            }
+          },
+          "required": [
+            "panelId",
+            "type",
+            "settings",
+            "layouts"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "layouts": {
+              "properties": {
+                "layout": {
+                  "items": {
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "relHeight": {
+                        "type": "number"
+                      },
+                      "relMinHeight": {
+                        "type": "number"
+                      },
+                      "relMinWidth": {
+                        "type": "number"
+                      },
+                      "relWidth": {
+                        "type": "number"
+                      },
+                      "relX": {
+                        "type": "number"
+                      },
+                      "relY": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "relHeight",
+                      "relWidth",
+                      "relX",
+                      "relY"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "layout"
+              ],
+              "type": "object"
+            },
+            "panelId": {
+              "type": "string"
+            },
+            "settings": {
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "table": {
+              "$ref": "#/definitions/TXmlImportableTable"
+            },
+            "type": {
+              "const": "CustomViewTable",
+              "type": "string"
+            }
+          },
+          "required": [
+            "panelId",
+            "type",
+            "settings",
+            "layouts"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "TExportablePanelChart": {
+      "properties": {
+        "backgroundConverter": {
+          "type": "string"
+        },
+        "backgroundIndicator": {
+          "type": "string"
+        },
+        "color": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "fixedZoom": {
+          "type": "number"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "group": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelFormat": {
+          "type": "string"
+        },
+        "legend": {
+          "type": "boolean"
+        },
+        "opacity": {
+          "type": "number"
+        },
+        "pointSize": {
+          "type": "number"
+        },
+        "query": {
+          "type": "string"
+        },
+        "striving": {
+          "type": "boolean"
+        },
+        "styleConverter": {
+          "type": "string"
+        },
+        "styleIndicator": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/EChartType"
+        },
+        "url": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "width": {
+          "type": "number"
+        },
+        "yAxis": {
+          "$ref": "#/definitions/EVirtualViewport"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    },
+    "TXmlCondition<TXmlImportableGridCellParameters>": {
+      "properties": {
+        "column": {
+          "type": "number"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "mark": {
+          "properties": {
+            "style": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TXmlCssProperties"
+                },
+                {
+                  "const": "",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "properties": {
+                "format": {
+                  "type": "string"
+                },
+                "formula": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "formula"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "type": "object"
+    },
+    "TXmlCondition<TXmlImportableGridParameters>": {
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4198-4248-2084480360-4181-4249-2084480360-4169-4250-2084480360-4149-4252-2084480360-4140-4253-2084480360-4092-4254-2084480360-0-6237%3E"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "type": "object"
+    },
+    "TXmlCondition<TXmlImportableTableCellParameters>": {
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "mark": {
+          "properties": {
+            "style": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TXmlCssProperties"
+                },
+                {
+                  "const": "",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "properties": {
+                "format": {
+                  "type": "string"
+                },
+                "formula": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "formula"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "type": "object"
+    },
+    "TXmlCondition<TXmlImportableTableParameters>": {
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "header": {
+          "properties": {
+            "column": {
+              "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4403-4481-2084480360-4386-4482-2084480360-4366-4483-2084480360-4364-4493-2084480360-4348-4494-2084480360-4347-4500-2084480360-4334-4501-2084480360-4299-4501-2084480360-4254-4502-2084480360-0-6237%3E"
+            }
+          },
+          "required": [
+            "column"
+          ],
+          "type": "object"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4198-4248-2084480360-4181-4249-2084480360-4169-4250-2084480360-4149-4252-2084480360-4140-4253-2084480360-4092-4254-2084480360-0-6237%3E"
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "type": "object"
+    },
+    "TXmlCondition<TXmlImportableTableRowParameters>": {
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "type": "object"
+    },
+    "TXmlCssProperties": {
+      "properties": {
+        "background": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "border": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "borderRadius": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "color": {
+          "type": "string"
+        },
+        "display": {
+          "type": "string"
+        },
+        "fontSize": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "fontStyle": {
+          "type": "string"
+        },
+        "fontWeight": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "height": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "margin": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "textAlign": {
+          "type": "string"
+        },
+        "width": {
+          "type": [
+            "string",
+            "number"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableGrid": {
+      "properties": {
+        "cell": {
+          "$ref": "#/definitions/TXmlToJsonArray%3C(TXmlImportableGridCell%7Cstring)%3E"
+        },
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableGridParameters%3E%3E"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4198-4248-2084480360-4181-4249-2084480360-4169-4250-2084480360-4149-4252-2084480360-4140-4253-2084480360-4092-4254-2084480360-0-6237%3E"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "template": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTemplate%3E"
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableGridCell": {
+      "properties": {
+        "column": {
+          "type": "number"
+        },
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableGridCellParameters%3E%3E"
+        },
+        "mark": {
+          "properties": {
+            "style": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TXmlCssProperties"
+                },
+                {
+                  "const": "",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "properties": {
+                "format": {
+                  "type": "string"
+                },
+                "formula": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "formula"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        },
+        "useTemplate": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTemplateUse%3E"
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableTable": {
+      "properties": {
+        "header": {
+          "properties": {
+            "column": {
+              "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4403-4481-2084480360-4386-4482-2084480360-4366-4483-2084480360-4364-4493-2084480360-4348-4494-2084480360-4347-4500-2084480360-4334-4501-2084480360-4299-4501-2084480360-4254-4502-2084480360-0-6237%3E"
+            }
+          },
+          "required": [
+            "column"
+          ],
+          "type": "object"
+        },
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableTableParameters%3E%3E"
+        },
+        "row": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTableRow%3E"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/TXmlToJsonArray%3Cstructure-2084480360-4198-4248-2084480360-4181-4249-2084480360-4169-4250-2084480360-4149-4252-2084480360-4140-4253-2084480360-4092-4254-2084480360-0-6237%3E"
+        },
+        "template": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTemplate%3E"
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableTableCell": {
+      "properties": {
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableTableCellParameters%3E%3E"
+        },
+        "mark": {
+          "properties": {
+            "style": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TXmlCssProperties"
+                },
+                {
+                  "const": "",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "properties": {
+                "format": {
+                  "type": "string"
+                },
+                "formula": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "formula"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        },
+        "useTemplate": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTemplateUse%3E"
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableTableRow": {
+      "properties": {
+        "cell": {
+          "$ref": "#/definitions/TXmlToJsonArray%3C(TXmlImportableTableCell%7Cstring)%3E"
+        },
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableTableRowParameters%3E%3E"
+        },
+        "row": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlImportableTableRow%3E"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TXmlImportableTemplate": {
+      "properties": {
+        "column": {
+          "type": "number"
+        },
+        "if": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlCondition%3CTXmlImportableGridCellParameters%3E%3E"
+        },
+        "mark": {
+          "properties": {
+            "style": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TXmlCssProperties"
+                },
+                {
+                  "const": "",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "properties": {
+            "parameter": {
+              "$ref": "#/definitions/TXmlToJsonArray%3Cstring%3E"
+            }
+          },
+          "required": [
+            "parameter"
+          ],
+          "type": "object"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TXmlCssProperties"
+            },
+            {
+              "const": "",
+              "type": "string"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "properties": {
+                "format": {
+                  "type": "string"
+                },
+                "formula": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "formula"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "TXmlImportableTemplateUse": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "properties": {
+            "parameter": {
+              "$ref": "#/definitions/TXmlToJsonArray%3Cstring%3E"
+            }
+          },
+          "required": [
+            "parameter"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "parameters"
+      ],
+      "type": "object"
+    },
+    "TXmlSchemes": {
+      "properties": {
+        "scheme": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlToJsonScheme%3E"
+        }
+      },
+      "type": "object"
+    },
+    "TXmlToJsonArray<(TXmlImportableGridCell|string)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlImportableGridCell"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/TXmlImportableGridCell"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<(TXmlImportableTableCell|string)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlImportableTableCell"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/TXmlImportableTableCell"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlCondition<TXmlImportableGridCellParameters>>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlCondition%3CTXmlImportableGridCellParameters%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlCondition%3CTXmlImportableGridCellParameters%3E"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlCondition<TXmlImportableGridParameters>>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlCondition%3CTXmlImportableGridParameters%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlCondition%3CTXmlImportableGridParameters%3E"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlCondition<TXmlImportableTableCellParameters>>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableCellParameters%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableCellParameters%3E"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlCondition<TXmlImportableTableParameters>>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableParameters%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableParameters%3E"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlCondition<TXmlImportableTableRowParameters>>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableRowParameters%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlCondition%3CTXmlImportableTableRowParameters%3E"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlImportableTableRow>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlImportableTableRow"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlImportableTableRow"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlImportableTemplate>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlImportableTemplate"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlImportableTemplate"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlImportableTemplateUse>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlImportableTemplateUse"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlImportableTemplateUse"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlToJsonScheme>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlToJsonScheme"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlToJsonScheme"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<TXmlToJsonSchemeElement>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TXmlToJsonSchemeElement"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/TXmlToJsonSchemeElement"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<string>": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<structure-2084480360-4198-4248-2084480360-4181-4249-2084480360-4169-4250-2084480360-4149-4252-2084480360-4140-4253-2084480360-4092-4254-2084480360-0-6237>": {
+      "anyOf": [
+        {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "url"
+          ],
+          "type": "object"
+        },
+        {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "url"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonArray<structure-2084480360-4403-4481-2084480360-4386-4482-2084480360-4366-4483-2084480360-4364-4493-2084480360-4348-4494-2084480360-4347-4500-2084480360-4334-4501-2084480360-4299-4501-2084480360-4254-4502-2084480360-0-6237>": {
+      "anyOf": [
+        {
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        {
+          "items": {
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "width": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "TXmlToJsonScheme": {
+      "properties": {
+        "element": {
+          "$ref": "#/definitions/TXmlToJsonArray%3CTXmlToJsonSchemeElement%3E"
+        },
+        "name": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "timeoutStyle": {
+          "$ref": "#/definitions/TXmlCssProperties"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "TXmlToJsonSchemeElement": {
+      "properties": {
+        "background": {
+          "type": "string"
+        },
+        "borderRadius": {
+          "type": "string"
+        },
+        "from": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "style": {
+          "$ref": "#/definitions/TXmlCssProperties"
+        },
+        "text": {
+          "type": "string"
+        },
+        "to": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "tooltip": {
+          "type": "string"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  }
+}

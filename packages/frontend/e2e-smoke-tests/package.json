@@ -1,0 +1,35 @@
+{
+  "name": "e2e-smoke-tests",
+  "version": "0.0.1",
+  "scripts": {
+    "runTest": "playwright test",
+    "runTestInChromium": "playwright test --project=chromium",
+    "runTestInFirefox": "playwright test --project=firefox",
+    "runTestBacktestingManager": "playwright test tests/backtesting-manager.spec.ts",
+    "runTestBalanceMonitor": "playwright test tests/balance-monitor.spec.ts",
+    "runTestDashboard": "playwright test tests/dashboard.spec.ts",
+    "runTestHerodotusTerminal": "playwright test tests/herodotus-terminal.spec.ts",
+    "runTestTradingServersManager": "playwright test tests/trading-servers-manager.spec.ts",
+    "runTestTradingStats": "playwright test tests/trading-stats.spec.ts",
+    "runTestHeaded": "playwright test --headed",
+    "runTestHeadedBacktestingManager": "playwright test tests/backtesting-manager.spec.ts --headed",
+    "runTestHeadedBalanceMonitor": "playwright test tests/balance-monitor.spec.ts --headed",
+    "runTestHeadedDashboard": "playwright test tests/dashboard.spec.ts --headed",
+    "runTestHeadedHerodotusTerminal": "playwright test tests/herodotus-terminal.spec.ts --headed",
+    "runTestHeadedTradingServersManager": "playwright test tests/trading-servers-manager.spec.ts --headed",
+    "runTestHeadedTradingStats": "playwright test tests/trading-stats.spec.ts --headed",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/pixelmatch": "^5.2.6",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.42.1"
+  },
+  "dependencies": {
+    "@frontend/common": "^1.0.1"
+  }
+}

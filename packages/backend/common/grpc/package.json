@@ -1,0 +1,21 @@
+{
+    "name": "@backend/grpc",
+    "version": "1.0.0",
+    "description": "Everything common for grpc services",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts"
+    },
+    "dependencies": {
+        "@backend/utils": "^1.0.0", 
+        "@common/types": "^1.0.0",
+        "@common/utils": "^1.0.0",
+        "@grpc/grpc-js": "^1.10.3",
+        "jsonwebtoken": "^9.0.2"
+    },
+    "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.6"
+    }
+}

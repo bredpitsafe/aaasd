@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createActorObservableBox subscriptions behavior deregisters responseStream 1`] = `[Error: responseStream is not yet registered]`;
+
+exports[`createActorObservableBox subscriptions behavior errors requestStream when responseStream is not registered 1`] = `[Error: responseStream is not yet registered]`;
+
+exports[`createActorObservableBox subscriptions behavior errors when trying to reevaluate responseStream 1`] = `"responseStream is already registered for box type 'TEST_BOX'"`;

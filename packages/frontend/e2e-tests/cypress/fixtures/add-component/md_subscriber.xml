@@ -1,0 +1,7 @@
+<robot kind="md_subscriber">
+    <container>
+        <auto_start>false</auto_start>
+    </container>
+    <publish_indicators>true</publish_indicators>
+    <exchange>BinanceSpot</exchange>
+</robot>

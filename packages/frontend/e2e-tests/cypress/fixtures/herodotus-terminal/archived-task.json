@@ -1,0 +1,23 @@
+[
+  {
+    "Task id": 20668,
+    "Robot id": 1017,
+    "Status": "archived",
+    "Task type": "Sell",
+    "Progress": 100,
+    "Asset": "ETH",
+    "Amount": 0.034,
+    "Sell volume": 75.89276,
+    "Buy volume": null,
+    "Avg price": 2232.14,
+    "Realized premium": null,
+    "Aggression": 90,
+    "Order size": 0.034,
+    "Price limit": 2230,
+    "Max premium": null,
+    "Started": "2023-12-21 18:33:27.923",
+    "Updated": "2024-03-27 09:19:07.942",
+    "Finished": null,
+    "User": null
+  }
+]

@@ -1,0 +1,100 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Protocol > healthcheck 1`] = `"Ok."`;
+
+exports[`Protocol > incorrect \`requestStage\` parameter (completely invalid) 1`] = `
+{
+  "args": {},
+  "code": "INTERNAL",
+  "description": "missing stage configuration for 'some_fake_stage', check service configuration",
+}
+`;
+
+exports[`Protocol > incorrect \`requestStage\` parameter (stage does not support service) 1`] = `
+{
+  "args": {},
+  "code": "INTERNAL",
+  "description": "GRPC Client 'StmV1' is not enabled for stage 'authz', check service configuration.",
+}
+`;
+
+exports[`Protocol > missing \`requestStage\` parameter 1`] = `
+{
+  "args": {},
+  "code": "INTERNAL",
+  "description": "missing stage, check request parameters or service configuration",
+}
+`;
+
+exports[`Protocol > missing correlationId 1`] = `
+{
+  "error": {
+    "args": {},
+    "code": "INVALID_ARGUMENT",
+    "description": "request validation error: missing correlationId",
+  },
+  "state": "Done",
+}
+`;
+
+exports[`Protocol > missing payload 1`] = `
+{
+  "args": {},
+  "code": "INVALID_ARGUMENT",
+  "description": "request validation error: missing payload",
+}
+`;
+
+exports[`Protocol > missing timestamp 1`] = `
+{
+  "args": {},
+  "code": "INVALID_ARGUMENT",
+  "description": "request validation error: missing timestamp",
+}
+`;
+
+exports[`Protocol > missing traceId 1`] = `
+{
+  "args": {},
+  "code": "INVALID_ARGUMENT",
+  "description": "request validation error: missing traceId",
+}
+`;
+
+exports[`Protocol > non-JSON payload 1`] = `
+{
+  "args": {
+    "originalError": "Unexpected token 'N', "NOT_A_JSON" is not valid JSON",
+  },
+  "code": "INVALID_ARGUMENT",
+  "description": "Failed to parse request body. Please file a bug report and provide client logs.",
+}
+`;
+
+exports[`Protocol > simulate internal error 1`] = `
+{
+  "args": {
+    "originalError": "Simulated Internal Error",
+  },
+  "code": "INTERNAL",
+  "description": "Request processing error. Internal error occurred while processing the request. Please file a bug report and provide client logs.",
+}
+`;
+
+exports[`Protocol > simulate subscription timeout 1`] = `
+{
+  "args": {
+    "timeoutMs": 300,
+  },
+  "code": "DEADLINE_EXCEEDED",
+  "description": "The request failed to receive a response within the specified timeout of 300ms.",
+}
+`;
+
+exports[`Protocol > unknown message type 1`] = `
+{
+  "args": {},
+  "code": "INVALID_ARGUMENT",
+  "description": "request validation error: missing request route: invalid 'type' field value",
+}
+`;

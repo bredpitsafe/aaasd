@@ -1,0 +1,31 @@
+[service]
+name = 'dashboard_storage'
+host = '0.0.0.0'
+port = 9090
+httpServerPort = 9110
+env = "dev"
+httpHealthcheckURL = '/healthcheck'
+
+[postgres]
+host = 'localhost'
+port = '5432'
+databaseName = 'dashboards'
+username = 'dashboards'
+password = 'test'
+minPoolSize = 1
+maxPoolSize = 20
+idleTimeout = 60_000
+connectionTimeout = 2_000
+allowExitOnIdle = true
+maxConcurrentQueries = 1000
+maxQueueSize = 10000
+scheme = 'test'
+
+[logging]
+level = 'debug'
+
+[metrics]
+url = '/metrics'
+
+[rpc]
+timeout = 10000

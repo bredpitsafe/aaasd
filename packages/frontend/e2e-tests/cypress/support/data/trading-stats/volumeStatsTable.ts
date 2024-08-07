@@ -1,0 +1,38 @@
+import { TMonthlyStatsTableData } from '../../../lib/interfaces/trading-stats/monthlyStatsTableData';
+
+export function dataVolumeTable(): TMonthlyStatsTableData {
+    return {
+        total: '$57.84k',
+        jan01: '$897.79',
+        jan02: '$958.27',
+        jan03: '$1,283.8',
+        jan04: '$5,287.8',
+        jan05: '$1,841.9',
+        jan06: '$644.32',
+        jan07: '$1,092.7',
+        jan08: '$991.83',
+        jan09: '$1,900.4',
+        jan10: '$3,747.9',
+        jan11: '$1,604.3',
+        jan12: '$2,207.4',
+        jan13: '$1,062.5',
+        jan14: '$1,129.7',
+        jan15: '$1,109.0',
+        jan16: '$1,155.5',
+        jan17: '$2,286.0',
+        jan18: '$3,595.4',
+        jan19: '$2,275.1',
+        jan20: '$49.92',
+        jan21: '$1,389.6',
+        jan22: '$1,848.1',
+        jan23: '$2,502.1',
+        jan24: '$3,211.1',
+        jan25: '$1,717.0',
+        jan26: '$2,644.2',
+        jan27: '$1,573.9',
+        jan28: '$1,609.1',
+        jan29: '$1,659.7',
+        jan30: '$2,918.1',
+        jan31: '$1,649.1',
+    };
+}

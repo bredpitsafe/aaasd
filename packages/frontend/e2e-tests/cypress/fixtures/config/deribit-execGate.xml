@@ -1,0 +1,106 @@
+
+<execution_gate exchange="Deribit" auto_start="false">
+    <common dry_run="false" ignore_unknown_assets="true">
+        <ws>
+            <arbitrage stream="Exec" max_connections="1" check_interval="10s" min_events="0">
+                <deduplication capacity="128"/>
+            </arbitrage>
+        </ws>
+        <balance_correction soft_tolerance="0.00000001"/>
+        <account name="deribit.test.env">
+            <key name="deribit.name">
+                <bind ip="10.8.3.129"/>
+            </key>
+            <rps>
+                <matching limit="5" interval="2s" ioc_reserve="3"/>
+                <non_matching limit="5" interval="2s"/>
+            </rps>
+            <fee_rules>
+                <fees applied_to="./USDC-PERPETUAL">
+                    <maker asset_rule="FromBase" rate="0"/>
+                    <taker asset_rule="FromQuote" rate="0.0005"/>
+                </fees>
+                <fees>
+                    <maker asset_rule="FromBase" rate="0"/>
+                    <taker asset_rule="FromBase" rate="0.00000019"/>
+                </fees>
+            </fee_rules>
+        </account>
+        <allow_post_only>true</allow_post_only>
+        <timers>
+            <balance_poll interval="30s"/>
+            <orders_poll interval="2m"/>
+            <positions_poll interval="5s"/>
+            <trades_deduplication interval="30m"/>
+        </timers>
+        <timeouts>
+            <hanging_orders_reject check_interval="5s" timeout="1m">
+                <override type="placing" tif="Ioc" timeout="1m"/>
+                <override type="placing" tif="Gtc" timeout="1m"/>
+                <override type="canceling" tif="Ioc" timeout="1m"/>
+                <override type="canceling" tif="Gtc" timeout="1m"/>
+            </hanging_orders_reject>
+            <connection_check check_interval="1s" timeout="15m"/>
+            <stop check_interval="200ms" timeout="10s"/>
+            <order_forgot interval="30m"/>
+            <ws_ping check_interval="1s" timeout="5ms"/>
+        </timeouts>
+        <change_order_size_heuristic>
+            <reduce_ioc_size_on_insufficient_balance enabled="false"/>
+            <reduce_gtc_size_on_insufficient_balance enabled="false"/>
+        </change_order_size_heuristic>
+        <error log_level="Off"/>
+        <error log_level="Off">
+            <kind_filter type="ExchangeError">
+                <kind>
+                    <exchange_error type="Code" value="10009"/>
+                </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <details_filter>not_enough_funds</details_filter>
+            <action action="RejectOrder"/>
+        </error>
+        <error log_level="Off">
+            <kind_filter type="ExchangeError">
+                <kind>
+                    <exchange_error type="Code" value="10041"/>
+                </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <details_filter>settlement_in_progress</details_filter>
+            <action action="RejectOrder"/>
+        </error>
+        <error log_level="Off">
+            <kind_filter type="ExchangeError">
+                <kind>
+                    <exchange_error type="Code" value="-32602"/>
+                </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <details_filter>Invalid params</details_filter>
+            <action action="RejectOrder"/>
+        </error>
+        <error log_level="Off">
+            <kind_filter type="ExchangeError">
+                <kind>
+                    <exchange_error type="Code" value="10019"/>
+                </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <details_filter>locked_by_admin</details_filter>
+            <action action="RejectOrder"/>
+        </error>
+        <cancel_by_client_order_id>false</cancel_by_client_order_id>
+        <fees_mode use_fallback="false" allow_directives_without_fees="false" />
+        <mute_active_order_after_termination>true</mute_active_order_after_termination>
+        <send_zero_positions>true</send_zero_positions>
+    </common>
+    <ws_url>wss://test.deribit.com/ws/api/v2</ws_url>
+    <http_url>https://test.deribit.com</http_url>
+    <recv_window place="2s"/>
+    <assets_to_poll>
+        <asset name="BTC"/>
+        <asset name="ETH"/>
+        <asset name="USDC"/>
+    </assets_to_poll>
+</execution_gate>

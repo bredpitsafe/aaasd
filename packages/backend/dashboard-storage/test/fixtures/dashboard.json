@@ -1,0 +1,5 @@
+{
+  "type": "CreateDashboard",
+  "name": "test dashboard",
+  "config": "test config"
+}

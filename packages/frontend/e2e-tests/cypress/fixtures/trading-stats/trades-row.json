@@ -1,0 +1,26 @@
+[
+  {
+    "Platform time": "2023-06-06 00:09:55.758",
+    "Exchange time": "2023-06-06 00:09:55.755",
+    "Strategy": "sA",
+    "Robot name": "test_quoter_robot.BnQuoteA",
+    "Exchange name": "BinanceSpot",
+    "Gate name": "Backtest.Backtest",
+    "Virtual account name": "bn.SQX",
+    "Account name": "BN.backtestAccount",
+    "Instrument name": "BTCUSDC|BinanceSpot",
+    "Role": "Maker",
+    "Side": "Ask",
+    "Price": "25725.56",
+    "Base amount": "0.36153",
+    "Base asset name": "BTC",
+    "Volume amount": "9300.5617068",
+    "Volume asset name": "USDC",
+    "Fee amount": "0.0",
+    "Fee asset name": "USDC",
+    "Order tag": "tag_a_1",
+    "Trade id": 11240069161603,
+    "Is late trade": false,
+    "Is fee evaluated": true
+  }
+]

@@ -1,0 +1,8 @@
+[service]
+env = "test"
+
+[postgres]
+url = 'postgres'
+databaseName = 'dashboards'
+username = 'user'
+password = 'password'

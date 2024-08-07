@@ -1,0 +1,164 @@
+[service]
+env = 'prod'
+
+[logging]
+level = 'info'
+
+[heartbeat]
+enable = true
+
+[oauth]
+url = 'https://prod.advsys.work/keycloak/realms/prod'
+# TODO: Remove secondary URL support when production backend services disable support for simultaneous token envs
+# and frontend apps are proven to route to correct BFF instance depending on `requestStage`
+secondaryUrl = 'https://ms.advsys.work/keycloak/realms/bhft'
+
+# --- Common Platform PROD Stages
+[stages.coyote]
+hostname = 'plt-core-1-coyote.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.daikoku]
+hostname = 'plt-core-1-daikoku.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.fxstats-main]
+hostname = 'plt-fxstats-main.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.ldn]
+hostname = 'plt-core-1-ldn.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.main3]
+hostname = 'plt-core-3-main.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.main5]
+hostname = 'plt-core-5-main.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.m2]
+hostname = 'plt-core-1-m2.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.moex2]
+hostname = 'plt-core-2-moex.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.mono]
+hostname = 'plt-core-1-mono.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.md]
+hostname = 'plt-core-1-md.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.mdi]
+hostname = 'plt-core-1-mdi.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.sgh]
+hostname = 'plt-core-1-sgh.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.shiva]
+hostname = 'plt-core-1-shiva.mgt'
+env = 'prod'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.guaraci]
+hostname = 'plt-core-1-guaraci.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.shandi]
+hostname = 'plt-core-1-shandi.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.perf]
+hostname = 'plt-core-1-perf.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.quantum]
+hostname = 'plt-core-1-quantum-prod.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+# --- END Common Platform PROD Stages
+
+
+
+# --- Single Instance Services
+[stages.authz]
+hostname = 'plt-authorization-prod.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['UsersV1', 'GroupsV1', 'PermissionsV1', 'PoliciesV1', 'PolicyTemplatesV1']
+
+[stages.user-settings]
+hostname = 'plt-user-settings-prod.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['UserSettingsV1']
+
+[stages.dashboard-storage]
+hostname = 'plt-dashboards.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['DashboardStorageV1', 'DashboardDraftV1', 'DashboardSharingV1']
+
+[stages.instruments]
+hostname = 'plt-instruments-prod.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['InstrumentsV1', 'AssetsV1', 'IndexesV1']
+# --- END Single Instance Services

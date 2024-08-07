@@ -1,0 +1,52 @@
+<market_data_gate exchange="Deribit" section="all" auto_start="false">
+    <common>
+        <ws>
+            <!-- <arbitrage stream="L1" max_connections="2" check_interval="60s" min_events="120" /> -->
+            <!-- <arbitrage stream="L2" max_connections="2" check_interval="60s" min_events="120" /> -->
+            <!-- <arbitrage stream="Trades" max_connections="2" check_interval="60s"
+            min_events="120" /> -->
+            <arbitrage stream="All" max_connections="1" check_interval="60s" min_events="120" />
+        </ws>
+        <ip_bind>10.8.3.129</ip_bind>
+
+
+
+        <rps limit="20" interval="1s" />
+        <!-- each instrument requires 3 sockets - L2, L1, trades -->
+        <!-- <open_ws_rps limit="1" interval="5000ms" /> -->
+        <aggregator default_stale_timeout="1000h" book_crossed_count="0" mute_empty_l2_batches="true">
+            
+        </aggregator>
+
+        <own_orders_removal atomic_l2="false" min_wait_time="150ms" max_wait_time="40s" />
+        <keeping>
+            <l2_arbitrage_book enabled="false" />
+            <l2_book enabled="false" />
+            <l1_book enabled="false" />
+            <trades enabled="false" />
+            <aggregated_trades enabled="false" />
+        </keeping>
+    </common>
+
+    <topics_subscription
+            authentication="true"
+            trades_update_interval="100ms"
+            books_update_interval="100ms"
+            ticker_update_interval = "100ms"
+    />
+    <ws_event_nodes_url enabled="false">wss://test.deribit.com/den/ws</ws_event_nodes_url>
+    <ws_url enabled="true">wss://test.deribit.com/ws/api/v2</ws_url>
+    <!--<ws_url>wss://test.deribit.com/den/ws</ws_url>-->
+    <http_url>https://test.deribit.com</http_url>
+    <accounts_access>
+        <account name="deribit.test.env">
+            <ip_bind>10.8.3.129</ip_bind>
+
+        </account>
+    </accounts_access>
+    <indicators>
+        <publish_indexes>true</publish_indexes>
+        <publish_funding_rates>true</publish_funding_rates>
+        <poll interval="1s"/>
+    </indicators>
+</market_data_gate> 

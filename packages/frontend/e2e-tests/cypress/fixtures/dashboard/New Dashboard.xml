@@ -1,0 +1,17 @@
+<dashboard>
+  <version>0.0.0</version>
+  <name>New Dashboard</name>
+  <grid>
+    <name>60x60</name>
+    <margin>4</margin>
+    <cols_count>60</cols_count>
+    <rows_count>60</rows_count>
+    <panel>
+      <rel_width>0.16666666666666666</rel_width>
+      <rel_height>0.16666666666666666</rel_height>
+      <rel_min_width>0.16666666666666666</rel_min_width>
+      <rel_min_height>0.16666666666666666</rel_min_height>
+    </panel>
+  </grid>
+  <panels></panels>
+</dashboard>

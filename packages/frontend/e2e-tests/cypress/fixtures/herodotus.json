@@ -1,0 +1,441 @@
+{
+  "tasks": {
+    "640": {
+      "task_id": 640,
+      "task_type": {
+        "Buy": {
+          "limit_price": 26930.0,
+          "limit_price_currency_type": "Reference",
+          "settings": [
+            {
+              "instrument": "I:129908:BTCUSDT|BinanceSpot",
+              "account": "V:121:hero.bn",
+              "aggression": 0.0
+            }
+          ]
+        }
+      },
+      "amount": 0.001,
+      "order_size": 0.001,
+      "status": "finished",
+      "quote_tag": "Hero.t_640",
+      "hedge_tag": "Hero.t_640_h",
+      "created_ts": "2023-06-08T14:00:26.215485501Z",
+      "status_changed_ts": "2023-06-08T14:00:29.153969521Z",
+      "total_bought_base": 0.001,
+      "total_bought_base_reference": 26.39001,
+      "total_sold_base": 0.0,
+      "total_sold_base_reference": 0.0,
+      "total_bought_quote": {
+        "a:232:USDT": {
+          "[\"I:129908:BTCUSDT|BinanceSpot\",\"V:121:hero.bn\"]": {
+            "quote_amount": 26.39001,
+            "base_amount": 0.001,
+            "reference_amount": 26.39001
+          }
+        }
+      },
+      "total_sold_quote": {},
+      "indicators_published_after_complete": true,
+      "price_calc_currency_type": "Reference",
+      "price_currency": "a:232:USDT"
+    },
+    "71": {
+      "task_id": 71,
+      "task_type": {
+        "Buy": {
+          "limit_price": 26930.0,
+          "limit_price_currency_type": "Reference",
+          "settings": [
+            {
+              "instrument": "I:129908:BTCUSDT|BinanceSpot",
+              "account": "V:121:hero.bn",
+              "aggression": 0.0
+            }
+          ]
+        }
+      },
+      "amount": 0.001,
+      "order_size": 0.001,
+      "status": "finished",
+      "quote_tag": "Hero.t_71",
+      "hedge_tag": "Hero.t_71_h",
+      "created_ts": "2023-06-01T09:48:00.163829437Z",
+      "status_changed_ts": "2023-06-01T09:48:20.017938555Z",
+      "total_bought_base": 0.001,
+      "total_bought_base_reference": 26.928,
+      "total_sold_base": 0.0,
+      "total_sold_base_reference": 0.0,
+      "total_bought_quote": {
+        "a:232:USDT": {
+          "[\"I:129908:BTCUSDT|BinanceSpot\",\"V:121:hero.bn\"]": {
+            "quote_amount": 26.928,
+            "base_amount": 0.001,
+            "reference_amount": 26.928
+          }
+        }
+      },
+      "total_sold_quote": {},
+      "indicators_published_after_complete": true,
+      "price_calc_currency_type": "Reference",
+      "price_currency": "a:232:USDT"
+    }
+  },
+  "archive": {
+    "525": {
+      "taskId": 525,
+      "createdTs": "2023-06-07T14:40:20.468273289Z",
+      "lastChangedTs": "2023-09-06T13:07:50.871506822Z",
+      "taskType": "Buy",
+      "asset": "BTC",
+      "amount": {
+        "Base": 0.001
+      },
+      "orderSize": 0.001,
+      "priceLimit": 26930.0,
+      "aggression": 0.0,
+      "status": "archived",
+      "filledAmount": 0.001,
+      "sumPrice": 26.45794,
+      "avgPrice": 26457.94,
+      "priceCurrency": "USDT",
+      "buyInstruments": [
+        {
+          "name": "BTCUSDT",
+          "exchange": "BinanceSpot",
+          "account": "V:121:hero.bn",
+          "role": "Quote",
+          "filledAmountBase": 0.001,
+          "cumulativeQuote": 26.45794,
+          "filledAmountUsd": 26.45794,
+          "usdRate": 1.0
+        }
+      ],
+      "dashboardName": "T0525"
+    }
+  },
+  "raw_configs": {
+    "640": {
+      "task_type": {
+        "Buy": {
+          "limit_price": 26930.0,
+          "limit_price_currency_type": "Reference",
+          "settings": [
+            {
+              "instrument": "BTCUSDT|BinanceSpot",
+              "account": "V:121:hero.bn"
+            }
+          ]
+        }
+      },
+      "amount": 0.001,
+      "order_size": 0.001,
+      "aggression": 0.0
+    },
+    "525": {
+      "task_type": {
+        "Buy": {
+          "limit_price": 26930.0,
+          "limit_price_currency_type": "Reference",
+          "settings": [
+            {
+              "instrument": "BTCUSDT|BinanceSpot",
+              "account": "V:121:hero.bn"
+            }
+          ]
+        }
+      },
+      "amount": 0.001,
+      "order_size": 0.001,
+      "aggression": 0.0
+    },
+    "71": {
+      "task_type": {
+        "Buy": {
+          "limit_price": 26930.0,
+          "limit_price_currency_type": "Reference",
+          "settings": [
+            {
+              "instrument": "BTCUSDT|BinanceSpot",
+              "account": "V:121:hero.bn"
+            }
+          ]
+        }
+      },
+      "amount": 0.001,
+      "order_size": 0.001,
+      "aggression": 0.0
+    }
+  },
+  "rates_debug_only": {
+    "use_auto_convert_rate": [
+      "a:33232:USD",
+      "a:32832:USDC"
+    ],
+    "directly_calculated_rates": {
+      "a:33232:USD": 1.0,
+      "a:132:BTC": 25743.085,
+      "a:23632:DAI": 1.00035012254289,
+      "a:332:ETH": 1633.775,
+      "a:32832:USDC": 1.0,
+      "a:33132:EUR": 1.0732499999999998,
+      "a:232:USDT": 1.0
+    },
+    "intermediary_calculated_rates": {}
+  },
+  "axes_debug_only": {
+    "I:130008:ETHUSDT|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:130008:ETHUSDT|BinanceSpot",
+        "base_asset_id": "a:332:ETH",
+        "quote_asset_id": "a:232:USDT",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:130008:ETHUSDT|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:130008:ETHUSDT|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 1633.7837985613871,
+        "smoothed_bid_price": 1633.7696399627644,
+        "last_ask_price": 1633.784204425412,
+        "last_bid_price": 1633.7696504646203
+      },
+      "step_amount": 0.0001,
+      "step_amount_inv": 10000.0,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:170608:ETHUSDC|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:170608:ETHUSDC|BinanceSpot",
+        "base_asset_id": "a:332:ETH",
+        "quote_asset_id": "a:32832:USDC",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:170608:ETHUSDC|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:170608:ETHUSDC|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 1633.1393172168027,
+        "smoothed_bid_price": 1632.90752033701,
+        "last_ask_price": 1633.1393573909688,
+        "last_bid_price": 1632.8654604591536
+      },
+      "step_amount": 0.0001,
+      "step_amount_inv": 10000.0,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:128808:ETHBTC|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:128808:ETHBTC|BinanceSpot",
+        "base_asset_id": "a:332:ETH",
+        "quote_asset_id": "a:132:BTC",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:128808:ETHBTC|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:128808:ETHBTC|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 0.06347433185905399,
+        "smoothed_bid_price": 0.06345448107309429,
+        "last_ask_price": 0.06347382745923619,
+        "last_bid_price": 0.06345506248330854
+      },
+      "step_amount": 0.0001,
+      "step_amount_inv": 10000.0,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:129908:BTCUSDT|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:129908:BTCUSDT|BinanceSpot",
+        "base_asset_id": "a:132:BTC",
+        "quote_asset_id": "a:232:USDT",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:129908:BTCUSDT|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:129908:BTCUSDT|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 25742.85130572322,
+        "smoothed_bid_price": 25742.80564309888,
+        "last_ask_price": 25743.094697803488,
+        "last_bid_price": 25743.0782752042
+      },
+      "step_amount": 0.00001,
+      "step_amount_inv": 99999.99999999999,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:219508:BTCDAI|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:219508:BTCDAI|BinanceSpot",
+        "base_asset_id": "a:132:BTC",
+        "quote_asset_id": "a:23632:DAI",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:219508:BTCDAI|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:219508:BTCDAI|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 25735.37074834828,
+        "smoothed_bid_price": 25724.39428445424,
+        "last_ask_price": 25734.605766600485,
+        "last_bid_price": 25724.39428445424
+      },
+      "step_amount": 0.00001,
+      "step_amount_inv": 99999.99999999999,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:197708:BTCEUR|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:197708:BTCEUR|BinanceSpot",
+        "base_asset_id": "a:132:BTC",
+        "quote_asset_id": "a:33132:EUR",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:197708:BTCEUR|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:197708:BTCEUR|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 23991.635374245692,
+        "smoothed_bid_price": 23990.970540171948,
+        "last_ask_price": 23992.659060627786,
+        "last_bid_price": 23992.634549556038
+      },
+      "step_amount": 0.00001,
+      "step_amount_inv": 99999.99999999999,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    },
+    "I:170508:BTCUSDC|BinanceSpot": {
+      "details": {
+        "instrument_id": "I:170508:BTCUSDC|BinanceSpot",
+        "base_asset_id": "a:132:BTC",
+        "quote_asset_id": "a:32832:USDC",
+        "exchange": "BinanceSpot",
+        "amount_multiplier": 1.0,
+        "price_multiplier": 1.0,
+        "mode": "Direct",
+        "kind": "FxSpot"
+      },
+      "subscription": [
+        "I:170508:BTCUSDC|BinanceSpot",
+        1,
+        "Direct"
+      ],
+      "trading_instruments": {
+        "V:121:hero.bn": [
+          {
+            "virtual_account_id": "V:121:hero.bn",
+            "instrument_id": "I:170508:BTCUSDC|BinanceSpot"
+          },
+          "V:121:hero.bn"
+        ]
+      },
+      "prices": {
+        "smoothed_ask_price": 25728.976047950382,
+        "smoothed_bid_price": 25727.63121508278,
+        "last_ask_price": 25731.79605378529,
+        "last_bid_price": 25730.259875141885
+      },
+      "step_amount": 0.00001,
+      "step_amount_inv": 99999.99999999999,
+      "amount_multiplier_inv": 1.0,
+      "price_multiplier_inv": 1.0
+    }
+  },
+  "next_task_id": 1000
+}

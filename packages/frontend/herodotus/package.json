@@ -1,0 +1,22 @@
+{
+  "name": "@frontend/herodotus",
+  "version": "1.0.0",
+  "description": "herodotus common code",
+  "scripts": {
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --fix",
+    "test_unit": "jest --passWithNoTests",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@common/rx": "^1.0.0",
+    "@common/types": "^1.0.0",
+    "@common/utils": "^1.0.0",
+    "@frontend/common": "^1.0.1",
+    "@frontend/e2e-tests": "^1.0.1",
+    "@frontend/ag-grid": "^1.0.0",
+    "json2csv": "^5.0.6"
+  },
+  "devDependencies": {
+    "@types/json2csv": "^5.0.3"
+  }
+}

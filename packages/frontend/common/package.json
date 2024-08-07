@@ -1,0 +1,27 @@
+{
+    "name": "@frontend/common",
+    "version": "1.0.1",
+    "description": "",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+        "test_unit": "jest --passWithNoTests",
+        "generate_parser": "./bin/generateCustomViewParser.sh"
+    },
+    "dependencies": {
+        "@common/types": "^1.0.0",
+        "@common/utils": "^1.0.0",
+        "@common/rpc": "^1.0.0",
+        "broadcast-channel": "^4.11.0",
+        "color": "^3.2.1",
+        "idb": "^7.0.0",
+        "json2csv": "^5.0.6",
+        "pino": "^7.9.1",
+        "@frontend/ag-grid": "^1.0.0",
+        "@backend/bff": "^0.0.1"
+    },
+    "devDependencies": {
+        "@types/color": "^3.0.3",
+        "@types/json2csv": "^5.0.3"
+    }
+}

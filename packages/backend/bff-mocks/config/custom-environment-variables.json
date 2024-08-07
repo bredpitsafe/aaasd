@@ -1,0 +1,15 @@
+{
+    "service": {
+        "grpcPort": "SERVICE_PORT_GRPC",
+        "httpPort": "SERVICE_PORT_HTTP",
+        "name": "SERVICE_NAME",
+        "nodeNo": "SERVICE_NODE_NO",
+        "healthcheckURL": "SERVICE_HEALTHCHECK_URL"
+    },
+    "metrics": {
+        "url": "METRICS_URL"
+    },
+    "logging": {
+        "level": "LOG_LEVEL"
+    }
+}

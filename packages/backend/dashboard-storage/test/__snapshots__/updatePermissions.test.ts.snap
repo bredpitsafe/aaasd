@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UpdatePermissions > cannot modify own permissions 1`] = `
+{
+  "type": "PermissionsUpdated",
+}
+`;
+
+exports[`UpdatePermissions > skips own permissions in the list of permissions 1`] = `
+{
+  "type": "PermissionsUpdated",
+}
+`;
+
+exports[`UpdatePermissions > updates dashboard permissions for other user 1`] = `
+{
+  "type": "PermissionsUpdated",
+}
+`;
+
+exports[`UpdatePermissions > updates dashboard permissions for other user 2`] = `
+{
+  "type": "PermissionsUpdated",
+}
+`;

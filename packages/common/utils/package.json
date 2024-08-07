@@ -1,0 +1,14 @@
+{
+    "name": "@common/utils",
+    "version": "1.0.0",
+    "description": "Common utilities",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts"
+    },
+    "dependencies": {
+        "@common/types": "^1.0.0"
+    }
+}

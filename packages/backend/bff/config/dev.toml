@@ -1,0 +1,11 @@
+[service]
+env = 'dev'
+
+[logging]
+level = 'debug'
+
+[heartbeat]
+enable = true
+
+[oauth]
+url = 'https://ms.advsys.work/keycloak/realms/bhft'

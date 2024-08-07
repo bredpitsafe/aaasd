@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Protocol > healthcheck 1`] = `"Ok."`;
+
+exports[`Protocol > missing correlationId 1`] = `
+{
+  "description": "Request validation error: request body is missing required fields since it does not match any request schema.",
+  "kind": "Validation",
+}
+`;
+
+exports[`Protocol > missing traceId 1`] = `
+{
+  "description": "Request validation error: request body is missing required fields since it does not match any request schema.",
+  "kind": "Validation",
+}
+`;
+
+exports[`Protocol > non-JSON payload 1`] = `
+{
+  "args": {
+    "originalError": "Unexpected token 'N', "NOT_A_JSON" is not valid JSON",
+  },
+  "description": "Request processing error. internal error occurred while processing the request. Please file a bug report and provide client logs.",
+  "kind": "InternalError",
+}
+`;
+
+exports[`Protocol > simulate internal error 1`] = `
+{
+  "description": "Non-actor error: Simulated Internal Error",
+  "kind": "Unspecified",
+}
+`;
+
+exports[`Protocol > simulate subscription timeout 1`] = `
+{
+  "description": "Subscription timeout: Subscription failed to produce first value after 5000ms",
+  "kind": "Timeout",
+}
+`;
+
+exports[`Protocol > unknown message type 1`] = `
+{
+  "description": "Request validation error: request body is missing required fields since it does not match any request schema.",
+  "kind": "Validation",
+}
+`;

@@ -1,0 +1,818 @@
+---
+default:
+  interruptible: true
+
+image: node:20.9.0
+
+variables:
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+cache:
+  key: npm
+  policy: pull-push
+  paths:
+    - .npm/
+
+.npm-install: &npm-install
+  - CYPRESS_INSTALL_BINARY=0 npm ci --cache .npm --prefer-offline
+
+.npm-install-with-cypress: &npm-install-with-cypress
+  - CYPRESS_CACHE_FOLDER=$CYPRESS_CACHE_FOLDER npm ci --cache .npm --prefer-offline
+
+stages:
+  # Unit tests
+  - reliability
+
+  # Build & Deploy Frontend
+  - build
+  - quality
+  - report
+  - publish
+  - deployment
+  - notifications
+
+  # Build & deploy Node.js services
+  - build_services
+  - deployment_services
+
+.set-variables: &set-variables
+  # optional variables can't be inited inside "variables"
+  - export RUN_VERSION=${CI_COMMIT_TAG:-$CI_PIPELINE_ID}
+  - echo "RUN_VERSION=$RUN_VERSION"
+  - echo "CYPRESS_CACHE_FOLDER=$CYPRESS_CACHE_FOLDER"
+
+.prepare:
+  tags: [builder-front]
+  needs: []
+  before_script: [*set-variables, *npm-install]
+
+.build:
+  extends: .prepare
+  stage: build
+  needs: [lint,types,test_unit]
+  script:
+      - PUBLIC_PATH=/$RUN_VERSION/dist/ && [[ $BUILD_PREFIX == "prod" ]] && PUBLIC_PATH=/
+      - export "PUBLIC_PATH=$PUBLIC_PATH"
+      - echo "Build front-end, tag=${RUN_VERSION}, public path=${PUBLIC_PATH}"
+      - TAG=$RUN_VERSION PUBLIC_PATH=$PUBLIC_PATH BUILD_PREFIX=$BUILD_PREFIX npm run build
+  artifacts:
+    paths:
+      - dist/
+
+build:ms:
+  extends: .build
+  stage: build
+  needs: [lint,types,test_unit]
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.\d+$/
+  variables:
+        BUILD_PREFIX: ms
+
+build:prod:
+  extends: .build
+  stage: build
+  needs: [lint,types,test_unit]
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.\d+$/
+  variables:
+      BUILD_PREFIX: prod
+
+lint:
+  extends: .prepare
+  stage: reliability
+  script:
+    - echo "Run linter"
+    - npm run lint
+
+types:
+  extends: .prepare
+  stage: reliability
+  script:
+    - echo "Run types check"
+    - npm run types
+
+test_unit:
+  extends: .prepare
+  stage: reliability
+  script:
+    - echo "Run unit tests"
+    - npm i puppeteer
+    - npm run test_unit
+
+.e2e_test:
+  image: cypress/browsers:node18.12.0-chrome107
+  needs: [build:ms]
+  tags: [builder-front]
+  stage: quality
+  before_script: [*set-variables, *npm-install-with-cypress]
+  allow_failure: true
+  variables:
+    NODE_ENV: 'e2e'
+  artifacts:
+    when: always
+    paths:
+      - packages/frontend/e2e-smoke-tests/screenshots/**/*.png
+      - packages/frontend/e2e-smoke-tests/*.xml
+      - packages/frontend/e2e-tests/cypress/results/*.xml
+      - packages/frontend/e2e-tests/cypress/screenshots/**/*.png
+      - packages/frontend/e2e-tests/cypress/downloads/*.json
+    expire_in: 1 day
+
+e2e_smoke_tests:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+  script:
+    - echo "Run e2e smoke tests"
+    - npx playwright install
+    - (npm run server)&
+    - npm --prefix ./packages/frontend/e2e-smoke-tests/ run runTestInChromium
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-smoke-tests/results/test_results.xml
+  allow_failure: true
+
+e2e_smoke_tests_firefox:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "web"
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+  script:
+    - echo "Run e2e smoke tests"
+    - npx playwright install
+    - (npm run server)&
+    - npm --prefix ./packages/frontend/e2e-smoke-tests/ run runTestInFirefox
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-smoke-tests/results/test_results.xml
+  allow_failure: true
+
+e2e_tests_authorization:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+  script:
+    - echo "Run e2e authorization tests"
+    - (npm run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run wait-for-localhost
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:authorization
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_backtesting:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/backtesting/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e backtesting tests"
+    - (npm --prefix ./packages/frontend/backtesting/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:backtesting
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_balance_monitor:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/balance-monitor/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e balance monitor tests"
+    - (npm --prefix ./packages/frontend/balance-monitor/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:balance-monitor
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_balance_monitor_common:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/balance-monitor/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e balance monitor tests"
+    - (npm --prefix ./packages/frontend/balance-monitor/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:balance-monitor-common
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_balance_monitor_pages:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/balance-monitor/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e balance monitor tests"
+    - (npm --prefix ./packages/frontend/balance-monitor/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:balance-monitor-pages
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_charter:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/charter/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e charter tests"
+    - (npm --prefix ./packages/frontend/charter-tests/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:charter
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_dashboard:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/dashboard/**/*
+        - packages/frontend/charter/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e dashboard tests"
+    - (npm --prefix ./packages/frontend/dashboard/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:dashboard
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_herodotus_robot:
+  extends: .e2e_test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'pipeline'
+  script:
+    - echo "Run e2e herodotus-robot tests"
+    - (npm --prefix ./packages/frontend/trading-servers-manager/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:herodotus-robot
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_herodotus_terminal:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/herodotus-terminal/**/*
+        - packages/frontend/trading-servers-manager/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e herodotus-terminal tests"
+    - (npm --prefix ./packages/frontend/herodotus-terminal/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:herodotus-terminal
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_herodotus_trades:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/herodotus-trades/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e herodotus-trades tests"
+    - (npm --prefix ./packages/frontend/herodotus-trades/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:herodotus-trades
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_index:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+  script:
+    - echo "Run e2e index tests"
+    - (npm run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run wait-for-localhost
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:index
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_servers_manager_accounts:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-servers-manager/**/*
+        - packages/frontend/charter/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-servers-manager tests"
+    - (npm --prefix ./packages/frontend/trading-servers-manager/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-servers-manager:accounts
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_servers_manager_common:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-servers-manager/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-servers-manager tests"
+    - (npm --prefix ./packages/frontend/trading-servers-manager/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-servers-manager:common
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_servers_manager_robots:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-servers-manager/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-servers-manager tests"
+    - (npm --prefix ./packages/frontend/trading-servers-manager/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-servers-manager:robots
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_servers_manager_server:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-servers-manager/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-servers-manager tests"
+    - (npm --prefix ./packages/frontend/trading-servers-manager/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-servers-manager:server
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_stats:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-stats/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-stats tests"
+    - (npm --prefix ./packages/frontend/trading-stats/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-stats
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+e2e_tests_trading_stats_filters:
+  extends: .e2e_test
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/trading-stats/**/*
+        - packages/frontend/e2e-tests/**/*
+  script:
+    - echo "Run e2e trading-stats tests"
+    - (npm --prefix ./packages/frontend/trading-stats/ run server)&
+    - npm --prefix ./packages/frontend/e2e-tests/ run cy:run:trading-stats-filters
+  artifacts:
+    reports:
+      junit: packages/frontend/e2e-tests/cypress/results/results*.xml
+  allow_failure: true
+
+report_backtesting:
+  stage: report
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'pipeline'
+  needs:
+    - job: e2e_tests_backtesting
+      optional: true
+  before_script: [*set-variables, *npm-install]
+  script:
+    - echo "Send report to slack"
+    - npm --prefix ./packages/frontend/e2e-tests/ run slack-request-backtesting
+  tags: [builder-front]
+
+report_herodotus_robot:
+  stage: report
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'pipeline'
+  needs:
+    - job: e2e_tests_herodotus_robot
+      optional: true
+  before_script: [*set-variables, *npm-install]
+  script:
+    - echo "Send report to slack"
+    - npm --prefix ./packages/frontend/e2e-tests/ run slack-request-herodotus
+  tags: [builder-front]
+
+report:
+  needs:
+    - job: e2e_tests_authorization
+      optional: true
+    - job: e2e_tests_backtesting
+      optional: true
+    - job: e2e_tests_balance_monitor
+      optional: true
+    - job: e2e_tests_balance_monitor-common
+      optional: true
+    - job: e2e_tests_balance_monitor_pages
+      optional: true
+    - job: e2e_tests_charter
+      optional: true
+    - job: e2e_tests_dashboard
+      optional: true
+    - job: e2e_tests_herodotus_terminal
+      optional: true
+    - job: e2e_tests_herodotus_trades
+      optional: true
+    - job: e2e_tests_index
+      optional: true
+    - job: e2e_tests_trading_servers_manager_accounts
+      optional: true
+    - job: e2e_tests_trading_servers_manager_common
+      optional: true
+    - job: e2e_tests_trading_servers_manager_robots
+      optional: true
+    - job: e2e_tests_trading_servers_manager_server
+      optional: true
+    - job: e2e_tests_trading_stats
+      optional: true
+    - job: e2e_tests_trading_stats_filters
+      optional: true
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*.*
+        - packages/common/**/*.*
+  tags: [builder-front]
+  stage: report
+  before_script: [*set-variables, *npm-install]
+  script:
+    - echo "Send report to slack"
+    - npm --prefix ./packages/frontend/e2e-tests/ run slack-request
+
+.publish:
+  needs:
+    - build
+    - lint
+    - types
+    - test_unit
+  tags: [builder-front]
+  stage: publish
+  before_script: [*set-variables]
+  rules:
+  - if: $CI_COMMIT_TAG
+  - if: $CI_COMMIT_BRANCH
+    changes:
+      - packages/frontend/**/*
+      - packages/common/**/*
+  script:
+  - TAR_NAME=frontend_${BUILD_PREFIX}_${RUN_VERSION}.tar.gz && [[ $BUILD_PREFIX == "ms" ]] && TAR_NAME=frontend_${RUN_VERSION}.tar.gz
+  - export TAR_NAME=$TAR_NAME
+  - echo "RUN_VERSION=$RUN_VERSION" >> version.env
+  - echo "Uploading tar to $TAR_NAME"
+  - tar -cvzf $TAR_NAME dist/
+  - curl -u "ci-frontend:$CI_FRONTEND_PASSWORD" --upload-file "${TAR_NAME}" "https://nexus.advsys.work/repository/archives/"
+  artifacts:
+    reports:
+      dotenv: version.env
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://ms.advsys.work/${RUN_VERSION}/dist/
+
+publish:ms:
+  extends: .publish
+  needs: [build:ms]
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/frontend/**/*
+        - packages/common/**/*
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.\d+$/
+  environment:
+    url: https://ms.advsys.work/${RUN_VERSION}/dist/
+  variables:
+    BUILD_PREFIX: ms
+
+
+publish:prod:
+  extends: .publish
+  needs: [build:prod,types,lint,test_unit]
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.\d+$/
+  environment:
+    url: https://prod.advsys.work/
+  variables:
+      BUILD_PREFIX: prod
+
+push tag to jira:
+  needs:
+    - publish:ms
+  rules:
+    - if: $CI_COMMIT_TAG
+  tags: [builder-front]
+  stage: publish
+  script:
+    - curl --request POST --url 'https://bhft-company.atlassian.net/rest/api/3/version' -H "Authorization:Basic $JIRA_TOKEN" --header 'Accept:application/json' --header 'Content-Type:application/json' --data '{"name":"'"$CI_COMMIT_TAG"'", "projectId":10008}'
+
+close jira tasks:
+  needs: ["push tag to jira"]
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+  tags: [builder-front]
+  stage: publish
+  script:
+    - curl --request POST --url 'https://automation.atlassian.com/pro/hooks/1fb45e1263be5b7ebdb5ed04c49be6e9ad54d9f4' -H "Authorization:Basic $JIRA_TOKEN" --header 'Accept:application/json' --header 'Content-Type:application/json' --data '{"name":"'"$CI_COMMIT_TAG"'", "projectId":10008}'
+
+.deploy:
+  stage: deployment
+  variables:
+    package: "frontend"
+    PACKAGE_VERSION: $RUN_VERSION
+    stage: frontend # or stable for stable
+    ci_action: deploy_frontend
+  trigger:
+    project: platform/ansible
+    branch: $ANSIBLE_BRANCH
+    strategy: depend
+
+# Deploy dev build to MS
+deploy:ms:
+  extends: .deploy
+  needs:
+    - job: publish:ms
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/common/**/*
+        - packages/frontend/**/*
+  variables:
+    stage: frontend
+
+# Deploy stable build to MS
+# WARNING: This job will NOT deploy stable build to prod.advsys.work
+# It should be done through rundeck.advsys.work
+deploy:prod:
+  extends: .deploy
+  needs:
+    - job: publish:ms
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.\d+$/
+  variables:
+    stage: stable
+
+release notification to slack:
+  needs: [deploy:prod]
+  rules:
+      # Only send Slack notification for the first version release.
+      # Subsequent release patches should not produce excessive notifications.
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+\-release\.0+$/
+  tags: [builder-front]
+  stage: notifications
+  script:
+    - MESSAGE="${GITLAB_USER_NAME} pushed new release <${CI_PROJECT_URL}/-/tags/${CI_COMMIT_TAG}|${CI_COMMIT_TAG}>|<https://ms.advsys.work/stable/dist/|Stable>|<https://gitlab.advsys.work/platform/frontend/-/blob/${CI_COMMIT_TAG}/CHANGELOG.md|Changelog>"
+    - wget --method=POST --header='Content-type:application/json' --body-data='{"channel":"platform-front", "text":"'"$MESSAGE"'"}' -O - "$SLACK_WEBHOOK_URL"
+
+
+# Build Node.JS service
+.build_service:
+  stage: build_services
+  image: docker
+  tags: [builder-front]
+  before_script: [*set-variables]
+  needs:
+    - lint
+    - types
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/backend/$SERVICE_NAME/**/*
+        - packages/common/**/*
+  script:
+     - >
+       if [ -n "$CI_COMMIT_TAG" ]; then
+         REGISTRY_HOST=$REGISTRY_HOST_TAGGED;
+       else
+         REGISTRY_HOST=$REGISTRY_HOST_UNTAGGED;
+       fi
+     - docker login "https://$REGISTRY_HOST/repository/docker/" -u "$REGISTRY_LOGIN" -p "$REGISTRY_PASS"
+     - docker build -f packages/backend/$SERVICE_NAME/Dockerfile . -t "$REGISTRY_HOST/platform/$SERVICE_NAME:$RUN_VERSION"
+     - docker push "$REGISTRY_HOST/platform/$SERVICE_NAME:$RUN_VERSION"
+     - echo "RUN_VERSION=$RUN_VERSION" >> version.env
+  artifacts:
+    reports:
+      dotenv: version.env
+
+build:dashboards-storage:
+  extends: .build_service
+  variables:
+    SERVICE_NAME: dashboard-storage
+
+build:bff:
+  extends: .build_service
+  variables:
+    SERVICE_NAME: bff
+
+build:nse:
+  extends: .build_service
+  variables:
+    SERVICE_NAME: nse-risk-manager
+
+build:bff-mocks:
+  extends: .build_service
+  variables:
+    SERVICE_NAME: bff-mocks
+
+build:user-settings:
+  extends: .build_service
+  variables:
+    SERVICE_NAME: user-settings
+
+# Deploy Node.JS service
+.deploy_service:
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - packages/backend/$SERVICE_NAME/**/*
+        - packages/common/**/*
+      when: manual
+      allow_failure: true
+  stage: deployment_services
+  trigger:
+    project: platform/ansible
+    branch: $ANSIBLE_BRANCH
+    strategy: depend
+  variables:
+    PACKAGE_VERSION: $RUN_VERSION
+    commit: $CI_COMMIT_SHORT_SHA
+    tag: $CI_COMMIT_TAG
+    ci_action: deploy_compose_service
+
+deploy:dashboards-storage-dev:
+  extends: .deploy_service
+  needs:
+    - job: build:dashboards-storage
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-dashboards-dev.mgt
+    package: dashboards_storage
+    ci_action: deploy_dashboards_storage
+    SERVICE_NAME: dashboard-storage
+
+# Deploy BFF service
+deploy:bff_dev:
+  extends: .deploy_service
+  needs:
+    - job: build:bff
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-bff-dev.mgt
+    SERVICE_NAME: bff
+
+deploy:bff_k8s-ms:
+  extends: .deploy_service
+  needs:
+    - job: build:bff
+      optional: true
+      artifacts: true
+  trigger:
+    project: platform/ansible
+    strategy: depend
+  variables:
+    stage: plt-bff.k8s-ms
+    SERVICE_NAME: bff
+    ci_action: deploy_k8s_service
+
+deploy:bff_ms:
+  extends: .deploy_service
+  needs:
+    - job: build:bff
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-bff-ms.mgt
+    SERVICE_NAME: bff
+
+# Deploy NSE service
+deploy:nse_dev:
+  extends: .deploy_service
+  needs:
+    - job: build:nse
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-nse-risk-management-dev.mgt
+    SERVICE_NAME: nse-risk-manager
+
+# Deploy BFF Mocks service
+deploy:bff-mocks:
+  extends: .deploy_service
+  needs:
+    - job: build:bff-mocks
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-bff-mocks-dev.mgt
+    SERVICE_NAME: bff-mocks
+
+# Deploy User Settings service
+deploy:user-settings_dev:
+  extends: .deploy_service
+  needs:
+    - job: build:user-settings
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-user-settings-dev.mgt
+    SERVICE_NAME: user-settings
+
+deploy:user-settings_prod:
+  extends: .deploy_service
+  needs:
+    - job: build:user-settings
+      optional: true
+      artifacts: true
+  variables:
+    stage: plt-user-settings-prod.mgt
+    SERVICE_NAME: user-settings

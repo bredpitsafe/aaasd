@@ -1,0 +1,42 @@
+{
+  "name": "@backend/user-settings",
+  "version": "0.0.1",
+  "description": "Authorized user settings",
+  "type": "module",
+  "author": "@frontend",
+  "scripts": {
+    "start": "node --loader ts-node/esm ./src/index.ts",
+    "client": "node --loader ts-node/esm ./test/client/stub-client.ts",
+    "dev": "nodemon ./src/index.ts",
+    "build": "webpack",
+    "prisma:generate": "prisma generate",
+    "prisma:deploy-migrations": "prisma migrate deploy",
+    "prisma:reset-migrations": "prisma migrate reset",
+    "prisma:create-down-migration": "npx prisma migrate diff --from-schema-datamodel prisma/schema.prisma --to-schema-datasource prisma/schema.prisma --script > ./prisma/migrations/down.sql",
+    "types": "npm run prisma:generate && tsc --noEmit",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@backend/grpc": "^1.0.0",
+    "@backend/utils": "^1.0.0",
+    "@common/rx": "^1.0.0",
+    "@common/utils": "^1.0.0",
+    "@grpc-schemas/user_settings-api-sdk": "^1.240530.0-dev",
+    "@grpc/grpc-js": "^1.10.3",
+    "@prisma/client": "^5.12.1",
+    "config": "^3.3.9",
+    "express": "^4.19.2",
+    "pg": "^8.11.3",
+    "prisma": "^5.12.1",
+    "prom-client": "^14.2.0",
+    "toml": "^3.0.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.3",
+    "@types/pg": "^8.10.7",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

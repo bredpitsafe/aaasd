@@ -1,0 +1,23 @@
+{
+    "service": {
+        "name": "SERVICE_NAME",
+        "port": "SERVICE_PORT_GRPC",
+        "httpServerPort": "SERVICE_PORT_METRICS",
+        "env": "SERVICE_ENV",
+        "httpHealthcheckURL": "SERVICE_HEALTHCHECK_ROUTE_URL"
+    },
+    "postgres": {
+        "host": "POSTGRES_HOST",
+        "port": "POSTGRES_PORT",
+        "username": "POSTGRES_USERNAME",
+        "password": "POSTGRES_PASSWORD",
+        "databaseName": "POSTGRES_DATABASE_NAME",
+        "schema": "POSTGRES_SCHEME"
+    },
+    "logging": {
+        "level": "LOGGING_LEVEL"
+    },
+    "metrics": {
+        "url": "METRICS_ROUTE_URL"
+    }
+}

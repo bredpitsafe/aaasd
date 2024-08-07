@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RenameDashboard > fails to rename dashboard if its name will not be changed 1`] = `
+{
+  "description": "Dashboard already has the same name: Dashboard will not be renamed.",
+  "kind": "Validation",
+}
+`;
+
+exports[`RenameDashboard > fails to rename dashboard with Viewer permissions 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`RenameDashboard > fails to rename other user\`s dashboard 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`RenameDashboard > fails to rename dashboard if its name will not be changed 1`] = `
+{
+  "description": "Dashboard already has the same name: Dashboard will not be renamed.",
+  "kind": "Validation",
+}
+`;
+
+exports[`RenameDashboard > fails to rename dashboard with Viewer permissions 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`RenameDashboard > fails to rename other user\`s dashboard 1`] = `
+{
+  "description": "Failed to rename dashboard: You do not have permission to rename this dashboard",
+  "kind": "Authorization",
+}
+`;

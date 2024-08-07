@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accounts handlers utils getSendBodyAccounts keep field value 1`] = `
+Array [
+  Object {
+    "credentials": Array [
+      Object {
+        "isInternal": false,
+        "key": "key",
+        "name": "name",
+        "passphrase": "KeepExisting",
+        "secret": "KeepExisting",
+      },
+    ],
+    "name": "test",
+  },
+]
+`;
+
+exports[`accounts handlers utils getSendBodyAccounts reset field value 1`] = `
+Array [
+  Object {
+    "credentials": Array [
+      Object {
+        "isInternal": false,
+        "key": "key",
+        "name": "name",
+        "passphrase": Object {
+          "Set": null,
+        },
+        "secret": Object {
+          "Set": null,
+        },
+      },
+    ],
+    "name": "test",
+  },
+]
+`;
+
+exports[`accounts handlers utils getSendBodyAccounts set new field value 1`] = `
+Array [
+  Object {
+    "credentials": Array [
+      Object {
+        "isInternal": false,
+        "key": "key",
+        "name": "name",
+        "passphrase": Object {
+          "Set": "passphrase",
+        },
+        "secret": Object {
+          "Set": "secret",
+        },
+      },
+    ],
+    "name": "test",
+  },
+]
+`;

@@ -1,0 +1,8 @@
+{
+    "service": {
+        "name": "SERVICE_NAME",
+        "port": "SERVICE_PORT",
+        "stage": "SERVICE_STAGE",
+        "url": "SERVICE_URL"
+    }
+}

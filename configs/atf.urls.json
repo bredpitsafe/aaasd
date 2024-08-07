@@ -1,0 +1,6 @@
+{
+  "atf-prod": "/atf/prod/ws",
+  "atf-prod-dev": "/atf/prod-dev/ws",
+  "atf-dev": "/atf/dev/ws",
+  "localhost": "wss://localhost:17010/ws"
+}

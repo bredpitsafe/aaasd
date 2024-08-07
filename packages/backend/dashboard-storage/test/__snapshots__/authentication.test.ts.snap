@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Authentication > authentication expiration closes socket with subscription error 1`] = `
+{
+  "description": "AuthenticationRequired: Bearer token was not provided or has expired in the current socket",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > authentication expires with an active subscription 1`] = `
+{
+  "description": "AuthenticationRequired: Bearer token was not provided or has expired in the current socket",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > failed (expired token) 1`] = `
+{
+  "description": "Authentication Failed: "exp" claim timestamp check failed",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > failed (no token) 1`] = `
+{
+  "description": "Request validation error: request body is missing required fields since it does not match any request schema.",
+  "kind": "Validation",
+}
+`;
+
+exports[`Authentication > failed (no user) 1`] = `
+{
+  "description": "Authentication Failed: "exp" claim timestamp check failed",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > failed (unknown token) 1`] = `
+{
+  "description": "Authentication Failed: Invalid JWT",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > logout stops active subscription 1`] = `
+{
+  "description": "AuthenticationRequired: Bearer token was not provided or has expired in the current socket",
+  "kind": "Authentication",
+}
+`;
+
+exports[`Authentication > successful 1`] = `
+{
+  "type": "Authenticated",
+  "username": "user1",
+}
+`;

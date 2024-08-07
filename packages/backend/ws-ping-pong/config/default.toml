@@ -1,0 +1,8 @@
+[service]
+name = 'ping-pong'
+port = 8100
+stage = "production"
+url = '/'
+
+[logging]
+level = 'debug'

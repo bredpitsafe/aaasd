@@ -1,0 +1,21 @@
+[service]
+env = 'dev'
+
+[logging]
+level = 'debug'
+
+[heartbeat]
+interval = 100
+enable = false
+
+[oauth]
+url = 'http://localhost:8101'
+
+[stages.mocks]
+hostname = 'plt-bff-mocks-dev.mgt'
+env = 'dev'
+category = 'service'
+skipAuth = true
+
+[rpc]
+timeout = 300

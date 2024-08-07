@@ -1,0 +1,32 @@
+[
+  {
+    "Instrument ID": 129908,
+    "Instrument": "BTCUSDT|BinanceSpot",
+    "VA ID": 121,
+    "VA": "hero.bn",
+    "Asset ID": 232,
+    "Asset": "USDT",
+    "Balance": -413.56305,
+    "Updated": "2023-06-08 14:00:29.153"
+  },
+  {
+    "Instrument ID": 129908,
+    "Instrument": "BTCUSDT|BinanceSpot",
+    "VA ID": 121,
+    "VA": "hero.bn",
+    "Asset ID": 132,
+    "Asset": "BTC",
+    "Balance": 0.015,
+    "Updated": "2023-06-08 14:00:29.153"
+  },
+  {
+    "Instrument ID": 129908,
+    "Instrument": "BTCUSDT|BinanceSpot",
+    "VA ID": 121,
+    "VA": "hero.bn",
+    "Asset ID": 1732,
+    "Asset": "BNB",
+    "Balance": -0.00038109,
+    "Updated": "2023-06-08 14:00:29.153"
+  }
+]

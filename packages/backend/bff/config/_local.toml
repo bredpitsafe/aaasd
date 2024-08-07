@@ -1,0 +1,23 @@
+[service]
+env = 'dev'
+
+[oauth]
+url = 'http://127.0.0.1:8101'
+
+[authentication]
+checkExpirationInterval = 1000
+
+[stages.mocks]
+hostname = 'localhost'
+env = 'dev'
+category = 'service'
+
+[stages.user-settings]
+hostname = 'localhost:9090'
+env = 'dev'
+category = 'service'
+
+[stages.dashboard-storage]
+hostname = 'localhost:9090'
+env = 'dev'
+category = 'service'

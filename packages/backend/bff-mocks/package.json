@@ -1,0 +1,46 @@
+{
+    "name": "@backend/bff-mocks",
+    "version": "0.0.1",
+    "description": "GRPC Mocks service",
+    "type": "module",
+    "author": "@frontend",
+    "scripts": {
+        "start": "node --enable-source-maps --no-warnings --loader ts-node/esm ./src/index.ts",
+        "build": "webpack",
+        "dev": "nodemon ./src/index.ts",
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts --quiet"
+    },
+    "dependencies": {
+        "@backend/bff": "^0.0.1",
+        "@backend/utils": "^1.0.0",
+        "@grpc-schemas/authorization-api-sdk": "1.240709.0",
+        "@grpc-schemas/instruments-api-sdk": "1.240624.1",
+        "@grpc-schemas/trading_data_provider-api-sdk": "1.240801.0",
+        "@common/rx": "^1.0.0",
+        "@common/types": "^1.0.0",
+        "@common/utils": "^1.0.0",
+        "@faker-js/faker": "^8.4.1",
+        "@grpc/grpc-js": "^1.9.13",
+        "config": "^3.3.10",
+        "express": "^4.18.2",
+        "prom-client": "^15.1.0",
+        "toml": "^3.0.0",
+        "ts-node": "^10.9.2",
+        "winston": "^3.11.0"
+    },
+    "devDependencies": {
+        "@backend/oauth-mock-server": "^1.0.0",
+        "@types/config": "^3.3.3",
+        "@types/express": "^4.17.21",
+        "@types/express-ws": "^3.0.4",
+        "@types/ws": "^8.5.10",
+        "c8": "^9.1.0",
+        "mkcert": "^3.2.0",
+        "nodemon": "^3.0.2",
+        "start-server-and-test": "^2.0.3",
+        "typescript": "^5.3.3",
+        "vitest": "^1.2.0"
+    },
+    "private": true
+}

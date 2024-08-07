@@ -1,0 +1,39 @@
+{
+    "service": {
+        "name": "SERVICE_NAME",
+        "port": "SERVICE_PORT",
+        "env": "SERVICE_ENV",
+        "nodeNo": "SERVICE_NODE_NO",
+        "url": "SERVICE_URL",
+        "healthcheckURL": "SERVICE_HEALTHCHECK_URL"
+    },
+    "oauth": {
+        "url": "OAUTH_URL",
+        "tokenCacheCheckInterval": "OAUTH_TOKEN_CACHE_CHECK_INTERVAL"
+    },
+    "logging": {
+        "level": "LOG_LEVEL"
+    },
+    "metrics": {
+        "url": "METRICS_URL"
+    },
+    "frontendAnalytics": {
+        "sendLogsUrl": "SEND_LOGS_URL"
+    },
+    "rpc": {
+        "timeout": "RPC_TIMEOUT"
+    },
+    "authentication": {
+        "checkExpirationInterval": "AUTHENTICATION_CHECK_EXPIRATION_INTERVAL",
+        "socketDeauthCloseTimeout": "AUTHENTICATION_SOCKET_DEAUTH_CLOSE_TIMEOUT"
+    },
+    "heartbeat": {
+        "interval": "HEARTBEAT_INTERVAL",
+        "enable": "HEARTBEAT_ENABLE"
+    },
+    "resources": {
+        "grpc": {
+            "defaultPort": "RESOURCES_GRPC_DEFAULT_PORT"
+        }
+    }
+}

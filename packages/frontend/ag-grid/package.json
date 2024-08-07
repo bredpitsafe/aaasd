@@ -1,0 +1,16 @@
+{
+  "name": "@frontend/ag-grid",
+  "version": "1.0.0",
+  "description": "AgGrid reexport",
+  "module": "./index.ts",
+  "types": "./index.d.ts",
+  "scripts": {
+    "lint": "eslint './index.{js,ts,tsx}' --quiet",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ag-grid-community": "^30.2.1",
+    "ag-grid-enterprise": "^30.2.1",
+    "ag-grid-react": "^30.2.1"
+  }
+}

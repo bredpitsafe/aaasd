@@ -1,0 +1,14 @@
+{
+    "name": "@common/rpc",
+    "version": "1.0.0",
+    "description": "All rpc methods",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts"
+    },
+    "dependencies": {
+        "@common/types": "^1.0.0"
+    }
+}

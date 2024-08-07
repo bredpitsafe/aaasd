@@ -1,0 +1,11 @@
+version: '3'
+services:
+    bff:
+        platform: linux/amd64
+        container_name: bff
+        build: ./
+        ports:
+            - '8100:8100'
+        environment:
+            - NODE_ENV=${NODE_ENV}
+        restart: unless-stopped

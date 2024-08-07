@@ -1,0 +1,43 @@
+{
+    "name": "@frontend/e2e-tests",
+    "version": "1.0.1",
+    "description": "e2e tests",
+    "scripts": {
+        "cy:open": "cypress open",
+        "cy:open:charter": "CYPRESS_BASE_URL=http://localhost:8087 cypress open",
+        "cy:run": "cypress run",
+        "cy:run:authorization": "CYPRESS_BASE_URL=https://localhost:8080 cypress run -s\"cypress/e2e/authorization/**\"",
+        "cy:run:backtesting": "CYPRESS_BASE_URL=https://localhost:8089 cypress run -s\"cypress/e2e/backtesting/**\"",
+        "cy:run:balance-monitor": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor/**\"",
+        "cy:run:balance-monitor-common": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor-common/**\"",
+        "cy:run:balance-monitor-pages": "CYPRESS_BASE_URL=https://localhost:8092 cypress run -s\"cypress/e2e/balance-monitor-pages/**\"",
+        "cy:run:charter": "CYPRESS_BASE_URL=http://localhost:8087 cypress run -s\"cypress/e2e/charter/**\"",
+        "cy:run:dashboard": "CYPRESS_BASE_URL=https://localhost:8082 cypress run -s\"cypress/e2e/dashboard/**\"",
+        "cy:run:herodotus-robot": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/herodotus-robot/**\"",
+        "cy:run:herodotus-terminal": "CYPRESS_BASE_URL=https://localhost:8084 cypress run -s\"cypress/e2e/herodotus-terminal/**\"",
+        "cy:run:herodotus-trades": "CYPRESS_BASE_URL=https://localhost:8085 cypress run -s\"cypress/e2e/herodotus-trades/**\"",
+        "cy:run:index": "CYPRESS_BASE_URL=https://localhost:8080 cypress run -s\"cypress/e2e/index/**\"",
+        "cy:run:trading-servers-manager:accounts": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/accounts/**\"",
+        "cy:run:trading-servers-manager:common": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/common/**\"",
+        "cy:run:trading-servers-manager:robots": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/robots/**\"",
+        "cy:run:trading-servers-manager:server": "CYPRESS_BASE_URL=https://localhost:8081 cypress run -s\"cypress/e2e/trading-servers-manager/server/**\"",
+        "cy:run:trading-stats": "CYPRESS_BASE_URL=https://localhost:8086 cypress run -s\"cypress/e2e/trading-stats/**\"",
+        "cy:run:trading-stats-filters": "CYPRESS_BASE_URL=https://localhost:8086 cypress run -s\"cypress/e2e/trading-stats-filters/**\"",
+        "slack-request-backtesting": "node scripts/sendRequestToBacktestingSlackChannel.js",
+        "slack-request-herodotus": "node scripts/sendRequestToHerodotusSlackChannel.js",
+        "slack-request": "node scripts/sendRequestToFrontendSlackChannel.js",
+        "wait-for-localhost": "wait-on https://localhost:8080"
+    },
+    "cypress-cucumber-preprocessor": {
+        "step_definitions": "cypress/support/step_definitions"
+    },
+    "devDependencies": {
+        "@lensesio/cypress-websocket-testing": "^1.0.1",
+        "dotenv": "^16.0.3"
+    },
+    "dependencies": {
+        "@frontend/common": "^1.0.1",
+        "request": "^2.88.2",
+        "xlsx": "^0.18.5"
+    }
+}

@@ -1,0 +1,54 @@
+{
+  "known_currencies": [
+    "a:1232:ADA",
+    "a:132:BTC",
+    "a:1732:BNB",
+    "a:3332:DOGE"
+  ],
+  "last_setup": {
+    "a:1232:ADA": {
+      "asset_id": "a:1232:ADA",
+      "intermediary": "a:232:USDT",
+      "basic": "a:232:USDT",
+      "exch": "BinanceSpot",
+      "instrument_base_to_intermid": "I:158408:ADAUSDT|BinanceSpot",
+      "instrument_intermid_to_basic": null,
+      "last_known_value": null,
+      "last_known_time": null,
+      "configured_rate": null
+    },
+    "a:132:BTC": {
+      "asset_id": "a:132:BTC",
+      "intermediary": "a:232:USDT",
+      "basic": "a:232:USDT",
+      "exch": "BinanceSpot",
+      "instrument_base_to_intermid": "I:129908:BTCUSDT|BinanceSpot",
+      "instrument_intermid_to_basic": null,
+      "last_known_value": 63177.994999999995,
+      "last_known_time": "2024-05-07T14:01:25.757327772Z",
+      "configured_rate": null
+    },
+    "a:1732:BNB": {
+      "asset_id": "a:1732:BNB",
+      "intermediary": "a:232:USDT",
+      "basic": "a:232:USDT",
+      "exch": "BinanceSpot",
+      "instrument_base_to_intermid": "I:138608:BNBUSDT|BinanceSpot",
+      "instrument_intermid_to_basic": null,
+      "last_known_value": 589.55,
+      "last_known_time": "2024-05-07T14:01:25.757327772Z",
+      "configured_rate": null
+    },
+    "a:3332:DOGE": {
+      "asset_id": "a:3332:DOGE",
+      "intermediary": "a:232:USDT",
+      "basic": "a:232:USDT",
+      "exch": "BinanceSpot",
+      "instrument_base_to_intermid": "I:184608:DOGEUSDT|BinanceSpot",
+      "instrument_intermid_to_basic": null,
+      "last_known_value": null,
+      "last_known_time": null,
+      "configured_rate": null
+    }
+  }
+}

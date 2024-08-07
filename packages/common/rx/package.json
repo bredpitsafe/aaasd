@@ -1,0 +1,16 @@
+{
+    "name": "@common/rx",
+    "version": "1.0.0",
+    "description": "Common custom rx utils",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts"
+    },
+    "dependencies": {
+        "@common/types": "^1.0.0",
+        "@common/utils": "^1.0.0",
+        "broadcast-channel": "^4.11.0"
+    }
+}

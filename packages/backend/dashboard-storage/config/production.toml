@@ -1,0 +1,8 @@
+[service]
+env = "prod"
+
+[logging]
+level = 'info'
+
+[postgres]
+scheme = 'main'

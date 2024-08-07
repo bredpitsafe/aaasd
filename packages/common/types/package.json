@@ -1,0 +1,12 @@
+{
+    "name": "@common/types",
+    "version": "1.0.0",
+    "description": "Common types",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "types": "tsc --noEmit",
+        "lint": "eslint . --ext .ts"
+    },
+    "dependencies": {}
+}

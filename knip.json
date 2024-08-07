@@ -1,0 +1,97 @@
+{
+  "workspaces": {
+    ".": {
+      "entry": ["bin/*.{ts,js}", "webpack/*.{ts,js}"],
+      "project": "**/*.{js,ts}"
+    },
+    "packages/frontend/*": {
+      "entry": ["index.ts" ,"src/index.ts", "**/*.test.browser.ts"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/frontend/e2e-tests": {
+      "entry": ["scripts/*.js"],
+      "project": "**/*.{js,ts}"
+    },
+    "packages/backend/oauth-mock-server": {
+      "entry": ["src/index.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/backend/bff": {
+      "entry": ["src/main.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/backend/user-settings": {
+      "entry": ["src/main.ts"],
+      "project": "**/*.ts",
+      "ignore": ["src/defs/grpc-types.ts"]
+    },
+    "packages/backend/ws-ping-pong": {
+      "entry": ["src/index.ts"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/backend/nse-risk-manager": {
+      "entry": ["src/app/*.tsx"],
+      "project": "**/*.{ts,tsx}"
+    },
+    "packages/backend/dashboard-storage": {
+      "entry": ["src/index.ts", "test/*.test.ts"],
+      "project": "**/*.ts",
+      "ignore": [
+        "src/def/request.ts",
+        "src/def/response.ts"
+      ]
+    },
+    "packages/backend/common/keycloak": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/backend/common/utils": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/backend/common/grpc": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/common/rx": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/common/types": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    },
+    "packages/common/utils": {
+      "entry": ["src/**/*.ts"],
+      "project": "**/*.ts"
+    }
+  },
+  "rules": {
+    "dependencies": "off"
+  },
+  "ignore": [
+    "**/__mocks__",
+    "test/**",
+    "packages/frontend/common/**/*.test.ts",
+    "**/jest.config.js",
+    "**/src/schemas/**"
+  ],
+  "ignoreDependencies": [
+    "lodash",
+    "rc-select",
+    "@vanilla-extract/css",
+    "tslib"
+  ],
+  "ignoreBinaries": [
+    "docker-compose"
+  ],
+  "exclude": [
+    "enumMembers",
+    "classMembers",
+    "duplicates"
+  ],
+  "ignoreWorkspaces": [
+    "packages/frontend/common",
+    "packages/frontend/e2e-tests/cypress"
+  ]
+}

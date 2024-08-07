@@ -1,0 +1,31 @@
+### 1. Getting Access Token and saving it to a variable
+POST {{url}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&scope=openid email profile&username={{user1}}&password={{password}}&client_id={{clientId}}&client_secret={{clientSecret}}
+
+> {%
+    client.global.set("accessToken", response.body.access_token);
+    client.global.set("refreshToken", response.body.refresh_token);
+%}
+
+### 1. Getting Access Token and saving it to a variable
+POST {{userinfoURL}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer {{accessToken}}
+
+
+### 1.1 Refresh access_token with refresh_token
+POST {{url}}
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&client_id={{clientId}}&refresh_token={{refreshToken}}
+
+> {%
+    client.global.set("accessToken", response.body.access_token);
+    client.global.set("refreshToken", response.body.refresh_token);
+%}

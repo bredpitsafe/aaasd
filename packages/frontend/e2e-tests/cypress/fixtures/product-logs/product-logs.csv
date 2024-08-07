@@ -1,0 +1,2 @@
+"Time","Level","Component","Message","Actor Key","Actor Group","Location","Trace Id","Dedup. Count","Fields"
+"2024-07-01 00:05:33.017","Info","test_md_indicator.TestMdIndicator","test_md_indicator.TestMdIndicator changed status: Initializing→Disabled, details: component autostart is disabled","_","component_status_holder","actors/component_status_holder/src/lib.rs:419",2340942169428197400,0,"{""new_status"":""Disabled"",""old_status"":""Initializing"",""component"":""R:917:test_md_indicator.TestMdIndicator"",""details"":""component autostart is disabled""}"

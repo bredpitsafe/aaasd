@@ -1,0 +1,114 @@
+<market_data_gate exchange="BinanceSwap">
+
+    <common>
+        <ws>
+            <arbitrage stream="L2" max_connections="2" check_interval="60s" min_events="0"  />
+            <arbitrage stream="AggTrades"   max_connections="2" check_interval="60s" min_events="0"  />
+            <arbitrage stream="FundingRate"   max_connections="1" check_interval="60s" min_events="0"  />
+        </ws>
+        <rps limit="20" interval="6s" />
+        <ip_bind>89.187.161.129</ip_bind>
+        <ip_bind>89.187.161.132</ip_bind>
+        <ip_bind>89.187.161.133</ip_bind>
+        <ip_bind>89.187.161.137</ip_bind>
+        <ip_bind>89.187.161.138</ip_bind>
+        <ip_bind>89.187.161.146</ip_bind>
+        <ip_bind>89.187.161.147</ip_bind>
+        <ip_bind>89.187.161.148</ip_bind>
+        <ip_bind>89.187.161.149</ip_bind>
+        <ip_bind>89.187.161.150</ip_bind>
+        <aggregator default_stale_timeout="30s" book_crossed_count="0">
+            <stale_timeout instrument="TRXUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="TUSDT|BinanceSwap"        timeout="30s"/>
+            <stale_timeout instrument="UNFIUSDT|BinanceSwap"     timeout="30s"/>
+            <stale_timeout instrument="UNIUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="USDCUSDT|BinanceSwap"     timeout="30s"/>
+            <stale_timeout instrument="VETUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="WAVESUSDT|BinanceSwap"    timeout="30s"/>
+            <stale_timeout instrument="WOOUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="XEMUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="XLMUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="XRPBUSD|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="XRPUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="XTZUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="ZILUSDT|BinanceSwap"      timeout="30s"/>
+            <stale_timeout instrument="ZRXUSDT|BinanceSwap"      timeout="30s"/>
+
+            <stale_timeout instrument="APEBUSD|BinanceSwap"      timeout="1m" />
+            <stale_timeout instrument="ARUSDT|BinanceSwap"       timeout="1m" />
+            <stale_timeout instrument="ETHUSDT|BinanceSwap"      timeout="1m" />
+            <stale_timeout instrument="FXSUSDT|BinanceSwap"      timeout="1m" />
+            <stale_timeout instrument="LINKBUSD|BinanceSwap"     timeout="1m" />
+            <stale_timeout instrument="NEOUSDT|BinanceSwap"      timeout="1m" />
+            <stale_timeout instrument="SOLBUSD|BinanceSwap"      timeout="1m" />
+            <stale_timeout instrument="ZENUSDT|BinanceSwap"      timeout="1m" />
+
+            <stale_timeout instrument="APTBUSD|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="BALUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="BNBUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="CVXUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="DOTBUSD|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="ENSUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="FILBUSD|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="LPTUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="SSVUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="TRBUSDT|BinanceSwap"      timeout="2m" />
+            <stale_timeout instrument="XVSUSDT|BinanceSwap"      timeout="2m" />
+
+            <stale_timeout instrument="AAVEUSDT|BinanceSwap"     timeout="4m" />
+            <stale_timeout instrument="BCHUSDT|BinanceSwap"      timeout="4m" />
+            <stale_timeout instrument="BLUEBIRDUSDT|BinanceSwap" timeout="4m" />
+            <stale_timeout instrument="BTCUSDT|BinanceSwap"      timeout="4m" />
+            <stale_timeout instrument="COMPUSDT|BinanceSwap"     timeout="4m" />
+            <stale_timeout instrument="DASHUSDT|BinanceSwap"     timeout="4m" />
+            <stale_timeout instrument="EGLDUSDT|BinanceSwap"     timeout="4m" />
+            <stale_timeout instrument="ETHBUSD|BinanceSwap"      timeout="4m" />
+            <stale_timeout instrument="KSMUSDT|BinanceSwap"      timeout="4m" />
+            <stale_timeout instrument="ZECUSDT|BinanceSwap"      timeout="4m" />
+
+            <stale_timeout instrument="ETCBUSD|BinanceSwap"      timeout="5m" />
+            <stale_timeout instrument="GMXUSDT|BinanceSwap"      timeout="5m" />
+
+            <stale_timeout instrument="BNBBUSD|BinanceSwap"      timeout="10m"/>
+            <stale_timeout instrument="LTCBUSD|BinanceSwap"      timeout="10m"/>
+            <stale_timeout instrument="XMRUSDT|BinanceSwap"      timeout="10m"/>
+
+            <stale_timeout instrument="BTCBUSD|BinanceSwap"      timeout="20m"/>
+            <stale_timeout instrument="MKRUSDT|BinanceSwap"      timeout="20m"/>
+            <stale_timeout instrument="QNTUSDT|BinanceSwap"      timeout="20m"/>
+
+            <stale_timeout instrument="FOOTBALLUSDT|BinanceSwap" timeout="30m"/>
+
+            <stale_timeout instrument="BTCDOMUSDT|BinanceSwap"   timeout="60m"/>
+            <stale_timeout instrument="DEFIUSDT|BinanceSwap"     timeout="60m"/>
+            <stale_timeout instrument="YFIUSDT|BinanceSwap"      timeout="60m"/>
+        </aggregator>
+
+        <keeping>
+            <l2_arbitrage_book enabled="false" />
+            <l2_book enabled="false" />
+            <l1_book enabled="false" />
+            <trades enabled="false" />
+            <aggregated_trades enabled="false" />
+        </keeping>
+
+    </common>
+    <base_ws_endpoint>wss://fstream.binance.com</base_ws_endpoint>
+    <base_rest_endpoint>https://fapi.binance.com</base_rest_endpoint>
+    <subscribe_trades>false</subscribe_trades>
+    <subscribe_aggregated_trades>true</subscribe_aggregated_trades>
+    <subscribe_book_ticker>false</subscribe_book_ticker>
+    <subscribe_funding_rates>true</subscribe_funding_rates>
+    <subscribe_depth>true</subscribe_depth>
+    <subscribe_book>false</subscribe_book>
+    <snapshot_depth>100</snapshot_depth>
+    <request_snapshot>true</request_snapshot>
+    <snapshot_delay>600ms</snapshot_delay>
+    <md_lag_threshold>194ms</md_lag_threshold>
+    <md_lag_watch_interval>50s</md_lag_watch_interval>
+    <depth_update_speed>0ms</depth_update_speed>
+    <book_update_speed>100ms</book_update_speed>
+    <snap_rps_limit>3</snap_rps_limit>
+    <max_snapshot_attempts>3</max_snapshot_attempts>
+    <snapshot_delay_ms>600</snapshot_delay_ms>
+</market_data_gate>

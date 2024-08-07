@@ -1,0 +1,17 @@
+{
+  "name": "@frontend/charter-tests",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+    "types": "tsc --noEmit",
+    "server": "npx webpack serve"
+  },
+  "dependencies": {
+    "@common/types": "^1.0.0",
+    "@common/utils": "^1.0.0",
+    "@frontend/common": "^1.0.1",
+    "@frontend/charter": "^1.0.1"
+  }
+}

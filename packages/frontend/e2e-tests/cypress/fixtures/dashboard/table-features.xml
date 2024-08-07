@@ -1,0 +1,197 @@
+<dashboard>
+    <version>1.0.0</version>
+    <name>Table features xml</name>
+    <grid>
+        <name>60x60</name>
+        <cols_count>60</cols_count>
+        <rows_count>60</rows_count>
+        <margin>4</margin>
+        <panel>
+            <rel_width>0.16666666666666666</rel_width>
+            <rel_height>0.16666666666666666</rel_height>
+            <rel_min_width>0.16666666666666666</rel_min_width>
+            <rel_min_height>0.16666666666666666</rel_min_height>
+        </panel>
+    </grid>
+    <panels>
+        <panel>
+            <type>CustomViewTable</type>
+            <settings>
+                <url>ws://localhost</url>
+                <label>Test indicators table</label>
+                <server_time_unit>nanosecond</server_time_unit>
+            </settings>
+            <table>
+                <header>
+                    <column>
+                        <text>Header2.0</text>
+                        <width>100</width>
+                    </column>
+                    <column>
+                        <width>200</width>
+                    </column>
+                    <column>
+                        <text>Header3</text>
+                        <width>100</width>
+                    </column>
+                    <column>
+                        <text>Header4</text>
+                        <width>100</width>
+                    </column>
+                </header>
+                <row>
+                    <style>
+                        <background_color>Aquamarine</background_color>
+                    </style>
+                    <if>
+                        <condition>age({ALGO|TEST_RND|01}) > 265130</condition>
+                        <style>
+                            <background_color>green</background_color>
+                        </style>
+                    </if>
+                    <cell>
+                        <text>Level 1.1</text>
+                    </cell>
+                    <cell>
+                        <text>Level 1.2</text>
+                    </cell>
+                    <cell>
+                        <text>
+                            <format>ALGO|TEST_RND|01 age: %g seconds</format>
+                            <formula>age({ALGO|TEST_RND|01})</formula>
+                        </text>
+                    </cell>
+                    <cell>
+                        <text>
+                            <format>Base text: %g</format>
+                            <formula>{ALGO|TEST_RND|01}</formula>
+                        </text>
+                        <style>
+                            <background_color>blue</background_color>
+                        </style>
+                        <mark>
+                            <style>
+                                <color>white</color>
+                            </style>
+                        </mark>
+                        <if>
+                            <condition>{ALGO|TEST_RND|02} > 900000</condition>
+                            <style>
+                                <background_color>red</background_color>
+                                <border>3px solid black</border>
+                                <border_radius>10px</border_radius>
+                            </style>
+                            <text>
+                                <format>Changed label: %g</format>
+                                <formula>{ALGO|TEST_RND|02}</formula>
+                            </text>
+                            <tooltip>Foo</tooltip>
+                            <mark>
+                                <style>
+                                    <color>black</color>
+                                    <width>30px</width>
+                                    <height>30px</height>
+                                </style>
+                            </mark>
+                        </if>
+                    </cell>
+                    <row>
+                        <cell>
+                            <text>Level 2.1</text>
+                        </cell>
+                        <cell>
+                            <text>Level 2.2</text>
+                        </cell>
+                        <cell>
+                            <text>
+                                <format>ALGO|TEST_RND|02 age: %g seconds</format>
+                                <formula>age({ALGO|TEST_RND|02})</formula>
+                            </text>
+                        </cell>
+                        <row>
+                            <style>
+                                <background_color>Aquamarine</background_color>
+                            </style>
+                            <if>
+                                <condition>age({ALGO|TEST_RND|01}) > 265130</condition>
+                                <style>
+                                    <background_color>green</background_color>
+                                </style>
+                            </if>
+                            <cell>
+                                <text>Some text 1</text>
+                            </cell>
+                            <cell>
+                                <text>Some text 2</text>
+                            </cell>
+                            <cell>
+                                <text>
+                                    <format>ALGO|TEST_RND|01 age: %g seconds</format>
+                                    <formula>age({ALGO|TEST_RND|01})</formula>
+                                </text>
+                            </cell>
+                            <cell>
+                                <text>
+                                    <format>Base text: %g</format>
+                                    <formula>{ALGO|TEST_RND|01}</formula>
+                                </text>
+                                <style>
+                                    <background_color>blue</background_color>
+                                </style>
+                                <mark>
+                                    <style>
+                                        <color>white</color>
+                                    </style>
+                                </mark>
+                                <if>
+                                    <condition>{ALGO|TEST_RND|02} > 900</condition>
+                                    <style>
+                                        <background_color>red</background_color>
+                                        <border>3px solid black</border>
+                                        <border_radius>10px</border_radius>
+                                    </style>
+                                    <text>
+                                        <format>Changed label: %g</format>
+                                        <formula>{ALGO|TEST_RND|02}</formula>
+                                    </text>
+                                    <tooltip>Foo</tooltip>
+                                    <mark>
+                                        <style>
+                                            <color>black</color>
+                                            <width>30px</width>
+                                            <height>30px</height>
+                                        </style>
+                                    </mark>
+                                </if>
+                            </cell>
+                            <row>
+                                <cell>
+                                    <text>ROW 2: Some text 1</text>
+                                </cell>
+                                <cell>
+                                    <text>ROW 2: Some text 2</text>
+                                </cell>
+                                <cell>
+                                    <text>
+                                        <format>ALGO|TEST_RND|02 age: %g seconds</format>
+                                        <formula>age({ALGO|TEST_RND|02})</formula>
+                                    </text>
+                                </cell>
+                            </row>
+                        </row>
+                    </row>
+                </row>
+            </table>
+            <layouts>
+                <layout>
+                    <rel_width>1</rel_width>
+                    <rel_height>1.0166666666666666</rel_height>
+                    <rel_min_width>0.16666666666666666</rel_min_width>
+                    <rel_min_height>0.16666666666666666</rel_min_height>
+                    <rel_x>0</rel_x>
+                    <rel_y>0</rel_y>
+                </layout>
+            </layouts>
+        </panel>
+    </panels>
+</dashboard>

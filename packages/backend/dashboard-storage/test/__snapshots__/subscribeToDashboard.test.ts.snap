@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SubscribeToDashboard > gets error when subscribing to non-existent dashboard 1`] = `
+{
+  "description": "Failed to subscribe to dashboard: You do not have permission to view this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`SubscribeToDashboard > gets error when subscribing to other user\`s dashboard 1`] = `
+{
+  "description": "Failed to subscribe to dashboard: You do not have permission to view this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`SubscribeToDashboard > receives error after permission change to \`None\` 1`] = `
+{
+  "description": "Failed to subscribe to dashboard: You do not have permission to view this dashboard",
+  "kind": "Authorization",
+}
+`;
+
+exports[`SubscribeToDashboard > unsubscribes from subscription 1`] = `
+{
+  "type": "Unsubscribed",
+}
+`;

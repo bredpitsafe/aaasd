@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UpdateDashboardDraft > fails to update (no config) 1`] = `
+{
+  "description": "Request validation error: request body is missing required fields since it does not match any request schema.",
+  "kind": "Validation",
+}
+`;
+
+exports[`UpdateDashboardDraft > fails to update (no dashboard) 1`] = `
+{
+  "description": "Draft update failed: You do not have permission to update this draft",
+  "kind": "Authorization",
+}
+`;
+
+exports[`UpdateDashboardDraft > fails to update (no permission) 1`] = `
+{
+  "description": "Draft update failed: You do not have permission to update this draft",
+  "kind": "Authorization",
+}
+`;

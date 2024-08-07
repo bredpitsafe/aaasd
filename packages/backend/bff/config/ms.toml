@@ -1,0 +1,38 @@
+[service]
+env = 'ms'
+
+[logging]
+level = 'info'
+
+[heartbeat]
+enable = true
+
+[oauth]
+url = 'https://ms.advsys.work/keycloak/realms/bhft'
+
+
+# --- Single Instance Services
+[stages.authz]
+hostname = 'plt-authorization-prod.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['UsersV1', 'GroupsV1', 'PermissionsV1', 'PoliciesV1', 'PolicyTemplatesV1']
+
+[stages.user-settings]
+hostname = 'plt-user-settings-prod.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['UserSettingsV1']
+
+[stages.dashboard-storage]
+hostname = 'plt-dashboards.mgt'
+env = 'prod'
+category = 'service'
+grpcClients=['DashboardStorageV1', 'DashboardDraftV1', 'DashboardSharingV1']
+
+# TODO: Replace with prod instance when available
+[stages.instruments]
+hostname = 'plt-instruments-ms.mgt'
+env = 'ms'
+category = 'service'
+grpcClients=['InstrumentsV1', 'AssetsV1', 'IndexesV1']

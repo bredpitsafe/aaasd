@@ -1,0 +1,38 @@
+<robot kind="test_rpc_robot">
+  <container>
+    <filtering_enabled>false</filtering_enabled> <!-- passive filter not to produce useless directives from container -->
+    <save_state_interval>50m</save_state_interval>
+    <stop_timeout>20s</stop_timeout>
+    <soft_block_duration>5s</soft_block_duration>
+    <auto_start>true</auto_start>
+    <stop_on_debugger_detach>false</stop_on_debugger_detach>
+    <exit_on_indicator_resolve_error>false</exit_on_indicator_resolve_error>
+    <pre_risk>
+      <block_robot>
+        <stm_loss_sequence count="4" window="60s"/>
+      </block_robot>
+      <instruments>
+        <instrument name="BTC-PERPETUAL|Deribit" max_order_amount="1000" aggression="0.1" aggression_amount="0.0" max_total_side_amount_gtc="100" max_total_side_amount_ioc ="100" aggression_enable_oor="false" max_amount_2nd_delta='64000'/>
+        <instrument name="BTC-5APR24|Deribit" max_order_amount="100" aggression="0.1" aggression_amount="0.0" max_total_side_amount_gtc="100" max_total_side_amount_ioc ="100" aggression_enable_oor="false" max_amount_2nd_delta='64000'/>
+        <instrument name="ETH-PERPETUAL|Deribit" max_order_amount="1000" aggression="0.1" aggression_amount="0.0" max_total_side_amount_gtc="1000" max_total_side_amount_ioc ="1000" aggression_enable_oor="false" max_amount_2nd_delta='64000'/>
+      </instruments >
+      <rejects_in_row>0</rejects_in_row>
+    </pre_risk>
+  </container>
+
+  <min_step_price_percent>0.05</min_step_price_percent>
+  <min_step_size_percent>25</min_step_size_percent>
+
+  <allowed_instruments instrument="BTC-PERPETUAL|Deribit" levels_depth="100" max_order_size="100.0">
+    <trade_accounts>deribit.test</trade_accounts>
+  </allowed_instruments>
+  <!-- <allowed_instruments instrument="ETH-PERPETUAL|Deribit" levels_depth="50" max_order_size="100.0">
+      <trade_accounts>deribit.test</trade_accounts>
+  </allowed_instruments>  -->
+  <allowed_instruments instrument="ETH-PERPETUAL|Deribit" levels_depth="10" max_order_size="100.0"  transformation="InvertedAmount">
+    <trade_accounts>deribit.test</trade_accounts>
+  </allowed_instruments>
+  <!-- <allowed_instruments instrument="BTC-5APR24|Deribit" levels_depth="10" max_order_size="100.0">
+   <trade_accounts>deribit.test</trade_accounts>
+</allowed_instruments> -->
+</robot>

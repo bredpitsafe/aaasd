@@ -1,0 +1,21 @@
+[service]
+name = 'user_settings'
+host = '0.0.0.0'
+port = 9090
+httpServerPort = 9110
+env = "production"
+httpHealthcheckURL = '/healthcheck'
+
+[postgres]
+host = "localhost"
+port = 5432
+username = "manager"
+password = "test"
+databaseName = "user-settings"
+schema = "test"
+
+[logging]
+level = 'debug'
+
+[metrics]
+url = '/metrics'

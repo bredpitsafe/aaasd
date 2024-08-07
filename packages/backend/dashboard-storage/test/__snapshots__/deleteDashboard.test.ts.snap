@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DeleteDashboard > fails to delete already deleted dashboard 1`] = `
+{
+  "description": "Dashboard delete failed: The dashboard doesnt exist or has been deleted before.",
+  "kind": "Authorization",
+}
+`;
+
+exports[`DeleteDashboard > fails to delete other user\`s dashboard 1`] = `
+{
+  "description": "Dashboard delete failed: The dashboard doesnt exist or has been deleted before.",
+  "kind": "Authorization",
+}
+`;

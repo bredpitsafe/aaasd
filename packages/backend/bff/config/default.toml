@@ -1,0 +1,449 @@
+[service]
+name = 'bff'
+port = 8100
+env = ''
+nodeNo = 0
+url = '/ws'
+healthcheckURL = '/healthcheck'
+secure = false
+
+[oauth]
+url = ''
+tokenCacheCheckInterval = 10000
+
+[logging]
+level = 'debug'
+
+[metrics]
+url = '/metrics'
+
+[frontendAnalytics]
+sendLogsUrl = 'sendLogs'
+
+[csp]
+url = '/csp'
+
+[rpc]
+timeout = 10000
+
+[authentication]
+checkExpirationInterval = 10000
+socketDeauthCloseTimeout = 1000
+
+[heartbeat]
+interval = 2000
+enable = false
+
+[resources.grpc]
+defaultPort = 9090
+
+# Supports {stage} and {stage_hostname} variables
+[resources.grpc.services]
+# ---TradingDataProvider services
+ConvertRatesV1 = '{stage_hostname}'
+StmV1 = '{stage_hostname}'
+
+# ---UserSettings services
+UserSettingsV1 = '{stage_hostname}'
+
+# ---Instruments services
+InstrumentsV1 = '{stage_hostname}'
+AssetsV1 = '{stage_hostname}'
+IndexesV1 = '{stage_hostname}'
+
+# ---Authorization services
+UsersV1 = '{stage_hostname}'
+GroupsV1 = '{stage_hostname}'
+PermissionsV1 = '{stage_hostname}'
+PoliciesV1 = '{stage_hostname}'
+PolicyTemplatesV1 = '{stage_hostname}'
+
+# ---DashboardStorage services
+DashboardStorageV1 = '{stage_hostname}'
+DashboardDraftV1 = '{stage_hostname}'
+DashboardSharingV1 = '{stage_hostname}'
+
+
+# --- Common Platform Dev Stages
+[stages.algo]
+hostname = 'plt-platform-algo.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.astroid]
+hostname = 'plt-platform-astroid.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.autocmn]
+hostname = 'plt-platform-autocmn.mgt'
+env = 'ms'
+category = 'platform'
+skipAuth = true
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.autotest]
+hostname = 'plt-platform-autotest.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.backtest]
+hostname = 'plt-platform-backtest.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.bootcamp]
+hostname = 'plt-platform-bootcamp.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.circle]
+hostname = 'plt-platform-circle.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.cone]
+hostname = 'plt-platform-cone.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.crawler]
+hostname = 'plt-platform-crawler.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.cube]
+hostname = 'plt-platform-cube.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.dtc]
+hostname = 'plt-platform-dtc.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.ellipse]
+hostname = 'plt-platform-ellipse.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.helix]
+hostname = 'plt-platform-helix.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.heptagon]
+hostname = 'plt-platform-heptagon.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.hexagon]
+hostname = 'plt-platform-hexagon.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.hypercube]
+hostname = 'plt-platform-hypercube.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.klein]
+hostname = 'plt-platform-klein.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.line]
+hostname = 'plt-platform-line.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.mobius]
+hostname = 'plt-platform-mobius.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.octagon]
+hostname = 'plt-platform-octagon.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.oval]
+hostname = 'plt-platform-oval.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.pentagon]
+hostname = 'plt-platform-pentagon.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.preprod]
+hostname = 'plt-platform-preprod.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.prism]
+hostname = 'plt-platform-prism.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.pyramid]
+hostname = 'plt-platform-pyramid.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.qa]
+hostname = 'plt-platform-qa.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.ray]
+hostname = 'plt-platform-ray.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.rhomb]
+hostname = 'plt-platform-rhomb.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.ring]
+hostname = 'plt-platform-ring.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.sphere]
+hostname = 'plt-platform-sphere.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.spiral]
+hostname = 'plt-platform-spiral.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.square]
+hostname = 'plt-platform-square.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.star]
+hostname = 'plt-platform-star.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['authz', 'dashboard', 'backtestingManager', 'tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+
+[stages.tesseract]
+hostname = 'plt-platform-tesseract.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.test]
+hostname = 'plt-platform-test.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.tetrahedron]
+hostname = 'plt-platform-tetrahedron.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.torus]
+hostname = 'plt-platform-torus.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.deltoid]
+hostname = 'plt-platform-deltoid.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.scalene]
+hostname = 'plt-platform-scalene.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.trapezoid]
+hostname = 'plt-platform-scalene.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.knot]
+hostname = 'plt-platform-knot.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.teapot]
+hostname = 'plt-platform-teapot.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.triangle]
+hostname = 'plt-platform-triangle.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'herodotusTerminal', 'herodotusTrades', 'wsQueryTerminal']
+grpcClients=['ConvertRatesV1', 'StmV1']
+
+[stages.vertex]
+hostname = 'plt-platform-vertex.mgt'
+env = 'ms'
+category = 'platform'
+clientApps=['tradingServersManager', 'tradingStats', 'wsQueryTerminal', 'backtestingManager']
+grpcClients=['ConvertRatesV1', 'StmV1']
+# --- END Common Platform Dev Stages
+
+
+#--- Dashboard-storage sockets
+[stages.dashboards-dev]
+env = 'dev'
+category = 'client'
+clientApps=['dashboard', 'wsQueryTerminal']
+clientSocket='/dashboards-dev/'
+
+[stages.dashboards-prod]
+env = 'prod'
+category = 'client'
+clientApps=['dashboard', 'wsQueryTerminal']
+clientSocket = '/dashboards/'
+#--- END Dashboard-storage sockets
+
+
+
+#--- Balance Monitor sockets
+[stages.atf-dev]
+env = 'dev'
+category = 'client'
+clientApps=['balanceMonitor', 'wsQueryTerminal']
+clientSocket = '/atf/dev/ws'
+
+[stages.atf-prod-dev]
+env = 'ms'
+category = 'client'
+clientApps=['balanceMonitor', 'wsQueryTerminal']
+clientSocket = '/atf/prod-dev/ws'
+
+[stages.atf-prod]
+env = 'prod'
+category = 'client'
+clientApps=['balanceMonitor', 'wsQueryTerminal']
+clientSocket = '/atf/prod/ws'
+#--- END Balance Monitor sockets
+
+
+
+# --- Single Instance Services
+[stages.mocks]
+hostname = 'plt-bff-mocks-dev.mgt'
+env = 'dev'
+category = 'service'
+skipAuth = true
+grpcClients=[
+    'UsersV1', 'GroupsV1', 'PermissionsV1', 'PoliciesV1', 'PolicyTemplatesV1',
+    'InstrumentsV1', 'AssetsV1', 'IndexesV1']
+
+[stages.authz]
+hostname = 'plt-authorization-ms.mgt'
+env = 'ms'
+category = 'service'
+grpcClients=['UsersV1', 'GroupsV1', 'PermissionsV1', 'PoliciesV1', 'PolicyTemplatesV1']
+
+[stages.user-settings]
+hostname = 'plt-user-settings-dev.mgt'
+env = 'dev'
+category = 'service'
+grpcClients=['UserSettingsV1']
+
+[stages.dashboard-storage]
+hostname = 'plt-dashboards-dev.mgt'
+env = 'dev'
+category = 'service'
+grpcClients=['DashboardStorageV1', 'DashboardDraftV1', 'DashboardSharingV1']
+
+[stages.instruments]
+hostname = 'plt-instruments-ms.mgt'
+env = 'ms'
+category = 'service'
+grpcClients=['InstrumentsV1', 'AssetsV1', 'IndexesV1']
+# --- END Single Instance Services

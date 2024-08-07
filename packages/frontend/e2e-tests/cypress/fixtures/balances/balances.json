@@ -1,0 +1,14 @@
+[
+  {
+    "Instrument ID": 129908,
+    "Instrument": "BTCUSDT|BinanceSpot",
+    "VA ID": 121,
+    "VA": "hero.bn",
+    "Robot ID": 1017,
+    "Robot Name": "HerodotusMulti.HerodotusMulti",
+    "Asset ID": 132,
+    "Asset": "BTC",
+    "Balance": 0.015,
+    "Updated": "2023-06-08 14:00:29.153"
+  }
+]

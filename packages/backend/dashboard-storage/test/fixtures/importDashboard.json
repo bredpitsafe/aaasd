@@ -1,0 +1,7 @@
+{
+  "type": "ImportDashboard",
+  "name": "test dashboard",
+  "config": "test config",
+  "legacyId": 12345,
+  "permission": "Viewer"
+}

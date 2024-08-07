@@ -1,0 +1,6 @@
+{
+    "bff-prod": "/bff/",
+    "bff-ms": "/bff_ms/",
+    "bff-dev": "/bff_dev/",
+    "bff-localhost": "wss://localhost:8100/ws"
+}

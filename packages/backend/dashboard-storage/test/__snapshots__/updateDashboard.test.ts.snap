@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UpdateDashboard > digest mismatch 1`] = `
+{
+  "args": {
+    "currentDigest": "3388ab53e11ad959493f443fd2da8856",
+    "receivedDigest": "definitely_incorrect_digest",
+  },
+  "description": "Dashboard update failed: Digest mismatch. You are trying to update an outdated dashboard.",
+  "kind": "Validation",
+}
+`;
+
+exports[`UpdateDashboard > other users\`s dashboard 1`] = `
+{
+  "description": "Dashboard update failed: You do not have permission to edit this dashboard",
+  "kind": "Authorization",
+}
+`;

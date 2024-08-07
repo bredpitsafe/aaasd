@@ -1,0 +1,405 @@
+<dashboard>
+  <version>1.0.0</version>
+  <name>Panels without type xml</name>
+  <grid>
+    <name>80x45</name>
+    <cols_count>80</cols_count>
+    <rows_count>45</rows_count>
+    <margin>8</margin>
+    <panel>
+      <rel_width>0.2</rel_width>
+      <rel_height>0.2</rel_height>
+      <rel_min_width>0.2</rel_min_width>
+      <rel_min_height>0.2</rel_min_height>
+    </panel>
+  </grid>
+  <panels>
+    <panel>
+      <settings>
+        <url>ws://localhost</url>
+        <min_zoom>1e-13</min_zoom>
+        <follow_mode>permament</follow_mode>
+        <closest_points>true</closest_points>
+        <time_zone>0</time_zone>
+        <server_time_unit>nanosecond</server_time_unit>
+        <server_time_increment>1609459200000000000</server_time_increment>
+        <label>Test chart</label>
+        <do-not-initialize-charts>true</do-not-initialize-charts>
+      </settings>
+      <layout>
+        <rel_width>0.3333333333333333</rel_width>
+        <rel_height>1</rel_height>
+        <rel_min_width>0.16666666666666666</rel_min_width>
+        <rel_min_height>0.16666666666666666</rel_min_height>
+        <rel_x>0</rel_x>
+        <rel_y>0</rel_y>
+      </layout>
+      <charts>
+        <chart>
+          <id>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</id>
+          <query>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</query>
+          <label>indicators{name='BTC-ETH|UpbitSpot.l1.ask'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>points</type>
+          <point_size>4</point_size>
+          <color>8913151</color>
+          <opacity>1</opacity>
+          <y_axis>left</y_axis>
+          <width>4</width>
+        </chart>
+        <chart>
+          <id>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</id>
+          <query>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</query>
+          <label>indicators{name='KRW-ETH|UpbitSpot.l1.ask'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>lines</type>
+          <width>1</width>
+          <color>35071</color>
+          <opacity>1</opacity>
+          <y_axis>left</y_axis>
+        </chart>
+        <chart>
+          <id>indicators{name='BTC-ETH|UpbitSpot.l1.bid'}</id>
+          <query>indicators{name='BTC-ETH|UpbitSpot.l1.bid'}</query>
+          <label>indicators{name='BTC-ETH|UpbitSpot.l1.bid'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>stairs</type>
+          <width>1</width>
+          <color>16746496</color>
+          <opacity>1</opacity>
+          <y_axis>right</y_axis>
+        </chart>
+        <chart>
+          <id>indicators{name='KRW-ETH|UpbitSpot.l1.bid'}</id>
+          <query>indicators{name='KRW-ETH|UpbitSpot.l1.bid'}</query>
+          <label>indicators{name='KRW-ETH|UpbitSpot.l1.bid'}</label>
+          <label_format>%s: %.4g</label_format>
+          <type>points</type>
+          <point_size>4</point_size>
+          <color>16711816</color>
+          <opacity>1</opacity>
+          <y_axis>right</y_axis>
+          <style_converter>ColorHighlighter</style_converter>
+          <width>4</width>
+        </chart>
+      </charts>
+      <schemes>
+        <scheme>
+          <element>
+            <from>3000</from>
+            <text>rgba(255, 128, 0, 128)</text>
+          </element>
+          <element>
+            <from>2000</from>
+            <to>3000</to>
+            <text>rgba(0, 255, 128, 128)</text>
+          </element>
+          <element>
+            <text>rgba(255, 0, 128, 128)</text>
+          </element>
+          <name>ColorHighlighter</name>
+          <extends>RangeConverter</extends>
+        </scheme>
+      </schemes>
+    </panel>
+    <panel>
+      <settings>
+        <url>ws://localhost</url>
+        <label>Test indicators table</label>
+        <server_time_unit>nanosecond</server_time_unit>
+        <do-not-initialize-charts>true</do-not-initialize-charts>
+      </settings>
+      <layout>
+        <rel_width>0.3333333333333333</rel_width>
+        <rel_height>1</rel_height>
+        <rel_min_width>0.16666666666666666</rel_min_width>
+        <rel_min_height>0.16666666666666666</rel_min_height>
+        <rel_x>0.3333333333333333</rel_x>
+        <rel_y>0</rel_y>
+      </layout>
+      <table>
+        <header>
+          <column>
+            <text>Header2.0</text>
+            <width>100</width>
+          </column>
+          <column>
+            <width>200</width>
+          </column>
+          <column>
+            <text>Header3</text>
+            <width>100</width>
+          </column>
+          <column>
+            <text>Header4</text>
+            <width>100</width>
+          </column>
+        </header>
+        <row>
+          <style>
+            <background_color>Aquamarine</background_color>
+          </style>
+          <if>
+            <condition>{ALGO|TEST_RND|01} > 500</condition>
+            <style>
+              <background_color>green</background_color>
+            </style>
+          </if>
+          <cell>
+            <text>Level 1.1</text>
+          </cell>
+          <cell>
+            <text>Level 1.2</text>
+            <style>
+              <text_align>center</text_align>
+              <margin>30px</margin>
+            </style>
+          </cell>
+          <cell>
+            <text>
+              <format>ALGO|TEST_RND|01 age: %g seconds</format>
+              <formula>age({ALGO|TEST_RND|01})</formula>
+            </text>
+          </cell>
+          <cell>
+            <text>
+              <format>Base text: %g</format>
+              <formula>{ALGO|TEST_RND|01}</formula>
+            </text>
+            <style>
+              <background_color>blue</background_color>
+            </style>
+            <mark>
+              <style>
+                <color>white</color>
+              </style>
+            </mark>
+            <if>
+              <condition>{ALGO|TEST_RND|02} > 900000</condition>
+              <style>
+                <background_color>red</background_color>
+                <border>3px solid black</border>
+                <border_radius>10px</border_radius>
+              </style>
+              <text>
+                <format>Changed label: %g</format>
+                <formula>{ALGO|TEST_RND|02}</formula>
+              </text>
+              <tooltip>Foo</tooltip>
+              <mark>
+                <style>
+                  <color>black</color>
+                  <width>30px</width>
+                  <height>30px</height>
+                </style>
+              </mark>
+            </if>
+          </cell>
+          <row>
+            <cell>
+              <text>Level 2.1</text>
+            </cell>
+            <cell>
+              <text>Level 2.2</text>
+            </cell>
+            <cell>
+              <text>
+                <format>ALGO|TEST_RND|02 age: %g seconds</format>
+                <formula>age({ALGO|TEST_RND|02})</formula>
+              </text>
+            </cell>
+            <row>
+              <style>
+                <background_color>Aquamarine</background_color>
+              </style>
+              <if>
+                <condition>age({ALGO|TEST_RND|01}) > 265130</condition>
+                <style>
+                  <background_color>green</background_color>
+                </style>
+              </if>
+              <cell>
+                <text>Some text 1</text>
+              </cell>
+              <cell>
+                <text>Some text 2</text>
+              </cell>
+              <cell>
+                <text>
+                  <format>ALGO|TEST_RND|01 age: %g seconds</format>
+                  <formula>age({ALGO|TEST_RND|01})</formula>
+                </text>
+              </cell>
+              <cell>
+                <text>
+                  <format>Base text: %g</format>
+                  <formula>{ALGO|TEST_RND|01}</formula>
+                </text>
+                <style>
+                  <background_color>blue</background_color>
+                </style>
+                <mark>
+                  <style>
+                    <color>white</color>
+                  </style>
+                </mark>
+                <if>
+                  <condition>{ALGO|TEST_RND|02} > 500</condition>
+                  <style>
+                    <background_color>red</background_color>
+                    <border>3px solid black</border>
+                    <border_radius>10px</border_radius>
+                  </style>
+                  <text>
+                    <format>Changed label: %g</format>
+                    <formula>{ALGO|TEST_RND|02}</formula>
+                  </text>
+                  <tooltip>Foo</tooltip>
+                  <mark>
+                    <style>
+                      <color>black</color>
+                      <width>30px</width>
+                      <height>30px</height>
+                    </style>
+                  </mark>
+                </if>
+              </cell>
+              <row>
+                <cell>
+                  <text>ROW 2: Some text 1</text>
+                </cell>
+                <cell>
+                  <text>ROW 2: Some text 2</text>
+                </cell>
+                <cell>
+                  <text>
+                    <format>ALGO|TEST_RND|02 age: %g seconds</format>
+                    <formula>age({ALGO|TEST_RND|02})</formula>
+                  </text>
+                </cell>
+              </row>
+            </row>
+          </row>
+        </row>
+      </table>
+    </panel>
+    <panel>
+      <settings>
+        <url>ws://localhost</url>
+        <label>Test indicators grid</label>
+        <server_time_unit>nanosecond</server_time_unit>
+        <do-not-initialize-charts>true</do-not-initialize-charts>
+      </settings>
+      <layout>
+        <rel_width>0.3333333333333333</rel_width>
+        <rel_height>1</rel_height>
+        <rel_min_width>0.16666666666666666</rel_min_width>
+        <rel_min_height>0.16666666666666666</rel_min_height>
+        <rel_x>0.6666666666666666</rel_x>
+        <rel_y>0</rel_y>
+      </layout>
+      <grid>
+        <style>
+          <gap>20px</gap>
+        </style>
+        <if>
+          <condition>{ALGO|TEST_RND|00} > 500</condition>
+          <style>
+            <background_color>green</background_color>
+          </style>
+        </if>
+        <cell>
+          <column>1</column>
+          <text>
+            <format>Base text: %g</format>
+            <formula>{ALGO|TEST_RND|01}</formula>
+          </text>
+          <style>
+            <background_color>blue</background_color>
+          </style>
+          <mark>
+            <style>
+              <color>white</color>
+            </style>
+          </mark>
+          <if>
+            <condition>{ALGO|TEST_RND|02} > 500</condition>
+            <style>
+              <background_color>red</background_color>
+              <border>3px solid black</border>
+              <border_radius>10px</border_radius>
+            </style>
+            <tooltip>Foo</tooltip>
+            <text>
+              <format>Changed label: %g</format>
+              <formula>{ALGO|TEST_RND|01}</formula>
+            </text>
+            <mark>
+              <style>
+                <color>black</color>
+                <width>30px</width>
+                <height>30px</height>
+              </style>
+            </mark>
+          </if>
+        </cell>
+        <cell>
+          <column>3</column>
+          <text>
+            <format>Base text: %g</format>
+            <formula>{ALGO|TEST_RND|01}</formula>
+          </text>
+          <style>
+            <background_color>blue</background_color>
+          </style>
+          <mark>
+            <style>
+              <color>white</color>
+            </style>
+          </mark>
+          <if>
+            <condition>{ALGO|TEST_RND|02} > 500</condition>
+            <style>
+              <display>none</display>
+            </style>
+          </if>
+        </cell>
+        <cell>
+          <column>5</column>
+          <text>
+            <format>Base text: %g seconds</format>
+            <formula>age({ALGO|TEST_RND|01})</formula>
+          </text>
+          <style>
+            <background_color>blue</background_color>
+          </style>
+          <mark>
+            <style>
+              <color>white</color>
+            </style>
+          </mark>
+          <if>
+            <condition>{ALGO|TEST_RND|02} > 500</condition>
+            <style>
+              <background_color>red</background_color>
+              <border>3px solid black</border>
+              <border_radius>10px</border_radius>
+            </style>
+            <tooltip>Foo</tooltip>
+            <text>
+              <format>Changed label: %g seconds</format>
+              <formula>age({ALGO|TEST_RND|01})</formula>
+            </text>
+            <mark>
+              <style>
+                <color>black</color>
+                <width>30px</width>
+                <height>30px</height>
+              </style>
+            </mark>
+          </if>
+        </cell>
+      </grid>
+    </panel>
+  </panels>
+</dashboard>

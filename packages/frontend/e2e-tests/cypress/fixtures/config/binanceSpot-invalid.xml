@@ -1,0 +1,263 @@
+<execution_gate exchange="BinanceSpot" auto_start="false">
+  <common dry_run="false">
+    <ws>
+      <arbitrage stream="Exec" max_connections="1" check_interval="120s" min_events="0">
+        <deduplication capacity="8192"/>
+      </arbitrage>
+    </ws>
+    <dns>
+      <forbidden domain="api.binance.com">
+        <net>13.225.157.233/32</net>
+      </forbidden>
+    </dns>
+    <allow_post_only>true</allow_post_only>
+    <account name="bn.sub8">
+      <key name="bn.sub8.test">
+        <bind ip="89.187.161.129"/>
+        <bind ip="89.187.161.132"/>
+      </key>
+      <place_rps interval="1000ms" limit="5" ioc_reserve="1" cancel_reserve="1"/>
+      <place_day_limit>180000</place_day_limit>
+      <daily_orders_place_fallback enabled="true" count="0"/>
+      <fee_rules fallback_asset_rule="FromQuote">
+        <fees>
+          <maker asset_rule="FromQuote" rate="0.0"/>
+          <taker asset_rule="FromQuote" rate="0.00018"/>
+        </fees>
+      </fee_rules>
+    </account>
+    <timers>
+      <balance_poll interval="60s"/>
+      <orders_poll interval="2m"/>
+      <ping_ws_listen_key interval="30m"/>
+      <poll_current_avg_price interval="60s"/>
+      <fee_rates_poll interval="1h"/>
+      <trades_deduplication interval="30m"/>
+    </timers>
+    <timeouts>
+      <hanging_orders_reject check_interval="2s" timeout="25s">
+        <override type="placing" tif="Ioc" timeout="1m"/>
+        <override type="placing" tif="Gtc" timeout="1m"/>
+        <override type="canceling" tif="Ioc" timeout="1m"/>
+        <override type="canceling" tif="Gtc" timeout="1m"/>
+      </hanging_orders_reject>
+      <connection_check check_interval="1s" timeout="40s"/>
+      <stop check_interval="200ms" timeout="10s"/>
+      <ws_reconnect_no_data interval="150s"/>
+      <order_forgot interval="30m"/>
+      <ws_ping check_interval="1s" timeout="15s"/>
+    </timeouts>
+    <currencies forbid_trading_if_no_config="false">
+      <currency name="BTC" trade_on="bn.sub8"/>
+      <currency name="ETH" trade_on="bn.sub8"/>
+      <currency name="USDT" trade_on="bn.sub8"/>
+      <currency name="AUD" trade_on="bn.sub8"/>
+      <currency name="BNB" trade_on="bn.sub8"/>
+      <currency name="BUSD" trade_on="bn.sub8"/>
+      <currency name="BUSD" trade_on="duplicate.bn.sub8"/>
+      <execution_gate exchange="BinanceSpot" auto_start="true">
+        <common dry_run="false">
+          <ws>
+            <arbitrage stream="Exec" max_connections="1" check_interval="120s" min_events="0">
+              <deduplication capacity="8192"/>
+            </arbitrage>
+          </ws>
+          <dns>
+            <forbidden domain="api.binance.com">
+              <net>13.225.157.233/32</net>
+            </forbidden>
+          </dns>
+          <allow_post_only>true</allow_post_only>
+          <account name="bn.sub8">
+            <key name="bn.sub8.test">
+              <bind ip="89.187.161.129"/>
+              <bind ip="89.187.161.132"/>
+            </key>
+            <place_rps interval="1000ms" limit="5" ioc_reserve="1" cancel_reserve="1"/>
+            <place_day_limit>180000</place_day_limit>
+            <daily_orders_place_fallback enabled="true" count="0"/>
+            <fee_rules fallback_asset_rule="FromQuote">
+              <fees>
+                <maker asset_rule="FromQuote" rate="0.0"/>
+                <taker asset_rule="FromQuote" rate="0.00018"/>
+              </fees>
+            </fee_rules>
+          </account>
+          <timers>
+            <balance_poll interval="60s"/>
+            <orders_poll interval="2m"/>
+            <ping_ws_listen_key interval="30m"/>
+            <poll_current_avg_price interval="60s"/>
+            <fee_rates_poll interval="1h"/>
+            <trades_deduplication interval="30m"/>
+          </timers>
+          <timeouts>
+            <hanging_orders_reject check_interval="2s" timeout="25s">
+              <override type="placing" tif="Ioc" timeout="1m"/>
+              <override type="placing" tif="Gtc" timeout="1m"/>
+              <override type="canceling" tif="Ioc" timeout="1m"/>
+              <override type="canceling" tif="Gtc" timeout="1m"/>
+            </hanging_orders_reject>
+            <connection_check check_interval="1s" timeout="40s"/>
+            <stop check_interval="200ms" timeout="10s"/>
+            <ws_reconnect_no_data interval="150s"/>
+            <order_forgot interval="30m"/>
+            <ws_ping check_interval="1s" timeout="15s"/>
+          </timeouts>
+          <currencies forbid_trading_if_no_config="false">
+            <currency name="BTC" trade_on="bn.sub8"/>
+            <currency name="ETH" trade_on="bn.sub8"/>
+            <currency name="USDT" trade_on="bn.sub8"/>
+            <currency name="AUD" trade_on="bn.sub8"/>
+            <currency name="BNB" trade_on="bn.sub8"/>
+            <currency name="BUSD" trade_on="duplicate.bn.sub8"/>
+          </currencies>
+          <error log_level="Off"/>
+          <error log_level="Off">
+            <kind_filter type="ExchangeError">
+              <kind http_code="400"/>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <action action="RejectOrder"/>
+          </error>
+          <error>
+            <kind_filter type="ExchangeError">
+              <kind>
+                <exchange_error type="Code" value="-1013"/>
+              </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <action action="RejectOrder"/>
+          </error>
+          <error log_level="Off">
+            <kind_filter type="ExchangeError">
+              <kind>
+                <exchange_error type="Code" value="-2010"/>
+              </kind>
+            </kind_filter>
+            <method_filter method="Place"/>
+            <details_filter>Order would immediately match and take.</details_filter>
+            <action action="RejectOrder"/>
+          </error>
+          <change_order_size_heuristic>
+            <reduce_ioc_size_on_insufficient_balance enabled="false">
+              <instruments>
+                <CAKEBNB factor="0.21"/>
+              </instruments>
+            </reduce_ioc_size_on_insufficient_balance>
+            <reduce_gtc_size_on_insufficient_balance enabled="false"/>
+          </change_order_size_heuristic>
+          <ignore_unknown_assets>true</ignore_unknown_assets>
+          <cancel_by_client_order_id>false</cancel_by_client_order_id>
+          <own_trade_price_epsilon>0.00000001</own_trade_price_epsilon>
+          <balance_correction soft_tolerance="0.000001">
+            <currency name="BNB" soft_tolerance="0.0001"/>
+          </balance_correction>
+          <fees_mode use_fallback="false" allow_directives_without_fees="false"/>
+          <mute_active_order_after_termination>true</mute_active_order_after_termination>
+          <trades_prediction enabled="true" dry_run="false" aggressive_trade_prediction_cooldown="0s" filled_state_confirm_timeout="60s">
+            <time_tolerances book_top_cross="1s" pessimistic_anon_trade="1s" optimistic_anon_trade="1s" order_match="30ms"/>
+            <mismatches interval="24h" limit="1"/>
+            <unconfirmed_fills interval="24h" limit="1"/>
+          </trades_prediction>
+          <self_match mode="AllowCanceling" collect_orders="true"/>
+        </common>
+        <poll_current_avg_price>
+          <instrument name="BNBBTC"/>
+          <instrument name="BNBBUSD"/>
+          <instrument name="BNBETH"/>
+          <instrument name="BNBEUR"/>
+          <instrument name="BNBTRY"/>
+          <instrument name="BNBUSDT"/>
+          <instrument name="BNBUSDC"/>
+        </poll_current_avg_price>
+        <ip_weight_rps reserve_multiplier="1.0" cancel_reserve="8">
+          <rule ip="89.187.161.129" limit="360" interval="3s"/>
+          <rule ip="89.187.161.132" limit="360" interval="3s"/>
+        </ip_weight_rps>
+        <recv_window place="8s" cancel="8s" other="12s" validate="6s"/>
+        <trades_deduct enabled="true" bnb_fee_rate_maker="0" bnb_fee_rate_taker="0.00018"/>
+        <client_id_prefix>pre_</client_id_prefix>
+        <weights get_account="20" get_open_orders="80" get_order="4" get_order_trades="20" get_order_rate_limit="40" listen_key="2" ping_listen_key="2" place_order="1" cancel_order="1" cancel_all_orders="1" get_avg_price="2"/>
+        <use_websocket_place_order>true</use_websocket_place_order>
+        <use_websocket_cancel_order>true</use_websocket_cancel_order>
+        <use_websocket_cancel_all_orders>true</use_websocket_cancel_all_orders>
+        <api_url>https://api.binance.com</api_url>
+        <ws_url>wss://stream.binance.com:9443</ws_url>
+        <ws_trading_url>wss://ws-api.binance.com:9443/ws-api/v3</ws_trading_url>
+      </execution_gate>
+    </currencies>
+    <error log_level="Off"/>
+    <error log_level="Off">
+      <kind_filter type="ExchangeError">
+        <kind http_code="400"/>
+      </kind_filter>
+      <method_filter method="Place"/>
+      <action action="RejectOrder"/>
+    </error>
+    <error>
+      <kind_filter type="ExchangeError">
+        <kind>
+          <exchange_error type="Code" value="-1013"/>
+        </kind>
+      </kind_filter>
+      <method_filter method="Place"/>
+      <action action="RejectOrder"/>
+    </error>
+    <error log_level="Off">
+      <kind_filter type="ExchangeError">
+        <kind>
+          <exchange_error type="Code" value="-2010"/>
+        </kind>
+      </kind_filter>
+      <method_filter method="Place"/>
+      <details_filter>Order would immediately match and take.</details_filter>
+      <action action="RejectOrder"/>
+    </error>
+    <change_order_size_heuristic>
+      <reduce_ioc_size_on_insufficient_balance enabled="false">
+        <instruments>
+          <CAKEBNB factor="0.21"/>
+        </instruments>
+      </reduce_ioc_size_on_insufficient_balance>
+      <reduce_gtc_size_on_insufficient_balance enabled="false"/>
+    </change_order_size_heuristic>
+    <ignore_unknown_assets>true</ignore_unknown_assets>
+    <cancel_by_client_order_id>false</cancel_by_client_order_id>
+    <own_trade_price_epsilon>0.00000001</own_trade_price_epsilon>
+    <balance_correction soft_tolerance="0.000001">
+      <currency name="BNB" soft_tolerance="0.0001"/>
+    </balance_correction>
+    <fees_mode use_fallback="false" allow_directives_without_fees="false"/>
+    <mute_active_order_after_termination>true</mute_active_order_after_termination>
+    <trades_prediction enabled="true" dry_run="false" aggressive_trade_prediction_cooldown="0s" filled_state_confirm_timeout="60s">
+      <time_tolerances book_top_cross="1s" pessimistic_anon_trade="1s" optimistic_anon_trade="1s" order_match="30ms"/>
+      <mismatches interval="24h" limit="1"/>
+      <unconfirmed_fills interval="24h" limit="1"/>
+    </trades_prediction>
+    <self_match mode="AllowCanceling" collect_orders="true"/>
+  </common>
+  <poll_current_avg_price>
+    <instrument name="BNBBTC"/>
+    <instrument name="BNBBUSD"/>
+    <instrument name="BNBETH"/>
+    <instrument name="BNBEUR"/>
+    <instrument name="BNBTRY"/>
+    <instrument name="BNBUSDT"/>
+    <instrument name="BNBUSDC"/>
+  </poll_current_avg_price>
+  <ip_weight_rps reserve_multiplier="1.0" cancel_reserve="8">
+    <rule ip="89.187.161.129" limit="360" interval="3s"/>
+    <rule ip="89.187.161.132" limit="360" interval="3s"/>
+  </ip_weight_rps>
+  <recv_window place="8s" cancel="8s" other="12s" validate="6s"/>
+  <trades_deduct enabled="true" bnb_fee_rate_maker="0" bnb_fee_rate_taker="0.00018"/>
+  <client_id_prefix>pre_</client_id_prefix>
+  <client_id_prefix>pre_</client_id_prefix><weights get_account="20" get_open_orders="80" get_order="4" get_order_trades="20" get_order_rate_limit="40" listen_key="2" ping_listen_key="2" place_order="1" cancel_order="1" cancel_all_orders="1" get_avg_price="2" heartbeat="1" handle_stream="1" get_fee_rates="20" get_symbol_price_ticker="1" />
+  <use_websocket_place_order>true</use_websocket_place_order>
+  <use_websocket_cancel_order>true</use_websocket_cancel_order>
+  <use_websocket_cancel_all_orders>true</use_websocket_cancel_all_orders>
+  <api_url>https://api.binance.com</api_url>
+  <ws_url>wss://stream.binance.com:9443</ws_url>
+  <ws_trading_url>wss://ws-api.binance.com:9443/ws-api/v3</ws_trading_url>
+</execution_gate>

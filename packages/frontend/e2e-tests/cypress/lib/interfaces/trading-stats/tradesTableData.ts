@@ -1,0 +1,21 @@
+export type TTradesTableData = {
+    platformTime: string;
+    exchangeTime: string;
+    strategy: string;
+    robot: string;
+    exch: string;
+    gate: string;
+    virtAcc: string;
+    account: string;
+    instr: string;
+    role: string;
+    side: string;
+    price: string;
+    baseAmt: string;
+    baseAsset: string;
+    volumeAmt: string;
+    volumeAsset: string;
+    feeAmt: string;
+    feeAsset: string;
+    orderTag: string;
+};

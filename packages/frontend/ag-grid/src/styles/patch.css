@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "agGridIcons";
+    src: url('./agGridAlpineIcons.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ag-theme-alpine {
+    --ag-icon-font-family: "agGridIcons";
+    --ag-grid-size: 3px;
+    --ag-list-item-height: 20px;
+    --ag-font-size: 12px;
+}
+
+/* Ag-Grid has a default min height of 150px for auto-height tables. We don't need it here. */
+.ag-layout-auto-height .ag-center-cols-viewport {
+    min-height: 30px !important;
+}
+
+/* Hack to support opening select menu by clicking on `disabled` floating filter fields
+   This behavior has been working before and was broken recently in Chrome v117.0 */
+.ag-text-field-input-wrapper input[disabled] {
+    pointer-events: none;
+}
+
+/* Increase Ag-Grid z-index since it can be displayed within modals and sidebars */
+.ag-popup-child {
+    z-index: 1001 !important
+}
+

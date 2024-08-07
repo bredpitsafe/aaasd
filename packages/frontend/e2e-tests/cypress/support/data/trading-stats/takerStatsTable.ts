@@ -1,0 +1,38 @@
+import { TMonthlyStatsTableData } from '../../../lib/interfaces/trading-stats/monthlyStatsTableData';
+
+export function dataTakerTable(): TMonthlyStatsTableData {
+    return {
+        total: '$400.83',
+        jan01: '$1.22',
+        jan02: '$0',
+        jan03: '$0',
+        jan04: '$0',
+        jan05: '$0',
+        jan06: '$0',
+        jan07: '$0',
+        jan08: '$0',
+        jan09: '$17.25',
+        jan10: '$0',
+        jan11: '$0',
+        jan12: '$0',
+        jan13: '$0',
+        jan14: '$0',
+        jan15: '$0',
+        jan16: '$0',
+        jan17: '$0.47',
+        jan18: '$20.27',
+        jan19: '$5.06',
+        jan20: '$0',
+        jan21: '$22.58',
+        jan22: '$22.77',
+        jan23: '$69.15',
+        jan24: '$21.19',
+        jan25: '$6.17',
+        jan26: '$0',
+        jan27: '$3.29',
+        jan28: '$0',
+        jan29: '$0',
+        jan30: '$191.98',
+        jan31: '$18.43',
+    };
+}

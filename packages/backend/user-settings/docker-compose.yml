@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres:
+    platform: linux/amd64
+    image: nexus.advsys.work:443/platform/pg-user-settings:master
+    container_name: postgres
+    ports:
+      - "5432:5432"
+
+    restart: always
+
+  user_settings:
+    platform: linux/amd64
+    container_name: user_settings
+    build: ./
+    ports:
+      - "9090:9090"
+      - "9110:9110"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    restart: unless-stopped
+

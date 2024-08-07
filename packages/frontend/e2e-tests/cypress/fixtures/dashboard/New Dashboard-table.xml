@@ -1,0 +1,74 @@
+<dashboard>
+  <version>0.0.0</version>
+  <name>ForTestsEditModal</name>
+  <grid>
+    <name>60x60</name>
+    <margin>4</margin>
+    <cols_count>60</cols_count>
+    <rows_count>60</rows_count>
+    <panel>
+      <rel_width>0.16666666666666666</rel_width>
+      <rel_height>0.16666666666666666</rel_height>
+      <rel_min_width>0.16666666666666666</rel_min_width>
+      <rel_min_height>0.16666666666666666</rel_min_height>
+    </panel>
+  </grid>
+  <panels>
+    <panel>
+      <!--panelId:2083904127-->
+      <layouts>
+        <layout>
+          <rel_x>0</rel_x>
+          <rel_y>0</rel_y>
+          <rel_width>1</rel_width>
+          <rel_height>1</rel_height>
+          <rel_min_width>0.16666666666666666</rel_min_width>
+          <rel_min_height>0.16666666666666666</rel_min_height>
+        </layout>
+      </layouts>
+      <settings>
+        <url>wss://ms.advsys.work/algo/</url>
+      </settings>
+      <type>CustomViewTable</type>
+      <table>
+        <header>
+          <column>
+            <text>Header2.0</text>
+            <width>100</width>
+          </column>
+          <column>
+            <width>200</width>
+          </column>
+          <column>
+            <text>Header3</text>
+            <width>100</width>
+          </column>
+          <column>
+            <text>Header4</text>
+            <width>100</width>
+          </column>
+        </header>
+        <row>
+          <cell>
+            <text>Level 1.1</text>
+          </cell>
+          <cell>
+            <text>Level 1.2</text>
+          </cell>
+          <cell>
+            <text>
+              <format>ALGO|TEST_RND|01 age: %g seconds</format>
+              <formula>age({ALGO|TEST_RND|01})</formula>
+            </text>
+          </cell>
+          <cell>
+            <text>
+              <format>Base text: %g</format>
+              <formula>{ALGO|TEST_RND|01}</formula>
+            </text>
+          </cell>
+        </row>
+      </table>
+    </panel>
+  </panels>
+</dashboard>

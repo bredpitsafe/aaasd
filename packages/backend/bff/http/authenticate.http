@@ -1,0 +1,15 @@
+// NOTICE: run unsecure bff server to be able to use .http files
+### Authenticate
+# @keepStreaming
+WEBSOCKET {{socketURL}}
+Content-Type: application/json
+
+{
+  "payload": {
+    "type": "Authenticate",
+    "bearerToken": "{{accessToken}}"
+  },
+  "traceId": "{{$random.integer(1000000, 9999999)}}",
+  "correlationId": {{$random.integer(1000000, 9999999)}},
+  "timestamp": "2023-05-05T14:12:12.824Z"
+}

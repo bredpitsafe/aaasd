@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig-base.json",
+    "compilerOptions": {
+        "lib": ["esnext", "dom", "webworker"],
+        "jsx": "preserve",
+        "types": [
+            "jest", // should be before mocha
+            "mocha", // fuck off mocha with broken import
+            "node",
+            "reflect-metadata"
+        ]
+    }
+}

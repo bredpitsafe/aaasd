@@ -1,0 +1,12 @@
+[
+  {
+    "Instrument ID": 2187008,
+    "Instrument": "ETH-PERPETUAL|Deribit",
+    "VA ID": 421,
+    "VA": "deribit.test",
+    "Robot ID": 2417,
+    "Robot Name": "test_rpc_robot.test_rpc_robot",
+    "Position, Contracts": 318,
+    "Updated": "2024-04-29 08:13:14.557"
+  }
+]

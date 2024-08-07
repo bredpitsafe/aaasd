@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getExchangeLinkByName exchange: "BinanceCoinSwap", type: "PerpFutures" 1`] = `"https://www.binance.com/en/delivery/BTCUSD"`;
+
+exports[`getExchangeLinkByName exchange: "BinanceSpot", type: "InstantSpot" 1`] = `"https://www.binance.com/en/trade/BTC_USD"`;
+
+exports[`getExchangeLinkByName exchange: "BinanceSwap", type: "PerpFutures" 1`] = `"https://www.binance.com/en/futures/BTCUSD"`;
+
+exports[`getExchangeLinkByName exchange: "BithumbSpot", type: "InstantSpot" 1`] = `"https://en.bithumb.com/trade/order/BTC_USD"`;
+
+exports[`getExchangeLinkByName exchange: "BybitSpot", type: "InstantSpot" 1`] = `"https://www.bybit.com/ru-RU/trade/spot/BTC/USD"`;
+
+exports[`getExchangeLinkByName exchange: "CoinbaseSpot", type: "InstantSpot" 1`] = `"https://exchange.coinbase.com/trade/BTC-USD"`;
+
+exports[`getExchangeLinkByName exchange: "GateioSpot", type: "InstantSpot" 1`] = `"https://www.gate.io/trade/BTC_USD"`;
+
+exports[`getExchangeLinkByName exchange: "HuobiSpot", type: "InstantSpot" 1`] = `"https://www.huobi.com/en-us/exchange/btc_usd"`;
+
+exports[`getExchangeLinkByName exchange: "KrakenSpot", type: "InstantSpot" 1`] = `"https://trade.kraken.com/ru-ru/charts/KRAKEN:BTC-USD"`;
+
+exports[`getExchangeLinkByName exchange: "KucoinSpot", type: "InstantSpot" 1`] = `"https://www.kucoin.com/trade/BTC-USD"`;
+
+exports[`getExchangeLinkByName exchange: "OkexSpot", type: "InstantSpot" 1`] = `"https://www.okx.com/ru/trade-spot/btc-usd"`;
+
+exports[`getExchangeLinkByName exchange: "OkexSwap", type: "PerpFutures" 1`] = `"https://www.okx.com/ru/trade-swap/btc-usd-swap"`;
+
+exports[`getExchangeLinkByName exchange: "PoloniexSpot", type: "InstantSpot" 1`] = `"https://poloniex.com/trade/BTC_USD/?type=spot"`;
+
+exports[`getExchangeLinkByName exchange: "UpbitSpot", type: "InstantSpot" 1`] = `"https://upbit.com/exchange?code=CRIX.UPBIT.USD-BTC"`;
